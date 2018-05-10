@@ -25,7 +25,7 @@ class ACO:
         global Max_Iterations
 
         #pheromone matrix
-        pmatrix = self.initializer.do() #maybe different return variable
+        #pmatrix = self.initializer.do() #maybe different return variable
 
         iteration_best = list()
         #iteration_best.append()
@@ -38,8 +38,6 @@ class ACO:
         plt.ylabel('')
         plt.xlabel('Iteration')
         plt.show()
-
-        return max(calc_fitnesses(population))
 
 
 #Superclass for the three different tasks (variance of jobtimes and machine amount)
@@ -66,7 +64,7 @@ class Initializer1(Initializer):
 class Solutiongenerator:
     pass
 
-class Solutiongenerator1(Solution_Generator):
+class Solutiongenerator1(Solutiongenerator):
     pass
 
 
@@ -78,6 +76,7 @@ class Intensificator:
     pass
 
 
+Max_Iterations = 100
 
 g=ACO(Task1(),Initializer1(),Solutiongenerator1(),Evaporator(),Intensificator())
 g.do()
