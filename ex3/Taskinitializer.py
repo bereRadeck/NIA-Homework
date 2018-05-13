@@ -1,5 +1,8 @@
 from typing import List, Any
 import numpy as np
+import os
+
+#this class initializes one of the 3 given tasks using the corresponding TSP-Distances-File in ./TSPs/
 
 class Taskinitializer():
 
