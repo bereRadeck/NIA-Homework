@@ -46,6 +46,6 @@ class ACO:
 
 Max_Iterations = 100
 
-g=ACO(Taskinitializer(1),Initializer(),Solutiongenerator1(),Evaporator(),Intensificator())
+g=ACO(Taskinitializer(1),Initializer(),SolutionGenerator(),Evaporator(),Intensificator())
 g.do()
 

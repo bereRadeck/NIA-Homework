@@ -25,5 +25,5 @@ class Taskinitializer():
                     task_matrix.append(row)
         return np.asarray(task_matrix)
 
-    def solution_scoring(self,solution):
+    def solution_evaluation(self,solution):
         return np.sum(self.get_task_matrix()[solution[0:-1], solution[1:]])
