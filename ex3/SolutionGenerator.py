@@ -27,7 +27,7 @@ class SolutionGenerator():
             #appende city_next an solution
 
             #returne solution
-    
+
 
 
 
