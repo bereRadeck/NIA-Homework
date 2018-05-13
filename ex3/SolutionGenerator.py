@@ -1,5 +1,6 @@
 import Taskinitializer
 import numpy as np
+
 class SolutionGenerator():
 
     def __init__(self, alpha, beta, num_of_ants, task=Taskinitializer):

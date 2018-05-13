@@ -12,6 +12,8 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
+import Initializer,Taskinitializer,SolutionGenerator,Evaporator,Intensificator
+
 class ACO:
     def __init__(self,taskinitializer,initializer,solutiongenerator,evaporator,intensificator):
 
@@ -20,6 +22,8 @@ class ACO:
         self.solutiongenerator=solutiongenerator
         self.evaporator=evaporator
         self.intensificator=intensificator
+
+        self.initializer.initialize(self.taskinitializer)
 
     def do(self):
         global Max_Iterations
@@ -40,44 +44,8 @@ class ACO:
         plt.show()
 
 
-#Superclass for the three different tasks (variance of jobtimes and machine amount)
-class Taskinitializer:
-    pass
-
-class Task1(Taskinitializer):
-    pass
-    
-class Task2(Taskinitializer):
-    pass
-
-class Task3(Taskinitializer):
-    pass
-
-
-class Initializer:
-    pass
-
-class Initializer1(Initializer):
-    pass
-
-
-class Solutiongenerator:
-    pass
-
-class Solutiongenerator1(Solutiongenerator):
-    pass
-
-
-class Evaporator:
-    pass
-
-
-class Intensificator:
-    pass
-
-
 Max_Iterations = 100
 
-g=ACO(Task1(),Initializer1(),Solutiongenerator1(),Evaporator(),Intensificator())
+g=ACO(Taskinitializer(1),Initializer(),Solutiongenerator1(),Evaporator(),Intensificator())
 g.do()
 
