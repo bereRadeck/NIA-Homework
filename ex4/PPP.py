@@ -9,9 +9,14 @@ class PPP:
         self.xmax = xmax
         # initialize chromosome vector randomly  within the search space
         # constrained by the prescribed minimum and maximum bounds:
-        x = np.zeros(len(xmin))
-        for i, v in enumerate(x):
-            x[i] = np.random.random_integers(xmin[i], xmax[i])
+
+        d = len(xmin)
+        self.x = xmin + (xmax-xmin) * np.random.uniform(0, 1, d)
+
+        #alternative:
+        x = np.zeros(d)
+        for i in range(d):
+            x[i] = np.random.uniform(xmin[i], xmax[i])
 
     def purchasing_costs(self):
         pass
