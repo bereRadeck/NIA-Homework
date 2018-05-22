@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="132e7de5-cf44-47d8-be3f-dd6e77e3ff93" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/ex4/DE.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex4/DonorGenerator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex4/PPP.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex4/Selector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex4/TrialGenerator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ex4/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/NIA-Homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/NIA-Homework.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ex4/Initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ex4/Initializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ex4/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/ex4/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,8 +16,8 @@
       <file leaf-file-name="Initializer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex4/Initializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+            <state relative-caret-position="54">
+              <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -42,8 +34,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ex4/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="78" lean-forward="true" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+            <state relative-caret-position="306">
+              <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
               <folding>
                 <element signature="e#16#51#0" expanded="true" />
               </folding>
@@ -81,8 +73,8 @@
       <file leaf-file-name="TrialGenerator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ex4/TrialGenerator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="54">
-              <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+            <state relative-caret-position="144">
+              <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -115,7 +107,6 @@
         <option value="$PROJECT_DIR$/ex3/SolutionGenerator.py" />
         <option value="$PROJECT_DIR$/ex3/aco.py" />
         <option value="$PROJECT_DIR$/ex4/SolutionGenerator.py" />
-        <option value="$PROJECT_DIR$/ex4/Initializer.py" />
         <option value="$PROJECT_DIR$/ex4/Selector.py" />
         <option value="$PROJECT_DIR$/ex4/Crossover.py" />
         <option value="$PROJECT_DIR$/ex4/Mutator.py" />
@@ -123,6 +114,7 @@
         <option value="$PROJECT_DIR$/ex4/TrialGenerator.py" />
         <option value="$PROJECT_DIR$/ex4/PPP.py" />
         <option value="$PROJECT_DIR$/ex4/DE.py" />
+        <option value="$PROJECT_DIR$/ex4/Initializer.py" />
         <option value="$PROJECT_DIR$/ex4/main.py" />
       </list>
     </option>
@@ -659,38 +651,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ex4/TrialGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ex4/DonorGenerator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ex4/Selector.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ex4/PPP.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ex4/Initializer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        <state relative-caret-position="54">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -701,10 +665,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/ex4/PPP.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ex4/Selector.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ex4/DonorGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="3" column="8" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ex4/TrialGenerator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="8" column="12" lean-forward="true" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ex4/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="78" lean-forward="true" selection-start-line="14" selection-start-column="78" selection-end-line="14" selection-end-column="78" />
+        <state relative-caret-position="306">
+          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
           <folding>
             <element signature="e#16#51#0" expanded="true" />
           </folding>

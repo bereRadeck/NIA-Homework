@@ -18,6 +18,6 @@ initializer = Initializer(xmin,xmax,NP)
 donorgenerator = DonorGenerator(F)
 trialgenerator = TrialGenerator(Cr)
 selector = Selector
-DE = DE
+de = DE
 
-DifferentialEvolution = DE(initializer,donorgenerator,trialgenerator,selector)
+DifferentialEvolution = de(initializer,donorgenerator,trialgenerator,selector)
