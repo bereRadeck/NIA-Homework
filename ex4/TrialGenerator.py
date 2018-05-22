@@ -1,7 +1,9 @@
 
 class TrialGenerator:
     """
-    for crossover step
+    for Crossover Step:
+    Generate a trial vector for the ith target vector X
+    through binomial crossover
     """
 
     def __init__(self,Cr):

@@ -6,6 +6,12 @@ from TrialGenerator import TrialGenerator
 from Selector import Selector
 from DE import DE
 
+"""
+Step 1: Read values of the control parameters of DE: scale
+factor F, crossover rate Cr, and the population size NP from
+user.
+"""
+
 #Parameter:
 #xmin =
 #xmax =
