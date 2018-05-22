@@ -1,4 +1,4 @@
-#for debugging
+# for debugging
 
 from Initializer import Initializer
 from DonorGenerator import DonorGenerator
@@ -12,19 +12,18 @@ factor F, crossover rate Cr, and the population size NP from
 user.
 """
 
-#Parameter:
-#NP
-#xmin =
-#xmax =
-#F =
-#Cr =
+# Parameter:
+# np
+# xmin =
+# xmax =
+# F =
+# Cr =
 
 
-
-initializer = Initializer(xmin,xmax,NP)
+initializer = Initializer(xmin, xmax, np)
 donorgenerator = DonorGenerator(F)
 trialgenerator = TrialGenerator(Cr)
 selector = Selector
 de = DE
 
-DifferentialEvolution = de(initializer,donorgenerator,trialgenerator,selector)
+DifferentialEvolution = de(initializer, donorgenerator, trialgenerator, selector)

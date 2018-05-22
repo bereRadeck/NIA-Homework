@@ -7,7 +7,7 @@ class DonorGenerator:
 
     """
 
-    def __init__(self,F):
+    def __init__(self, F):
         self.F = F
         pass
 

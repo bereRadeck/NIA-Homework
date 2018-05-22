@@ -6,7 +6,7 @@ class TrialGenerator:
     through binomial crossover
     """
 
-    def __init__(self,Cr):
+    def __init__(self, Cr):
         self.Cr = Cr
         pass
 

@@ -1,3 +1,6 @@
+from PPP import PPP
+import Numpy as np
+
 
 class Initializer:
     """
@@ -5,8 +8,14 @@ class Initializer:
     individuals
     """
 
-    def __init__(self,xmin,xmax,NP):
+    def __init__(self, xmin, xmax, np):
+        self.np = np
+        self.xmin = xmin
+        self.xmax = xmax
         pass
 
     def initialize(self):
-        pass
+        generation = np.zeros(self.np)
+        for index, x in enumerate(generation):
+            generation[index] = PPP(self.xmin, self.xmax)
+        return generation
