@@ -1,5 +1,8 @@
 #from typing import List, Any
 import numpy as np
+import os
+
+#this class initializes one of the 3 given tasks using the corresponding TSP-Distances-File in ./TSPs/
 
 
 class Taskinitializer():
@@ -26,7 +29,7 @@ class Taskinitializer():
                     task_matrix.append(row)
         return np.asarray(task_matrix)
 
-    def solution_evaluator(self, solution):
+    def solution_evaluation(self, solution):
 
         task_matrix = self.get_task_matrix()
 
