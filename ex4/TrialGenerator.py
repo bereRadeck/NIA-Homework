@@ -10,11 +10,8 @@ class TrialGenerator:
     through binomial crossover
     """
 
-    def __init__(self, Cr, generation, donor_vector):
+    def __init__(self, Cr):
         self.Cr = Cr
-        self.generation = generation
-        self.donor_vector = donor_vector
-
 
     def generate_trial(self, generation, donor_vector):
         list_of_trialvectors = []
