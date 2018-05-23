@@ -8,14 +8,14 @@ class Initializer:
     individuals
     """
 
-    def __init__(self, xmin, xmax, np):
-        self.np = np
+    def __init__(self, xmin, xmax, Np):
+        self.Np = Np
         self.xmin = xmin
         self.xmax = xmax
         pass
 
     def initialize(self):
-        generation = np.zeros(self.np)
+        generation = np.zeros(self.Np)
         for index, x in enumerate(generation):
             generation[index] = PPP(self.xmin, self.xmax)
         return generation
