@@ -32,7 +32,7 @@ class DonorGenerator:
 
         diff = np.substract(x2, x3)
 
-        donor = x1 + F*diff
+        donor = x1 + self.F*diff
         return donor
 
 
