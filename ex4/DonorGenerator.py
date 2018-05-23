@@ -21,11 +21,11 @@ class DonorGenerator:
         """
 
         # pic randomly 3 individuals from the current generation:
-        # but not x
+        # but not x itself
         choice_of_individuals = generation
         choice_of_individuals.remove(x)
 
-        vectors = np.random.choice(choice_of_individuals, 3)
+        vectors = np.random.choice(choice_of_individuals, 3, replace=False)
         x1 = vectors[0]
         x2 = vectors[1]
         x3 = vectors[2]
