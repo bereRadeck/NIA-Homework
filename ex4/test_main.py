@@ -14,13 +14,15 @@ user.
 
 # Parameter:
 # np
-# xmin =
-# xmax =
+# (xmin =)
+# (xmax =)
+# problemnumber =
 # F =
 # Cr =
 
 
-initializer = Initializer(xmin, xmax, np)
+#initializer = Initializer(xmin, xmax, np)
+initializer = Initializer(problemnumber,Np)
 donorgenerator = DonorGenerator(F)
 trialgenerator = TrialGenerator(Cr)
 selector = Selector
