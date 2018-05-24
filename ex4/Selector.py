@@ -13,6 +13,13 @@ class Selector:
     #select either target or trial vector for each chromosome based on the fitness (PPP.profit)
     def select(self, targets, trials):
         for i in range(len(targets)):
-            if PPP.profit(trials[i]) >= PPP.profit(targets[i]):
+
+            PPP.vector_array = trials[i]
+            trial_profit = PPP.profit()
+
+            PPP.vector_array = targets[i]
+            target_profit = PPP.profit()
+
+            if trial_profit >= target_profit:
                 targets[i] = trials[i]
         return targets
