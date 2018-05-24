@@ -94,7 +94,7 @@ class PPP:
         
         print("vector_array: ",self.vector_array)
         
-        self.profit()
+        #self.profit()
         self.return_vector()
 
     def production_cost_per_planttype(self, kwhPerPlant, costPerPlant, maxPlants, energy):
