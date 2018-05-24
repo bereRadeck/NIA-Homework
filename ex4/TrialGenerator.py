@@ -24,4 +24,4 @@ class TrialGenerator:
             else: # we just take the old vector
                 list_of_trialvectors.append(generation[i])
 
-    return list_of_trialvectors
+        return list_of_trialvectors
