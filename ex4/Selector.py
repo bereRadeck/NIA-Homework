@@ -7,18 +7,18 @@ class Selector:
     Evaluate the trial vector
     """
 
-    def __init__(self):
-        pass
+    def __init__(self,ppp):
+        self.ppp = ppp
 
     #select either target or trial vector for each chromosome based on the fitness (PPP.profit)
     def select(self, targets, trials):
         for i in range(len(targets)):
 
-            PPP.vector_array = trials[i]
-            trial_profit = PPP.profit()
+            self.ppp.vector_array = trials[i]
+            trial_profit = self.ppp.profit()
 
-            PPP.vector_array = targets[i]
-            target_profit = PPP.profit()
+            self.ppp.vector_array = targets[i]
+            target_profit = self.ppp.profit()
 
             if trial_profit >= target_profit:
                 targets[i] = trials[i]

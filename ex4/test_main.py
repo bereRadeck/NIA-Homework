@@ -5,6 +5,7 @@ from DonorGenerator import DonorGenerator
 from TrialGenerator import TrialGenerator
 from Selector import Selector
 from DE import DE
+from PPP import PPP
 
 """
 Step 1: Read values of the control parameters of DE: scale
@@ -22,12 +23,14 @@ Cr = 0.3
 
 
 #initializer = Initializer(xmin, xmax, np)
-initializer = Initializer(problemnumber,np)
+ppp = PPP(problemnumber)
+initializer = Initializer(ppp, np)
 donorgenerator = DonorGenerator(F)
 trialgenerator = TrialGenerator(Cr)
-selector = Selector
+selector = Selector(ppp)
 de = DE
 
-DifferentialEvolution = de(initializer, donorgenerator, trialgenerator, selector)
+
+DifferentialEvolution = de(ppp, initializer, donorgenerator, trialgenerator, selector)
 DifferentialEvolution.run()
 

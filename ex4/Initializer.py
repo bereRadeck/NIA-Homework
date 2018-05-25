@@ -14,14 +14,14 @@ class Initializer:
        # self.xmax = xmax
         #pass
 
-    def __init__(self,problemnumber, Np):
+    def __init__(self,ppp, Np):
         self.Np = Np
-        self.problemnumber = problemnumber
+        #self.problemnumber = problemnumber
+        self.ppp = ppp
 
     def initialize(self):
-        generation = np.zeros(self.Np)
-        for index, x in enumerate(generation):
-            generation[index] = PPP(self.problemnumber)
+        generation = list()#np.zeros(self.Np)
+        for x in range(self.Np):
+            generation.append(self.ppp.create_vector())
             #generation[index] = PPP(self.xmin, self.xmax)
-
         return generation

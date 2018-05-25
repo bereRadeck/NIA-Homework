@@ -2,11 +2,12 @@
 
 class DE:
 
-    def __init__(self, initializer, donorgenerator, trialgenerator, selector):
+    def __init__(self, ppp, initializer, donorgenerator, trialgenerator, selector):
         self.initializer = initializer
         self.donorgenerator = donorgenerator
         self.trialgenerator = trialgenerator
         self.selector = selector
+        self.ppp = ppp
 
     def run(self):
         generation = self.initializer.initialize()
