@@ -13,19 +13,21 @@ user.
 """
 
 # Parameter:
-# np
-# (xmin =)
-# (xmax =)
-# problemnumber =
-# F =
-# Cr =
+np = 10
+#xmin = 0
+#xmax = 100
+problemnumber = 1
+F = 0.5
+Cr = 0.3
 
 
 #initializer = Initializer(xmin, xmax, np)
-initializer = Initializer(problemnumber,Np)
+initializer = Initializer(problemnumber,np)
 donorgenerator = DonorGenerator(F)
 trialgenerator = TrialGenerator(Cr)
 selector = Selector
 de = DE
 
 DifferentialEvolution = de(initializer, donorgenerator, trialgenerator, selector)
+DifferentialEvolution.run()
+

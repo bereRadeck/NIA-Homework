@@ -1,5 +1,5 @@
 from PPP import PPP
-import Numpy as np
+import numpy as np
 
 
 class Initializer:

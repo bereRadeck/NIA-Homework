@@ -7,7 +7,13 @@ class DE:
         self.donorgenerator = donorgenerator
         self.trialgenerator = trialgenerator
         self.selector = selector
-        pass
 
     def run(self):
-        pass
+        generation = self.initializer.initialize()
+        
+        for i in range(10):
+            print(i)
+            donors = self.donorgenerator.generate_donor_for_pop(generation)
+            trials = self.trialgenerator.generate_trial(generation,donors)
+            targets = self.selector.select(generation,trials)
+
