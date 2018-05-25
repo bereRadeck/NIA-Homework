@@ -84,17 +84,23 @@ class PPP:
         print("upper_bound_array: ",self.upper_bound_array)
         
         self.vector_array = np.zeros(9)
-        i = 0
+        
+        #alternative if we need to make first 6 elements int 
+        #i = 0
         #first 6 vectors get initialized as int with 0 as lower bound and max as higher bound
-        while i <= 5:
-            self.vector_array[i] = int(np.random.uniform(0.0, self.upper_bound_array[i]+1))
-        #last 3 vectors get initialized as float with 0 as lower bound and max as higher bound
-        while i <= 8:
-            self.vector_array[i] = float(np.random.uniform(0.0, self.upper_bound_array[i]+0.1))
+        #while i <= 5:
+            #self.vector_array[i] = int(np.random.uniform(0.0, self.upper_bound_array[i]))
+        #last 3 vectors get initialized as float (bcs its between 0 and 1) with 0 as lower bound and max as higher bound
+        #while i <= 8:
+            #self.vector_array[i] = float(np.random.uniform(0.0, self.upper_bound_array[i]))
+        
+        #initializes this member of the population as array with given boundarys
+        for i in range(9):
+            self.vector_array[i] = (np.random.uniform(0.0, self.upper_bound_array[i]))
         
         print("vector_array: ",self.vector_array)
         
-        self.profit()
+        #self.profit()
         self.return_vector()
 
     def production_cost_per_planttype(self, kwhPerPlant, costPerPlant, maxPlants, energy):
