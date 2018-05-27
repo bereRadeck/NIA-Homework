@@ -1,5 +1,6 @@
 # Power Plant Problem
 import numpy as np
+import math
 
 
 class PPP:
@@ -102,11 +103,11 @@ class PPP:
         return plantsNeeded*costPerPlant        
 
     def cost_total(self):
-        cost_plants_type1 = production_cost_per_planttype(self.kwh_p1,self.cost_p1, self.max_number_p1, vector_array[0])
-        cost_plants_type2 = production_cost_per_planttype(self.kwh_p2,self.cost_p2, self.max_number_p2, vector_array[1])
-        cost_plants_type3 = production_cost_per_planttype(self.kwh_p3,self.cost_p3, self.max_number_p3, vector_array[2])
+        cost_plants_type1 = self.production_cost_per_planttype(self.kwh_p1,self.cost_p1, self.max_number_p1, self.vector_array[0])
+        cost_plants_type2 = self.production_cost_per_planttype(self.kwh_p2,self.cost_p2, self.max_number_p2, self.vector_array[1])
+        cost_plants_type3 = self.production_cost_per_planttype(self.kwh_p3,self.cost_p3, self.max_number_p3, self.vector_array[2])
         #keeps track of the difference between energy produced and sold
-        energy_tobuy = (self.vector_array[3]+self.vector_array0[4]+self.vector_array[5])-(self.vector_array[0]+self.vector_array[1]+self.vector_array[2])
+        energy_tobuy = (self.vector_array[3]+self.vector_array[4]+self.vector_array[5])-(self.vector_array[0]+self.vector_array[1]+self.vector_array[2])
         purchasing_cost = 0
         #evaluates costs if more energy sold then produced
         if(energy_tobuy > 0):
@@ -114,7 +115,7 @@ class PPP:
         
         return cost_plants_type1+cost_plants_type2+cost_plants_type3+purchasing_cost
 
-    def demand(price, maxPrice, maxDemand):
+    def demand(self, price, maxPrice, maxDemand):
         #if price is greater then max price, return 0
         if(price > maxPrice):
             return 0

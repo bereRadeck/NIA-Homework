@@ -13,16 +13,16 @@ class TrialGenerator:
     def __init__(self, Cr):
         self.Cr = Cr
 
-    def generate_trial(self, generation, donor_vector):
+    def generate_trial(self, generation, donor_vectors):
         list_of_trialvectors = []
 
             #once for every target vector
-        for chromosome in generation:
-            random_index_j = np.randint(0,len(chromosome))
+        for cindex,chromosome in enumerate(generation):
+            random_index_j = np.random.randint(0,len(chromosome))
 
-            for index,x in enumerate(chromosome):
-                if np.random() <= self.Cr or random_index_j == index: #we take the donor vector
-                    chromosome[index]=donor_vector[chromosome][index]
+            for xindex,x in enumerate(chromosome):
+                if np.random.uniform() <= self.Cr or random_index_j == xindex: #we take the donor vector
+                    chromosome[xindex]=donor_vectors[cindex][xindex]
                 #else: # we just take the old vector
                 #    chromosome[index]=generation[chromosome][index]
             list_of_trialvectors.append(chromosome)
