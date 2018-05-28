@@ -10,8 +10,12 @@ class TrialGenerator:
     through binomial crossover
     """
 
-    def __init__(self, Cr):
+    def __init__(self, Cr, p):
         self.Cr = Cr
+        self.p = p-1
+        self.upper_bounds = [[5000000, 30000000, 12000000, 2000000, 30000000, 20000000, 0.45, 0.25, 0.2],
+                             [5000000, 30000000, 12000000, 2000000, 30000000, 20000000, 0.45, 0.25, 0.2],
+                             [5000000, 30000000, 12000000, 1000000, 5000000, 5000000, 0.5, 0.3, 0.1]]
 
     def generate_trial(self, generation, donor_vectors):
         list_of_trialvectors = []
@@ -23,9 +27,12 @@ class TrialGenerator:
 
             for xindex,x in enumerate(chromosome):
                 if np.random.uniform() <= self.Cr or random_index_j == xindex: #we take the donor vector
-                    new_chromosome[xindex]=donor_vectors[cindex][xindex]
-              #  print(donor_vectors[chromosome][index])
-                #print(generation[chromosome][xindex])
+                    if donor_vectors[cindex][xindex] > self.upper_bounds[self.p][xindex]:
+                        new_chromosome[xindex] = self.upper_bounds[self.p][xindex]
+                    elif donor_vectors[cindex][xindex] < 0:
+                        new_chromosome[xindex] = 0
+                    else:
+                        new_chromosome[xindex]=donor_vectors[cindex][xindex]
                 else: 
                     new_chromosome[xindex]=chromosome[xindex]
             list_of_trialvectors.append(new_chromosome)

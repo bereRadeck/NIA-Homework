@@ -26,11 +26,11 @@ Cr = 0.3
 ppp = PPP(problemnumber)
 initializer = Initializer(ppp, np)
 donorgenerator = DonorGenerator(F)
-trialgenerator = TrialGenerator(Cr)
+trialgenerator = TrialGenerator(Cr, problemnumber)
 selector = Selector(ppp)
 de = DE
 
 
 DifferentialEvolution = de(ppp, initializer, donorgenerator, trialgenerator, selector)
-DifferentialEvolution.run()
+DifferentialEvolution.run(10)
 
