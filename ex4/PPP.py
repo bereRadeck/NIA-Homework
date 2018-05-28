@@ -82,7 +82,7 @@ class PPP:
                              self.max_demand_p1, self.max_demand_p2, self.max_demand_p3,
                              self.max_price_p1, self.max_price_p2, self.max_price_p3]
         
-        print("upper_bound_array: ",self.upper_bound_array)
+        #print("upper_bound_array: ",self.upper_bound_array)
 
         
         #self.profit()
@@ -102,12 +102,12 @@ class PPP:
         
         return plantsNeeded*costPerPlant        
 
-    def cost_total(self):
-        cost_plants_type1 = self.production_cost_per_planttype(self.kwh_p1,self.cost_p1, self.max_number_p1, self.vector_array[0])
-        cost_plants_type2 = self.production_cost_per_planttype(self.kwh_p2,self.cost_p2, self.max_number_p2, self.vector_array[1])
-        cost_plants_type3 = self.production_cost_per_planttype(self.kwh_p3,self.cost_p3, self.max_number_p3, self.vector_array[2])
+    def cost_total(self,vector_array):
+        cost_plants_type1 = self.production_cost_per_planttype(self.kwh_p1,self.cost_p1, self.max_number_p1, vector_array[0])
+        cost_plants_type2 = self.production_cost_per_planttype(self.kwh_p2,self.cost_p2, self.max_number_p2, vector_array[1])
+        cost_plants_type3 = self.production_cost_per_planttype(self.kwh_p3,self.cost_p3, self.max_number_p3, vector_array[2])
         #keeps track of the difference between energy produced and sold
-        energy_tobuy = (self.vector_array[3]+self.vector_array[4]+self.vector_array[5])-(self.vector_array[0]+self.vector_array[1]+self.vector_array[2])
+        energy_tobuy = (vector_array[3]+vector_array[4]+vector_array[5])-(vector_array[0]+vector_array[1]+vector_array[2])
         purchasing_cost = 0
         #evaluates costs if more energy sold then produced
         if(energy_tobuy > 0):
@@ -147,15 +147,33 @@ class PPP:
         for i in range(9):
             self.vector_array[i] = (np.random.uniform(0.0, self.upper_bound_array[i]))
         
-        print("vector_array: ",self.vector_array)
+       # print("vector_array: ",self.vector_array)
 
         return self.vector_array
     
-    def revenue(self):
-        revenue_1 = min(self.demand(self.vector_array[6], self.max_price_p1, self.max_demand_p1),self.vector_array[3])*self.vector_array[6]
-        revenue_2 = min(self.demand(self.vector_array[7], self.max_price_p2, self.max_demand_p2),self.vector_array[4])*self.vector_array[7]
-        revenue_3 = min(self.demand(self.vector_array[8], self.max_price_p3, self.max_demand_p3),self.vector_array[5])*self.vector_array[8]
+    def revenue(self,vector_array):
+        revenue_1 = min(self.demand(vector_array[6], self.max_price_p1, self.max_demand_p1),vector_array[3])*vector_array[6]
+        revenue_2 = min(self.demand(vector_array[7], self.max_price_p2, self.max_demand_p2),vector_array[4])*vector_array[7]
+        revenue_3 = min(self.demand(vector_array[8], self.max_price_p3, self.max_demand_p3),vector_array[5])*vector_array[8]
         return revenue_1+revenue_2+revenue_3
 
-    def profit(self):
-        return self.revenue()-self.cost_total()
+    def profitself(self):
+        return self.revenue(vector_array=self.vector_array)-self.cost_total(vector_array=self.vector_array)
+    
+    def profit(self, vector_array):
+        '''
+        print(self.kwh_p1,self.kwh_p2,self.kwh_p3,self.cost_p1,self.cost_p2,  self.cost_p3,self.max_number_p1,
+            self.max_number_p2,
+            self.max_number_p3,
+            #maximum price for each market == p in slides 
+            self.max_price_p1,
+            self.max_price_p2,
+            self.max_price_p3,
+            #maximum demand for each market == d in slides
+            self.max_demand_p1,
+            self.max_demand_p2,
+            self.max_demand_p3,
+            #price at which energy isn to buy if more sold then produced
+            self.cost_price)
+        '''
+        return self.revenue(vector_array=vector_array)-self.cost_total(vector_array=vector_array)

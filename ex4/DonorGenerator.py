@@ -22,6 +22,7 @@ class DonorGenerator:
 
         # pic randomly 3 individuals from the current generation:
         # but not x itself
+        
         choice_of_individuals = list(generation)
         choice_of_individuals.pop(x)
 
@@ -34,6 +35,7 @@ class DonorGenerator:
         diff = np.subtract(x2, x3)
 
         donor = x1 + self.F*diff
+      #  print(donor)
         return donor
 
 
@@ -44,6 +46,7 @@ class DonorGenerator:
         :param generation: the current generation
         :return: a list of donors, one donor for each individual from the current generation
         """
+        
         donors = []
         for x in range(len(generation)):
             donors.append(self.generate_donor(x, generation))

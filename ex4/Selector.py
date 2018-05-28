@@ -14,12 +14,11 @@ class Selector:
     def select(self, targets, trials):
         for i in range(len(targets)):
 
-            self.ppp.vector_array = trials[i]
-            trial_profit = self.ppp.profit()
+            trial_profit = self.ppp.profit(trials[i])
 
-            self.ppp.vector_array = targets[i]
-            target_profit = self.ppp.profit()
-
+            target_profit = self.ppp.profit(targets[i])
+           # this will 
             if trial_profit >= target_profit:
                 targets[i] = trials[i]
+           # new generation is returned for profit evaluation
         return targets
