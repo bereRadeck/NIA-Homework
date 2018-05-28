@@ -117,7 +117,10 @@ class PPP:
         
         
     def create_vector(self):
-        
+        """
+        creates an individual (chromosome) within the problem dependent boundaries
+        :return: a chromosome
+        """
         self.vector_array = np.zeros(9)
         #initializes this member of the population as array randomly within given boundarys
         for i in range(9):
