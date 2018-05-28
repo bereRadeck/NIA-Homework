@@ -26,8 +26,6 @@ def visualize(DE,iterations,title='Differential Evolution'):
 
 # Parameter:
 np=10
-#xmin = 0
-#xmax = 100
 problemnumber = 1
 F = 0.5
 Cr = 0.3

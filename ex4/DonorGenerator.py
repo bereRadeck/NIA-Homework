@@ -22,20 +22,18 @@ class DonorGenerator:
 
         # pic randomly 3 individuals from the current generation:
         # but not x itself
-        
         choice_of_individuals = list(generation)
         choice_of_individuals.pop(x)
 
-        #vectors = np.random.choice(choice_of_individuals, 3, replace=False)
+
         vectors = np.random.choice(range(len(choice_of_individuals)), 3, replace=False)
         x1 = choice_of_individuals[vectors[0]]
         x2 = choice_of_individuals[vectors[1]]
         x3 = choice_of_individuals[vectors[2]]
 
         diff = np.subtract(x2, x3)
-
+        #create donor vector
         donor = x1 + self.F*diff
-      #  print(donor)
         return donor
 
 
