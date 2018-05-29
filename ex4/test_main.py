@@ -25,13 +25,11 @@ def visualize(DE,iterations,title='Differential Evolution'):
 
 
 # Parameter:
-np=10
+np=10 #Populationsize
 problemnumber = 1
-F = 0.5
-Cr = 0.3
+F = 0.5 #Scale Factor
+Cr = 0.3 #Crossover probability
 
-
-#initializer = Initializer(xmin, xmax, np)
 ppp = PPP(problemnumber)
 initializer = Initializer(ppp, np)
 donorgenerator = DonorGenerator(F)
@@ -41,10 +39,7 @@ de = DE
 
 
 DifferentialEvolution = de(ppp, initializer, donorgenerator, trialgenerator, selector)
-results,time=DifferentialEvolution.run(500)
-print(time)
+
 visualize(DifferentialEvolution,500)
-#visualize(DifferentialEvolution,500)
-#visualize(DifferentialEvolution,500)
 
 

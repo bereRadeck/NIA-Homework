@@ -1,6 +1,9 @@
 # Differential Evolution
 import time
 import numpy as np
+
+#class holding and running the modules of Differential Evolution, controls the algorithm
+
 class DE:
 
     def __init__(self, ppp, initializer, donorgenerator, trialgenerator, selector):
@@ -11,7 +14,7 @@ class DE:
         self.ppp = ppp
 
     def run(self,iterations):
-        now=time.time()
+        now=time.time() #logging the time that is needed by the algorithm
         generation = self.initializer.initialize()
         solutions = np.zeros([iterations,len(generation)])
         for i in range(iterations):
@@ -22,7 +25,6 @@ class DE:
  
             for t in range(len(newgen)):
                 solutions[i][t]=np.array(self.ppp.profit(newgen[t]))
-           # print(solutions[0])
-           # print('fuck')
+
         return solutions,time.time()-now
 
