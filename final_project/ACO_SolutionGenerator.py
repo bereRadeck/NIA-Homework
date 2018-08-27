@@ -1,4 +1,6 @@
-import Taskinitializer
+# coding: utf-8
+
+import ACO_Taskinitializer
 import numpy as np
 
 class SolutionGenerator():
