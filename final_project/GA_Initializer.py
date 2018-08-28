@@ -75,7 +75,7 @@ class RandomInitializer():
             population[i] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
 
 
-    def splitted_customers(self,vehicle_capacity,customer_demand):
+    def calc_splitted_customers(self,vehicle_capacity,customer_demand):
         """
 
         :param vehicle_capacity:
