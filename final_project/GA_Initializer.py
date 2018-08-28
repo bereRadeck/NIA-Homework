@@ -59,7 +59,7 @@ class RandomInitializer():
             population[i] = v_c[sort_array]
 
 
-    def initialize_sorted_random(self):
+    def initialize_partially_random(self):
         """
         initializes randomly sorted vehicle_capacity arrays where
         each car-apperance stays together [car3,car3,car1,car2,car2,car2]
@@ -73,3 +73,13 @@ class RandomInitializer():
             sort_array = np.random.rand(low=0,high=self.vehicles,size=self.vehicles)
             mixed_up_vehicles = self.vehicles[sort_array]
             population[i] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+
+
+    def splitted_customers(self,vehicle_capacity,customer_demand):
+        """
+
+        :param vehicle_capacity:
+        :param customer_demand:
+        :return: number of customers that are served by more than one car
+        
+        """
