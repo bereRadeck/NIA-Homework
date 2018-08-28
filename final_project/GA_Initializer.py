@@ -87,8 +87,9 @@ class RandomInitializer():
         for i,c in enumerate(customer_demand):
             if c != customer_demand[i+1]:
                 if vehicle_capacity[i] == vehicle_capacity[i-1]:
-                    n +=1
+                    n += 1
         for i,v in enumerate(vehicle_capacity):
             if v != vehicle_capacity[i+1]:
                 if customer_demand[i] != customer_demand[i+1]:
-                    n +=1
+                    n += 1
+        return n
