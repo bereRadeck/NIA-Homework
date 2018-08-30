@@ -6,6 +6,8 @@ from ACO_SolutionGenerator import SolutionGenerator
 from ACO_Evaporator import Evaporator
 from ACO_Intensificator import Intensificator
 
+#still need to implement the 0-adding/removing
+
 #Tournament selector
 class Selector_Tournament():
 
@@ -40,37 +42,51 @@ class Selector_Tournament():
 
         return winners
 
-def summarize(cararray,demandarray): #or are demandarrays included in population?
-    sumpop=list()
 
-    #can demandarray be bigger than cararray?? #<> #similar numbers of demandarray just as cars are always next to each other, right?
+#takes one chromosome
+#returns a list of customers for each car, so cuts out demands, indices of said list are number of car (what about car 0, we start with 1, right??)
+
+#similar numbers of demandarray just as cars are always next to each other, right??
+    #otherwise, this method won't work, but has more performance this way
+
+#can demandarray be bigger than cararray??
+
+def summarize(chromosome, car_amount):
+   
+    assignments=[None] * (car_amount+1) #one entry for each car that has to drive + we don't use the 0
+
+    #<> sorry, just need these because of my keyboard
+
     customer=0
-    car=cararray[0]
-    sumchrom=list()
+    car=chromosome[0][0]
+    customers=list() #temporary list of customers for a car to visit
 
-    for index in range(len(cararray)):
-        if (index<len(demandarray)):
+    #loop through every car-slot
+    for index in range(len(chromosome[0])):
+        if (index<len(chromosome[1])):
 
-            if (cararray[index]!=car):
-                sumpop.append(sumchrom)
-                sumchrom=list()
+            if (chromosome[0][index]!=car):
+                assignments[car]=(customers)
+                customers=list()
                 customer=0
-                car=cararray[index]
+                car=chromosome[0][index]
 
-            if (demandarray[index]!=customer and demandarray[index]!=0):
-                sumchrom.append(demandarray[index])
-                customer=demandarray[index]
+            if (chromosome[1][index]!=customer and chromosome[1][index]!=0):
+                customers.append(chromosome[1][index])
+                customer=chromosome[1][index]
 
         else:
-            if len(sumchrom)>0:
-                sumpop.append(sumchrom)
+            if len(customers)>0:
+                assignments[car]=(customers)
             break
 
-    return sumpop   #Reihenfolge/damit Kosten der cars?
+    return assignments
                     
 #calculates fitnesses for whole population
+#fitness values come from ACO
 def calc_fitnesses(population):
 
+    #Modules for ACO
     taskinitializer = Taskinitializer(1) #replace
     initializer = Initializer()
     solutiongenerator = SolutionGenerator(alpha=1, beta=1, num_of_ants=20)
@@ -79,7 +95,7 @@ def calc_fitnesses(population):
 
     fitnesses=list()
     for chromosome in population:
-        #summarize()
+        car_assignments=summarize(chromosome) #ACO doesn't need exact demand, just which car visits which customer
         antco = ACO(taskinitializer, initializer, solutiongenerator, evaporator, intensificator, 30, printing=False)
         best_solutions,solutions,scores = antco.run()
         fitnesses.append(best_solutions[len(best_solutions)-1])
@@ -87,4 +103,4 @@ def calc_fitnesses(population):
     return fitnesses
 
 print(len(list()))
-print(summarize([1,1,1,5,5,3,3,3,3,3,2],[2,0,0,3,3,3,1,1]))
+print(summarize([[1,1,1,5,5,3,3,3,3,3,2],[2,0,0,3,3,3,1,1]],5))
