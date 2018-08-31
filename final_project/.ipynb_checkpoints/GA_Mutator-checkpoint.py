@@ -8,7 +8,7 @@ demand =  [2,2,2,2,0,1,1,3,3,3,3,4,4,4,0,5,5,5,6]
 c_multi = [0,0,0,0,0,1,1,1,2,2,2,2,3,3,4,4,4,4,5]
 
 class Mutator:
-
+    #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
     def do(demand,c_amount,c_multi,Mutation_probability):
         
         big_small = np.zeros((len(c)), dtype=int)   #safes information if a car was the small or big member of a swap
@@ -29,7 +29,7 @@ class Mutator:
                 second_car_pointer = random.randint(0,len(c_single)-1)  #randomly selects a car to swap the current car with
                 second_car = deepcopy(c_single[second_car_pointer])
 
-                car_length_difference = np.absolute(c_amount[first_car]-c_amount[second_car]) 
+                car_length_difference = np.absolute(c_amount[first_car]-c_amount[second_car]) #safes which of the two selected cars is bigger
                 big = second_car
                 small = first_car
                 if c_amount[first_car] > c_amount[second_car]:
@@ -42,15 +42,15 @@ class Mutator:
                             zeros_counter +=1
                 
                 if zeros_counter >= car_length_difference & car_length_difference > 0: 
-                    if big_small[small]+big_small[big] == 0: #checks if one of the intended cars has been swapped already
+                    if big_small[small]+big_small[big] == 0: #checks if one of the selected cars has been swapped already
                         
-                        c_single[first_car_pointer] = deepcopy(second_car)
+                        c_single[first_car_pointer] = deepcopy(second_car)  #swaps selected cars positions
                         c_single[second_car_pointer] = deepcopy(first_car)
                         
-                        big_small[small] = 1
+                        big_small[small] = 1                                # if a car has: a 0 = not swapped / a 1 = was small member of a swap / a 2 = was big
                         big_small[big] = 2
                        
-                        zeros_array[small] = car_length_difference
+                        zeros_array[small] = car_length_difference          
                         zeros_array[big] = car_length_difference
 
         c_multi_new = []
