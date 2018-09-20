@@ -6,12 +6,14 @@ from ACO_SolutionGenerator import SolutionGenerator
 from ACO_Evaporator import Evaporator
 from ACO_Intensificator import Intensificator
 
-#still need to implement the 0-adding/removing
+import random
 
 #Tournament selector
 class Selector_Tournament():
 
     def do(self, population, pool_size): #population = [[car_slots],[demand_slots]] # imagineable as 3D-Array
+
+        mutate(population)
 
         opponent_amount=2 #more than two "opponents" for the tournament possible
 
@@ -42,18 +44,45 @@ class Selector_Tournament():
 
         return winners
 
+#maybe make following functions as part of class (??)
+
+#add or take 0's from demandarray, we should maybe move it to mutator module, since it's a mutation ??
+def mutate(population, add_probability=0.1,take_probability=0.1):
+    #chromosome index
+    for chromosomeindex in range(len(population[0])):
+
+        #for each 0 in demandarray: remove it with take_probability
+        slotindex=0
+        while (slotindex in range(len(population[1][chromosomeindex]))):
+            if (population[1][chromosomeindex][slotindex]==0):
+                if (random.random()<take_probability):
+                    del(population[1][chromosomeindex][slotindex])
+                    slotindex=slotindex-1
+            slotindex=slotindex+1
+
+        #go through demandarray starting with 2. element
+        #add a 0 with add_probability after each demandblock (so when number changes between two demandslots)
+        #we need to make sure somewhere that demandarray doesn't get bigger than cararray (??)
+        slotindex=1
+        while (slotindex in range(1,len(population[1][chromosomeindex]))):
+            if (population[1][chromosomeindex][slotindex]!=population[1][chromosomeindex][slotindex-1]):
+                if (random.random()<add_probability):
+                    population[1][chromosomeindex].insert(slotindex,0)
+                    slotindex=slotindex+1
+            slotindex=slotindex+1
+                   
+    return population 
+
 
 #takes one chromosome
-#returns a list of customers for each car, so cuts out demands, indices of said list are number of car (what about car 0, we start with 1, right??) / i think car 0 would be more intuitive since we will have the cars in an array
+#returns a list of customers for each car, so cuts out demands, indices of said list are number of car
 
-#similar numbers of demandarray just as cars are always next to each other, right??
+#similar numbers of demandarray just as cars are always next to each other
     #otherwise, this method won't work, but has more performance this way
-
-#can demandarray be bigger than cararray?? / no that has to be avoided
 
 def summarize(chromosome, car_amount):
    
-    assignments=[None] * (car_amount+1) #one entry for each car that has to drive + we don't use the 0
+    assignments=[None] * (car_amount) #one entry for each car that has to drive
 
     #<> sorry, just need these because of my keyboard
 
@@ -102,5 +131,5 @@ def calc_fitnesses(population):
 
     return fitnesses
 
-print(len(list()))
-print(summarize([[1,1,1,5,5,3,3,3,3,3,2],[2,0,0,3,3,3,1,1]],5))
+
+#print(mutate([[[1,1,1,5,5,3,3,3,3,3,2]],[[2,0,0,3,3,3,1,1]]],1,1))
