@@ -45,7 +45,7 @@ class Selector_Tournament():
         return winners
 
 #maybe make following functions as part of class (??)
-
+#this was meant to enable solutions with even and uneven numbers of 0, but we initialize even and uneven arrays anyway so i think we can skip this part completly ~Till 
 #add or take 0's from demandarray, we should maybe move it to mutator module, since it's a mutation ??
 def mutate(population, add_probability=0.1,take_probability=0.1):
     #chromosome index
