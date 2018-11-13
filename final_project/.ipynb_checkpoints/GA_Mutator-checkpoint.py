@@ -33,39 +33,47 @@ class Mutator:
                     
                         car_length_difference = np.absolute(c_amount[first_car]-c_amount[second_car]) #safes which of the two selected cars is bigger
 
-                        if car_length_difference == 0:
-                            c_single[first_car_pointer] = deepcopy(second_car)  #swaps selected cars positions
-                            c_single[second_car_pointer] = deepcopy(first_car)
+                        #no need to swap same sized cars, right?
+                        #if car_length_difference == 0:
+                         #   c_single[first_car_pointer] = deepcopy(second_car)  #swaps selected cars positions
+                          #  c_single[second_car_pointer] = deepcopy(first_car)
+#
+ #                           print("1 / first car: ",c_single[first_car_pointer]," second car: ",c_single[second_car_pointer])
+#
+#
+ #                       else:
 
-                            print("1 / first car: ",c_single[first_car_pointer]," second car: ",c_single[second_car_pointer])
+                        big = second_car
+                        small = first_car
+            
+                        if c_amount[first_car] > c_amount[second_car]:
+                            big = first_car
+                            small = second_car
 
+                        if car_length_difference != 0:          #checks if cars are allowed to be swapped according to size and zeros
+                            for j in range(len(c_multi)):
+                                if (demand[j] == 0) & (c_multi[j] == big):
+                                    zeros_counter +=1
 
-                        else:
+                        if zeros_counter >= car_length_difference & car_length_difference > 0: 
+                            if big_small[small]+big_small[big] == 0: #checks if one of the selected cars has been swapped already
 
-                            big = second_car
-                            small = first_car
-                            if c_amount[first_car] > c_amount[second_car]:
-                                big = first_car
-                                small = second_car
+                                c_single[first_car_pointer] = deepcopy(second_car)  #swaps selected cars positions
+                                c_single[second_car_pointer] = deepcopy(first_car)
 
-                            if car_length_difference != 0:          #checks if cars are allowed to be swapped according to size and zeros
-                                for j in range(len(c_multi)):
-                                    if (demand[j] == 0) & (c_multi[j] == big):
-                                        zeros_counter +=1
+                                big_small[small] = 1                                # if a car has: a 0 = not swapped / a 1 = was small member of a swap / a 2 = was big
+                                big_small[big] = 2
 
-                            if zeros_counter >= car_length_difference & car_length_difference > 0: 
-                                if big_small[small]+big_small[big] == 0: #checks if one of the selected cars has been swapped already
+                                zeros_array[small] = car_length_difference          
+                                zeros_array[big] = car_length_difference
 
-                                    c_single[first_car_pointer] = deepcopy(second_car)  #swaps selected cars positions
-                                    c_single[second_car_pointer] = deepcopy(first_car)
-
-                                    big_small[small] = 1                                # if a car has: a 0 = not swapped / a 1 = was small member of a swap / a 2 = was big
-                                    big_small[big] = 2
-
-                                    zeros_array[small] = car_length_difference          
-                                    zeros_array[big] = car_length_difference
-
-                                    print("2 / big: ",big," small: ",small)
+                                print("big: ",big," small: ",small)
+                                
+        #if cars with only zeros as demand get involved in a swap we can lose 0`s at the end of the demand array. seems to be no harm if we just fill the array up again
+        delta_demand = len(demand)-len(demand_new)
+        
+        for j in range(delta_demand):
+            demand_new.append(0)
 
 
         c_multi_new = []
