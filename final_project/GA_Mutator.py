@@ -3,9 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
-c_amount = [5,3,4,2,4,1,3,5,2] #contains: the amount car i can transport = c_amount(i) / even if we swap cars this arry will still be correct
-demand =  [2,2,2,2,0,1,1,3,3,3,3,4,4,4,0,5,5,5,6,7,7,7,0,8,8,8,8,9,9]
-c_multi = [0,0,0,0,0,1,1,1,2,2,2,2,3,3,4,4,4,4,5,6,6,6,7,7,7,7,7,8,8]
+c_amount = [5,3,4,2,4,1,3,5,2,4] #contains: the amount car i can transport = c_amount(i) / even if we swap cars this arry will still be correct
+demand =  [2,2,2,2,0,1,1,3,3,3,3,4,4,4,0,5,5,5,6,7,7,7,0,8,8,8,8,0,0,0,0,0,0]
+c_multi = [0,0,0,0,0,1,1,1,2,2,2,2,3,3,4,4,4,4,5,6,6,6,7,7,7,7,7,8,8,9,9,9,9]
 
 class Mutator:
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
@@ -69,13 +69,6 @@ class Mutator:
 
                                 print("big: ",big," small: ",small)
                                 
-        #if cars with only zeros as demand get involved in a swap we can lose 0`s at the end of the demand array. seems to be no harm if we just fill the array up again
-        delta_demand = len(demand)-len(demand_new)
-        
-        for j in range(delta_demand):
-            demand_new.append(0)
-
-
         c_multi_new = []
         demand_new = []
         demand_pointer = 0
@@ -107,7 +100,13 @@ class Mutator:
         for c_single_pointer in range(len(c_single)): #create new c_multi from swapped c_single
             
             for j in range(c_amount[c_single[c_single_pointer]]):
-                c_multi_new.append(c_single[c_single_pointer])              
+                c_multi_new.append(c_single[c_single_pointer])
+                
+        #if cars with only zeros as demand get involved in a swap we can lose 0`s at the end of the demand array. seems to be no harm if we just fill the array up again
+        delta_demand = len(demand)-len(demand_new)
+        
+        for j in range(delta_demand):
+            demand_new.append(0)
                 
         print("demand:      ",demand)
         print("c_multi:     ",c_multi)
