@@ -8,8 +8,11 @@ demand =  [2,2,2,2,0,1,1,3,3,3,3,4,4,4,0,5,5,5,6,7,7,7,0,8,8,8,8,0,0,0,0,0,0]
 c_multi = [0,0,0,0,0,1,1,1,2,2,2,2,3,3,4,4,4,4,5,6,6,6,7,7,7,7,7,8,8,9,9,9,9]
 
 class Mutator:
+
+    def __init__(self,mutate_prob):
+        self.mutate_prob = mutate_prob
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
-    def do(demand,c_amount,c_multi,Mutation_probability):
+    def mutate(demand,c_amount,c_multi,Mutation_probability):
         
         big_small = np.zeros((len(c_amount)), dtype=int)   #safes information if a car was the small or big member of a swap
         zeros_array = np.zeros((len(c_amount)), dtype=int) #used to keep track how many zeros have to be added/substracted from demand when swapping a car

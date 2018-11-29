@@ -11,6 +11,10 @@ import random
 #Tournament selector
 class Selector_Tournament():
 
+    def __init__(self,trans_cost,dist_matrix):
+        self.trans_cost = trans_cost
+        self.dist_matrix = dist_matrix
+
     def do(self, population, pool_size): #population = [[car_slots],[demand_slots]] # imagineable as 3D-Array
 
         mutate(population)

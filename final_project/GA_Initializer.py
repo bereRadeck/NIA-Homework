@@ -1,11 +1,11 @@
 import numpy as np
 class Initializer():
 
-    def __init__(self,popsize,customers,demands,vehicles,capacities):
+    def __init__(self,popsize,demands,capacities):
         self.popsize = popsize
-        self.customers = customers
+        self.customers = np.range(1,len(demands))
         self.demands = demands
-        self.vehicles = vehicles
+        self.vehicles = np.range(1,len(capacities))
         self.capacities = capacities
         self.total_capacity = sum(capacities)
         self.total_demand = sum(demands)
@@ -60,8 +60,7 @@ class Initializer():
             sort_array = np.random.rand(low=0, high=l, size=l)
             population[i]['vehicle_capacities'] = v_c[sort_array]
             population[i]['customer_demands'] = c_d
-            population[i]['vehicle_list']= self.vehicles
-
+            #population[i]['capacities_list']= self.capacities
 
     def initialize_partially_random(self):
         """
@@ -73,11 +72,14 @@ class Initializer():
         population = [dict() for x in range(popsize)]
         for i in range(self.popsize):
             #randomly change order of vehicles
-            sort_array = np.random.rand(low=0,high=self.vehicles,size=self.vehicles)
-            mixed_up_vehicles = self.vehicles[sort_array]
+            sort_array_v = np.random.rand(low=0,high=self.vehicles,size=self.vehicles)
+            sort_array_c = np.random.rand(low=0, high=self.customers, size=self.customers)
+
+            mixed_up_vehicles = self.vehicles[sort_array_v]
+            mixed_up_customers = self.customers[sort_array_c]
             population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
-            population[i]['customer_demands'] = c_d
-            population[i]['vehicle_list'] = self.vehicles
+            population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
+            population[i]['capacities_list'] = self.capacities
 
 
     def calc_fitness(self,individual):
