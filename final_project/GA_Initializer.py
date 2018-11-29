@@ -1,5 +1,5 @@
 import numpy as np
-class RandomInitializer():
+class Initializer():
 
     def __init__(self,popsize,customers,demands,vehicles,capacities):
         self.popsize = popsize
@@ -49,14 +49,18 @@ class RandomInitializer():
         where car apperances could be apart [car3,car2,car2,car1,car2,car3]
         :return: a population of size popsize
         """
-        v_c = self.generate_vehicle_capacity(self.vehicles, self.demands)
-        population = np.empty(self.popsize)
+        v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
+        c_d = self.generate_customer_demand(self.customer,self.demands)
+
+        population = [dict() for x in range(popsize)]
         l = self.total_capacity
 
         for i in range(self.popzize):
             # mixing up the vehicle_capacity
             sort_array = np.random.rand(low=0, high=l, size=l)
-            population[i] = v_c[sort_array]
+            population[i]['vehicle_capacities'] = v_c[sort_array]
+            population[i]['customer_demands'] = c_d
+            population[i]['vehicle_list']= self.vehicles
 
 
     def initialize_partially_random(self):
@@ -66,21 +70,26 @@ class RandomInitializer():
         :return: a population of size popsize
         """
 
-        population = np.empty(self.popsize)
-        v_c, l = self.generate_vehicle_capacity(self.vehicles, self.demands)
+        population = [dict() for x in range(popsize)]
         for i in range(self.popsize):
             #randomly change order of vehicles
             sort_array = np.random.rand(low=0,high=self.vehicles,size=self.vehicles)
             mixed_up_vehicles = self.vehicles[sort_array]
-            population[i] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            population[i]['customer_demands'] = c_d
+            population[i]['vehicle_list'] = self.vehicles
 
 
+    def calc_fitness(self,individual):
+        pass
+
+    """"
     def calc_splitted_customers(self,vehicle_capacity,customer_demand):
         """
 
-        :param vehicle_capacity:
-        :param customer_demand:
-        :return: number of customers that are served by more than one car
+        #:param vehicle_capacity:
+        #:param customer_demand:
+        #:return: number of customers that are served by more than one car
 
         """
         n=0
@@ -92,4 +101,4 @@ class RandomInitializer():
             if v != vehicle_capacity[i+1]:
                 if customer_demand[i] != customer_demand[i+1]:
                     n += 1
-        return n
+        return n"""
