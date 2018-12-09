@@ -106,7 +106,8 @@ def calc_fitnesses(population):
             #todo: simplify, if only one customer
             if len(car_assignment)>0:
                 #todo: double check if index starts with 0 or 1
-                fitness = fitness + self.trans_cost[car_index] * aco.run_default(self.dist_matrix, car_assignment)
+                score, solution = aco.run_default(self.dist_matrix, car_assignment)
+                fitness = fitness + self.trans_cost[car_index] * score
             #include
         fitnesses.append(fitness)
 
