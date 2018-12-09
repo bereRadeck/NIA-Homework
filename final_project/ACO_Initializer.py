@@ -2,9 +2,6 @@ import numpy as np
 
 class Initializer():
 
-    def initialize(self,task):
-        task_matrix = task.get_task_matrix()
-        size = len(task_matrix[0])
+    def initialize(self, customers_to_visit):
+        size = len(customers_to_visit)
         return np.ones((size,size)) 
-    
-    #greetings, stranger

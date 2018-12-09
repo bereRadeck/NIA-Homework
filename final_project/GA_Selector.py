@@ -1,23 +1,19 @@
 # coding: utf-8
 
-from ACO_Initializer import Initializer
-from ACO_Taskinitializer import Taskinitializer
-from ACO_SolutionGenerator import SolutionGenerator
-from ACO_Evaporator import Evaporator
-from ACO_Intensificator import Intensificator
-
+import ACO_Main as aco
 import random
 
 #Tournament selector
+# big fitness value is worse, because it means high transportation cost
 class Selector_Tournament():
 
-    def __init__(self,trans_cost,dist_matrix):
+    def __init__(self, trans_cost, dist_matrix):
         self.trans_cost = trans_cost
         self.dist_matrix = dist_matrix
 
     def do(self, population, pool_size): #population = [[car_slots],[demand_slots]] # imagineable as 3D-Array
 
-        mutate(population)
+        population = mutate(population)
 
         opponent_amount=2 #more than two "opponents" for the tournament possible
 
@@ -36,42 +32,41 @@ class Selector_Tournament():
             for opponent_number in range(opponent_amount):
 
                 #where did the do while loop go...
-                rnd=random.randint(0,len(population[0])-1)
+                rnd=random.randint(0,len(population)-1)
                 while (rnd in opponents): #in: probably poor performance 
-                    rnd=random.randint(0,len(population[0])-1)
+                    rnd=random.randint(0,len(population)-1)
 
                 opponents.append(rnd)
                 opponent_fitnesses.append(fitnesses[rnd])
 
-            winners[0].append(population[0][opponents[opponent_fitnesses.index(max(opponent_fitnesses))]])
-            winners[1].append(population[1][opponents[opponent_fitnesses.index(max(opponent_fitnesses))]])
+            winners.append(population[opponents[opponent_fitnesses.index(min(opponent_fitnesses))]])
 
         return winners
 
-#maybe make following functions as part of class (??)
-#this was meant to enable solutions with even and uneven numbers of 0, but we initialize even and uneven arrays anyway so i think we can skip this part completly ~Till 
-#add or take 0's from demandarray, we should maybe move it to mutator module, since it's a mutation ??
+# todo: maybe make following functions as part of class
+# todo :this was meant to enable solutions with even and uneven numbers of 0, but we initialize even and uneven arrays anyway so i think we can skip this part completly ~Till 
+# todo: add or take 0's from demandarray, we should maybe move it to mutator module, since it's a mutation
 def mutate(population, add_probability=0.1,take_probability=0.1):
     #chromosome index
-    for chromosomeindex in range(len(population[0])):
+    for chromosomeindex in range(len(population)):
 
         #for each 0 in demandarray: remove it with take_probability
         slotindex=0
-        while (slotindex in range(len(population[1][chromosomeindex]))):
-            if (population[1][chromosomeindex][slotindex]==0):
+        while (slotindex in range(len(population[chromosomeindex]['customer_demands']))):
+            if (population[chromosomeindex]['customer_demands'][slotindex]==0):
                 if (random.random()<take_probability):
-                    del(population[1][chromosomeindex][slotindex])
+                    del(population[chromosomeindex]['customer_demands'][slotindex])
                     slotindex=slotindex-1
             slotindex=slotindex+1
 
         #go through demandarray starting with 2. element
         #add a 0 with add_probability after each demandblock (so when number changes between two demandslots)
-        #we need to make sure somewhere that demandarray doesn't get bigger than cararray (??)
+        # todo: we need to make sure somewhere that demandarray doesn't get bigger than cararray
         slotindex=1
-        while (slotindex in range(1,len(population[1][chromosomeindex]))):
-            if (population[1][chromosomeindex][slotindex]!=population[1][chromosomeindex][slotindex-1]):
+        while (slotindex in range(1,len(population[chromosomeindex]['customer_demands']))):
+            if (population[chromosomeindex]['customer_demands'][slotindex]!=population[chromosomeindex]['customer_demands'][slotindex-1]):
                 if (random.random()<add_probability):
-                    population[1][chromosomeindex].insert(slotindex,0)
+                    population[chromosomeindex]['customer_demands'].insert(slotindex,0)
                     slotindex=slotindex+1
             slotindex=slotindex+1
                    
@@ -86,32 +81,16 @@ def mutate(population, add_probability=0.1,take_probability=0.1):
 
 def summarize(chromosome, car_amount):
    
-    assignments=[None] * (car_amount) #one entry for each car that has to drive
+    assignments=[ [] for i in range(car_amount)] #one entry for each car that has to drive
 
     #<> sorry, just need these because of my keyboard
 
-    customer=0
-    car=chromosome[0][0]
-    customers=list() #temporary list of customers for a car to visit
-
     #loop through every car-slot
-    for index in range(len(chromosome[0])):
-        if (index<len(chromosome[1])):
-
-            if (chromosome[0][index]!=car):
-                assignments[car]=(customers)
-                customers=list()
-                customer=0
-                car=chromosome[0][index]
-
-            if (chromosome[1][index]!=customer and chromosome[1][index]!=0):
-                customers.append(chromosome[1][index])
-                customer=chromosome[1][index]
-
-        else:
-            if len(customers)>0:
-                assignments[car]=(customers)
+    for index in range(len(chromosome['vehicle_capacities'])):
+        if (len(chromosome['customer_demands'])<=index):
             break
+        if (chromosome['customer_demands'][index] not in assignments[chromosome['vehicle_capacities'][index]]):
+            assignments[chromosome['vehicle_capacities'][index]].append(chromosome['customer_demands'][index])
 
     return assignments
                     
@@ -119,21 +98,23 @@ def summarize(chromosome, car_amount):
 #fitness values come from ACO
 def calc_fitnesses(population):
 
-    #Modules for ACO
-    taskinitializer = Taskinitializer(1) #replace
-    initializer = Initializer()
-    solutiongenerator = SolutionGenerator(alpha=1, beta=1, num_of_ants=20)
-    evaporator = Evaporator(rho=0.1)
-    intensificator = Intensificator(delta=0.5)
-
     fitnesses=list()
     for chromosome in population:
-        car_assignments=summarize(chromosome) #ACO doesn't need exact demand, just which car visits which customer
-        antco = ACO(taskinitializer, initializer, solutiongenerator, evaporator, intensificator, 30, printing=False)
-        best_solutions,solutions,scores = antco.run()
-        fitnesses.append(best_solutions[len(best_solutions)-1])
+        cars_assignments=summarize(chromosome) #ACO doesn't need exact demand, just which car visits which customer
+        fitness = 0
+        for car_index, car_assignment in enumerate(cars_assignments):
+            #todo: simplify, if only one customer
+            if len(car_assignment)>0:
+                #todo: double check if index starts with 0 or 1
+                fitness = fitness + self.trans_cost[car_index] * aco.run_default(self.dist_matrix, car_assignment)
+            #include
+        fitnesses.append(fitness)
 
     return fitnesses
 
+# todo: first customer 1 or 0
 
 #print(mutate([[[1,1,1,5,5,3,3,3,3,3,2]],[[2,0,0,3,3,3,1,1]]],1,1))
+#dic = {"vehicle_capacities": [1,1,1,5,5,3,3,3,3,3,2], 'customer_demands': [2,0,0,3,3,3,1,1] }
+#print(summarize(dic,6))
+

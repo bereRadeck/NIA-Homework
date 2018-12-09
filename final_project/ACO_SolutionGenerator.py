@@ -1,6 +1,5 @@
 # coding: utf-8
 
-import ACO_Taskinitializer
 import numpy as np
 
 class SolutionGenerator():
@@ -10,16 +9,15 @@ class SolutionGenerator():
         self.alpha = alpha
         self.beta = beta
 
-    def set_task(self, task):
-        self.task = task
-        self.task_matrix = task.get_task_matrix()
+    #Note that distance_matrix holds only customers that the current car has to visit
+    def set_distance_matrix(self, distance_matrix):
+        self.distance_matrix = distance_matrix
 
 
     def generate_solution(self, pheromone_matrix):
-        num_citys = self.task_matrix.shape[0]
+        num_citys = self.distance_matrix.shape[0]
 
         cities = np.arange(0,num_citys,1)
-
 
 
         #creating eta matrix
@@ -30,7 +28,7 @@ class SolutionGenerator():
                 if i == j:
                     eta_matrix[i,j] = 0
                 else:
-                    eta_matrix[i,j] = 1/self.task_matrix[i,j]
+                    eta_matrix[i,j] = 1/self.distance_matrix[i,j]
 
 
 
@@ -80,7 +78,6 @@ class SolutionGenerator():
 
     def collecting_solutions(self,pheromone_matrix):
 
-
         solutions = list()
         print(solutions)
         evaluations = list()
@@ -90,15 +87,14 @@ class SolutionGenerator():
             solution = self.generate_solution(pheromone_matrix)
             solutions.append(solution)
 
-            evaluation = self.task.solution_evaluator(solutions[ant])
+            evaluation = solution_evaluator(solutions[ant])
 
             evaluations.append(evaluation)
 
 
         for ant in range(self.num_of_ants):
             solutions.append(self.generate_solution(pheromone_matrix))
-            evaluations.append(self.task.solution_evaluator(solutions[ant]))
-
+            evaluations.append(solution_evaluator(solutions[ant]))
 
 
         indices = np.argsort(evaluations)
@@ -108,7 +104,11 @@ class SolutionGenerator():
         solutions = solutions[indices]
         return solutions, evaluations
 
+    def solution_evaluation(self, solution):
 
+        distance_matrix = self.get_distance_matrix()
+
+        return np.sum(distance_matrix[solution[0:-1], solution[1:]])
 
 
 
