@@ -10,7 +10,7 @@ class Ordered_Recombiner:
     def recombine(self,pool):
         
         for p in pool:
-            capacities= p['capacities']
+            capacities= p['vehicle_capacities']
          
         if rnd.uniform() < self.chance:
                 
