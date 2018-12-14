@@ -10,8 +10,8 @@ class GA:
         self.recombiner = recombiner
         self.mutator = mutator
         self.selector = selector
-        self.terminator = terminator
-        self.pop = self.initializer.initialize()
+        #self.terminator = terminator
+        #self.pop = self.initializer.initialize()
 
 
     def run(self):
@@ -19,20 +19,10 @@ class GA:
         pop = self.initializer.initialize_partially_random()
 
         while not terminator.terminates():
-            new_offspring = self.__generate_offspring(pop)
-            mutated_offspring = self.__mutate_offspring(new_offspring)
-            self.pop = self.__select_new_pop(mutated_offspring)
+            new_offspring = self.recombiner.recombine(pop)
+            mutated_offspring = self.mutator.mutate(new_offspring)
+            self.pop = self.selector.select(mutated_offspring)
 
-
-
-    def __generate_offspring(self,pop):
-        return self.recombiner.recombine()
-
-    def __mutate_offsprint(self,off_spring):
-        return self.mutator.mutate()
-
-    def __select_new_pop(self,mutated_offspring):
-        return self.selector.select()
 
 
 
