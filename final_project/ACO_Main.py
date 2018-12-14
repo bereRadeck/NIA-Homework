@@ -34,18 +34,18 @@ class ACO:
         self.evaluations_generations = list()
         self.best_solutions_scores = list()
 
-        self.task_matrix = cut_matrix(distance_matrix, customers_to_visit)
+        self.task_matrix = self.cut_matrix(distance_matrix, customers_to_visit)
         #todo: consitently same name
         self.solutiongenerator.set_distance_matrix(self.task_matrix)
 
     #cuts the rows and columns from the distance matrix that belong to customers which numbers aren't in customers_to_visit
     #do customers start with 0 or 1 ??
-    def cut_matrix(distance_matrix, customers_to_visit):
-        for customer in len(distance_matrix):
+    def cut_matrix(self, distance_matrix, customers_to_visit):
+        for customer in range(len(distance_matrix)):
             if not customer in customers_to_visit:
-                matrix = numpy.delete(matrix, (customer), axis=0)
-                matrix = numpy.delete(matrix, (customer), axis=1)
-        return matrix
+                distance_matrix = numpy.delete(distance_matrix, (customer), axis=0)
+                distance_matrix = numpy.delete(distance_matrix, (customer), axis=1)
+        return distance_matrix
 
     def run(self):
         iteration_best = list()
@@ -85,8 +85,10 @@ def run_default(distance_matrix, customers_to_visit):
     plt.xlabel('Iteration')
     plt.show()
     """
-    
-    best_score = max(best_solutions)
-    best_solution = best_solutions[best_solutions.index[best_score]]
+
+    best_score = max(best_solutions_scores)
+    best_solutions_scores = list(best_solutions_scores)
+
+    best_solution = best_solutions[best_solutions_scores.index(best_score)]
     return best_score, best_solution
 

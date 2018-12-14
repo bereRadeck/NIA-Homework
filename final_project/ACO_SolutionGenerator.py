@@ -15,20 +15,17 @@ class SolutionGenerator():
 
 
     def generate_solution(self, pheromone_matrix):
-        num_citys = self.distance_matrix.shape[0]
-
+        num_citys = len(self.distance_matrix)
         cities = np.arange(0,num_citys,1)
-
 
         #creating eta matrix
         eta_matrix = np.ones((num_citys,num_citys))
         for i in range(num_citys):
             for j in range(num_citys):
-
                 if i == j:
-                    eta_matrix[i,j] = 0
+                    eta_matrix[i][j] = 0
                 else:
-                    eta_matrix[i,j] = 1/self.distance_matrix[i,j]
+                    eta_matrix[i][j] = 1/self.distance_matrix[i][j]
 
 
 
@@ -79,7 +76,7 @@ class SolutionGenerator():
     def collecting_solutions(self,pheromone_matrix):
 
         solutions = list()
-        print(solutions)
+        #print(solutions)
         evaluations = list()
 
         for ant in range(self.num_of_ants):
@@ -87,14 +84,14 @@ class SolutionGenerator():
             solution = self.generate_solution(pheromone_matrix)
             solutions.append(solution)
 
-            evaluation = solution_evaluator(solutions[ant])
+            evaluation = self.solution_evaluation(solutions[ant])
 
             evaluations.append(evaluation)
 
 
         for ant in range(self.num_of_ants):
             solutions.append(self.generate_solution(pheromone_matrix))
-            evaluations.append(solution_evaluator(solutions[ant]))
+            evaluations.append(self.solution_evaluation(solutions[ant]))
 
 
         indices = np.argsort(evaluations)
@@ -106,12 +103,11 @@ class SolutionGenerator():
 
     def solution_evaluation(self, solution):
 
-        distance_matrix = self.get_distance_matrix()
+        distance_sum = 0
+        for i in solution[0:-1]:
+            for j in solution[1:]:
+                distance_sum += self.distance_matrix[i][j]
 
-        return np.sum(distance_matrix[solution[0:-1], solution[1:]])
-
-
-
-
+        return distance_sum
 
 

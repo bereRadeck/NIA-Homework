@@ -119,3 +119,10 @@ def calc_fitnesses(population):
 #dic = {"vehicle_capacities": [1,1,1,5,5,3,3,3,3,3,2], 'customer_demands': [2,0,0,3,3,3,1,1] }
 #print(summarize(dic,6))
 
+dis_mat=[[0,3,4,7],[3,0,1,4],[4,1,0,2],[7,4,2,0]]
+
+print("Testing ACO, wtf are customers visited multiple times?")
+score, solution = aco.run_default(dis_mat, [0,1,2,3])
+print(score, solution)
+
+
