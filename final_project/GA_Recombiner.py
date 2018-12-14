@@ -5,21 +5,20 @@ import copy
 
 class Ordered_Onecross_Recombiner:
 
-    def __init__(self, combine_probability):
+    def __init__(self, combine_probability=0.1):
         self.combine_probability = combine_probability
 
     def recombine(self, pool):
 
         for p in pool:
-            capacities = p['vehicle_capacities']
 
             if rnd.uniform() < self.combine_probability:
 
                 p2 = p
                 while p2 == p:
                     p2 = rnd.choice(pool)
-                capacities1 = p['capacities']
-                capacities2 = p2['capacities']
+                capacities1 = p['vehicle_capacities']
+                capacities2 = p2['vehicle_capacities']
                 new1 = copy.deepcopy(capacities1)
                 new2 = copy.deepcopy(capacities2)
 
@@ -44,8 +43,8 @@ class Ordered_Onecross_Recombiner:
                 for s in slice2:
                     new2_.insert(cr_point1, s)
 
-                p['capacities'] = new1
-                p2['capacities'] = new2_
+                p['vehicle_capacities'] = new1
+                p2['vehicle_capacities'] = new2_
 
 
 class Ordered_Recombiner:
@@ -167,4 +166,4 @@ class Ordered_Recombiner:
 
             i['vehicle_capacities'] = car_a
         
-        return Population
+return Population
