@@ -8,7 +8,7 @@ class Simple_Mutator:
     def mutate(self,pool):
         
         for p in pool:
-            capacities= p['capacities']
+            capacities= p['vehicle_capacities']
             
             if rnd.uniform() < self.chance:
                 
