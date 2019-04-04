@@ -48,7 +48,7 @@ class Ordered_Onecross_Recombiner:
 
 
 class Ordered_Recombiner:
-    def __init__(self, combine_probability, swap_prob):
+    def __init__(self, combine_probability=0.1, swap_prob=0.7):
 
         self.combine_probability = combine_probability
         self.swap_prob = swap_prob
