@@ -26,7 +26,7 @@ class Mutator:
                     c_single_pointer += 1
 
             for first_car_pointer in range(len(c_single)): #swaps every car with a mutation probability with another car in the c_single array and keeps important information
-                    if np.random.uniform() < Mutation_probability:
+                    if np.random.uniform() < mutation_probability:
                         zeros_counter = 0
                         first_car = deepcopy(c_single[first_car_pointer])
                         second_car_pointer = random.randint(0,len(c_single)-1)  #randomly selects a car to swap the current car with
