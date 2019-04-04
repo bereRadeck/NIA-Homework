@@ -5,9 +5,9 @@ from copy import deepcopy
 
 class Mutator:
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
-    def do(Population,Mutation_probability):
+    def do(population,mutation_probability=0.1):
         
-        for i in Population:
+        for i in population:
             
             c_multi = i['vehicle_capacities']
             demand = i['customer_demands']
@@ -26,7 +26,7 @@ class Mutator:
                     c_single_pointer += 1
 
             for first_car_pointer in range(len(c_single)): #swaps every car with a mutation probability with another car in the c_single array and keeps important information
-                    if np.random.uniform() < Mutation_probability:
+                    if np.random.uniform() < mutation_probability:
                         zeros_counter = 0
                         first_car = deepcopy(c_single[first_car_pointer])
                         second_car_pointer = random.randint(0,len(c_single)-1)  #randomly selects a car to swap the current car with

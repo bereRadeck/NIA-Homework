@@ -2,7 +2,7 @@ import numpy.random as rnd
 
 class Simple_Mutator:
     
-    def __init__(self,chance=0.1):
+    def __init__(self,mutation_probability=0.1):
         self.chance = chance
         
     def mutate(self,pool):

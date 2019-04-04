@@ -1,3 +1,5 @@
+#redundant class; delete?
+'''
 import numpy.random as rnd
 import copy
 
@@ -47,3 +49,4 @@ class Ordered_Recombiner:
                 
                 p['capacities']=new1
                 p2['capacities']=new2_
+'''
