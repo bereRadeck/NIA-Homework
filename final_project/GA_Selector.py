@@ -108,7 +108,7 @@ def calc_fitnesses(population):
             #todo: simplify, if only one customer
             if len(car_assignment)>0:
                 #todo: double check if index starts with 0 or 1
-                score, solution = self.ACO.run(self.dist_matrix, car_assignment)
+                score, solution = self.ACO.run_default(self.dist_matrix, car_assignment)
                 fitness = fitness + self.trans_cost[car_index] * score
             #include
         fitnesses.append(fitness)
@@ -124,7 +124,7 @@ def calc_fitnesses(population):
 dis_mat=[[0,3,4,7],[3,0,1,4],[4,1,0,2],[7,4,2,0]]
 
 print("Testing ACO, wtf are customers visited multiple times?")
-score, solution = self.ACO.run(dis_mat, [0,1,2,3])
+score, solution = self.ACO.run_default(dis_mat, [0,1,2,3])
 print(score, solution)
 
 
