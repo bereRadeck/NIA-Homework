@@ -7,11 +7,13 @@ import random
 # big fitness value is worse, because it means high transportation cost
 class Selector_Tournament():
 
-    def __init__(self, trans_cost, dist_matrix):
+    def __init__(self, trans_cost, dist_matrix, pool_size, ACO):
         self.trans_cost = trans_cost
         self.dist_matrix = dist_matrix
+        self.pool_size= pool_size
+        self.ACO = ACO
 
-    def do(self, population, pool_size): #population = [[car_slots],[demand_slots]] # imagineable as 3D-Array
+    def do(self, population): #population = [[car_slots],[demand_slots]] # imagineable as 3D-Array
 
         population = mutate(population)
 
@@ -24,7 +26,7 @@ class Selector_Tournament():
         winners.append(list()) #demand_slots
 
         #Do as many tournaments as the new population's amount of individuals should be
-        for tournament in range(pool_size):
+        for tournament in range(self.pool_size):
             opponents=list()
             opponent_fitnesses=list()
             
@@ -106,7 +108,7 @@ def calc_fitnesses(population):
             #todo: simplify, if only one customer
             if len(car_assignment)>0:
                 #todo: double check if index starts with 0 or 1
-                score, solution = aco.run_default(self.dist_matrix, car_assignment)
+                score, solution = self.ACO.run(self.dist_matrix, car_assignment)
                 fitness = fitness + self.trans_cost[car_index] * score
             #include
         fitnesses.append(fitness)
@@ -122,7 +124,7 @@ def calc_fitnesses(population):
 dis_mat=[[0,3,4,7],[3,0,1,4],[4,1,0,2],[7,4,2,0]]
 
 print("Testing ACO, wtf are customers visited multiple times?")
-score, solution = aco.run_default(dis_mat, [0,1,2,3])
+score, solution = self.ACO.run(dis_mat, [0,1,2,3])
 print(score, solution)
 
 
