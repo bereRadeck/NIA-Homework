@@ -53,12 +53,12 @@ class Ordered_Recombiner:
         self.combine_probability = combine_probability
         self.swap_prob = swap_prob
 
-    def recombine(Population, combine_probability, swap_prob):
+    def recombine(Population):
 
 
         for i in Population:
         
-            if np.random.uniform() < combine_probability:
+            if np.random.uniform() < self.combine_probability:
                 k = "false"
                 while not i == k: 
                     k = random.randint(0,len(Population)-1)
@@ -73,7 +73,7 @@ class Ordered_Recombiner:
                 car_b_swap = []
                 zeros_counter = 0 
                 swapping = 0 #used to tell the array loop it should start shifting cars into the swap arrays until stop is hit
-                swap_end_prob = 0.7
+               
                 broke = 0 #if the selected part of the array hits the end of the car array we dont need to add cars from the garage
 
                 for i in range(len(car_a)-1):
@@ -94,7 +94,7 @@ class Ordered_Recombiner:
                             if not car_a[i] == car_a[i+1]: #copy each individual car inside the swapping-part of car_a into the swap array
                                 car_a_swap.append(car_a[i])
                                                                 
-                                if np.random.uniform() < swap_end_prob: #if end-probability is hit and the car in car_b ends within a reasonable
+                                if np.random.uniform() < self.swap_prob: #if end-probability is hit and the car in car_b ends within a reasonable
                                     if not car_b[i] == car_b[i+1]:      #range of car a`s end (in this case 3 units) we stop swapping                                                                #if b is longer then a we might need to correct for that by adding zeros
                                         print("end swapping")
                                         broke = 1
@@ -124,7 +124,7 @@ class Ordered_Recombiner:
                     if swapping == 0:    
                         if not car_a[i] == car_a[i+1]: #and if we are at a point where a new car starts for a and b =>
                             if not car_b[i] == car_b[i+1]:
-                                if np.random.uniform() < swap_prob: #and if set probability is hit => start swapping mode
+                                if np.random.uniform() < self.swap_prob: #and if set probability is hit => start swapping mode
                                     swapping = 1
                                     print("start swapping")
                                     swap_start = i
