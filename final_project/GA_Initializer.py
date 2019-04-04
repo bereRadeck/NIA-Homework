@@ -14,7 +14,7 @@ class Initializer():
     def generate_vehicle_capacity(self, vehicles, capacities):
         """
         generates a array out of the vehicle- and capacitiy-array
-        where each vehicle appears asa many times as its capacities big is
+        where each vehicle appears as many times as its capacities big is
         vehicles = [car1,car2,car3]
         capacities = [1,3,2]
         vecicle_capacity = [car1,car2,car2,car2,car3,car3]

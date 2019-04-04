@@ -5,7 +5,7 @@ import GA_Selector
 
 class GA:
 
-    def __init__(self,initializer,selector,recombiner,mutator,terminator):
+    def __init__(self,initializer,selector,recombiner,mutator,terminator, iterations):
         self.initializer = initializer
         self.recombiner = recombiner
         self.mutator = mutator
@@ -18,7 +18,8 @@ class GA:
 
         pop = self.initializer.initialize_partially_random()
 
-        while not self.terminator.terminates():
+        #while not self.terminator.terminates():
+        for i in iterations:
             new_offspring = self.recombiner.recombine(pop)
             mutated_offspring = self.mutator.mutate(new_offspring)
             self.pop = self.selector.select(mutated_offspring)
