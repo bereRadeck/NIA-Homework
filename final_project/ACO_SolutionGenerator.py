@@ -34,7 +34,7 @@ class SolutionGenerator():
 
         for i,c in enumerate(cities):
             if c == city:
-                np.delete(cities,i)
+                cities = np.delete(cities,i)
 
         #appending first city to solutions
         solution = np.array([city])
@@ -43,7 +43,6 @@ class SolutionGenerator():
         for c in range(num_citys-1):
 
             #berechne die Wahrscheinlichkeiten von city zu allen möglichen city_next zu gelangen
-
 
             n = np.power(pheromone_matrix[city, cities], self.alpha)*np.power(eta_matrix[city,cities],self.beta)
 
@@ -54,16 +53,15 @@ class SolutionGenerator():
             #bestimme city_next anhand der wahrscheinlichkeiten
             city_next = np.random.choice(cities,1,False,ps)
 
-
             #appende city_next an solution
             solution = np.append(solution,city_next)
 
-            
+
             #entferne city aus der liste
 
             for i, c in enumerate(cities):
-                if c == city:
-                    np.delete(cities, i)
+                if c == city_next:
+                    cities = np.delete(cities, i)
 
             #cities = cities.delete(city_next) #needs an index or something
 
@@ -109,5 +107,3 @@ class SolutionGenerator():
                 distance_sum += self.distance_matrix[i][j]
 
         return distance_sum
-
-
