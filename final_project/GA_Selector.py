@@ -2,9 +2,52 @@
 
 import ACO_Main as aco
 import random
+import numpy as np
 
 #Tournament selector
 # big fitness value is worse, because it means high transportation cost
+
+class Roulette_Selector:
+
+    def __init__(self,offspring_size):
+        self.offspring_size = offspring_size
+
+    def select(self,pop):
+
+        parents = []
+
+        for _ in range(self.offspring_size):
+            probabilities = [1/indiviual['fitness'] for individual in pop]
+            parent1, parent1 = np.random.choice(pop,size=2,replace=False, p=probabilities)
+            parents.append((parent1,parent2))
+
+        return parents
+
+class Tournament_Selector:
+
+    def __init__(self,offspring_size,opponent_number=2):
+        self.offspring_size = offspring_size
+        self.opponent_number = opponent_number
+
+    def select(self,pop):
+        parents = []
+        for _ in range(self.offspring_size):
+
+            opponents1 =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            parent1 = min(opponents1, key= lambda x: x['fitness'])
+
+            opponents2 =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            parent2 = min(opponents2, key= lambda x: x['fitness'])
+
+            parents.append((parent1,parent2))
+
+        return parents
+
+
+
+
+"""
+
 class Selector_Tournament():
 
     def __init__(self, trans_cost, dist_matrix, pool_size, ACO):
@@ -125,6 +168,6 @@ dis_mat=[[0,3,4,7],[3,0,1,4],[4,1,0,2],[7,4,2,0]]
 
 print("Testing ACO, wtf are customers visited multiple times?")
 score, solution = self.ACO.run_default(dis_mat, [0,1,2,3])
-print(score, solution)
+print(score, solution)"""
 
 

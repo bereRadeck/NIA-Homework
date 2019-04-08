@@ -12,11 +12,29 @@ class Evaluator:
         self.pool_size = pool_size
 
 
-    def evaluate(self,individual):
-        v_c =  np.array(individual['vehicle_capacities'])
-        c_d =  np.array(individual['customer_demands'])
+    def evaluate(self,pop):
+        """
+        evaluates each individual of a population, by finding the bests routes for the car-customer assignments with ACO and summing up the route-costs
+        :param pop: the population
+        :return: population with updated fitness values
+        """
 
-        for vehicle in np.unique(v_c):
 
-            customers_to_visit = np.unique(c_d[v_c[v_c==vehicle]])
-            fitness, best_route = ACO(customers_to_visit).run()
+        for individual in pop:
+            v_c =  np.array(individual['vehicle_capacities'])
+            c_d =  np.array(individual['customer_demands'])
+
+
+            costs =  []
+            for vehicle in np.unique(v_c):
+
+                customers_to_visit = np.unique(c_d[v_c[v_c==vehicle]])
+                route_costs = ACO.run(customers_to_visit)
+                costs.append(route_costs)
+
+            individual['fitness'] = np.sum(costs)
+
+
+        return pop
+
+

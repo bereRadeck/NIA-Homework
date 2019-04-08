@@ -28,28 +28,28 @@ class ACO:
         self.printing = printing
         self.iterations = iterations
 
-        self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
 
         self.solutions_generations = list()
         self.evaluations_generations = list()
         self.best_solutions_scores = list()
 
-        self.task_matrix = self.cut_matrix(distance_matrix, customers_to_visit)
         #todo: consitently same name
         self.solutiongenerator.set_distance_matrix(self.task_matrix)
 
     #cuts the rows and columns from the distance matrix that belong to customers which numbers aren't in customers_to_visit
     #do customers start with 0 or 1 ??
-    def cut_matrix(self, distance_matrix, customers_to_visit):
+    def _cut_matrix(self, customers_to_visit):
         for customer in range(len(distance_matrix)):
             if not customer in customers_to_visit:
-                distance_matrix = numpy.delete(distance_matrix, (customer), axis=0)
-                distance_matrix = numpy.delete(distance_matrix, (customer), axis=1)
+                distance_matrix = numpy.delete(self.distance_matrix, (customer), axis=0)
+                distance_matrix = numpy.delete(self.distance_matrix, (customer), axis=1)
         return distance_matrix
 
-    def run(self):
+    def run(self,customers_to_visit):
+        self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
+        self.task_matrix = self._cut_matrix(customers_to_visit)
+
         iteration_best = list()
-        #iteration_best.append()
 
         for iteration in range(self.iterations):
             solutions, evaluations = self.solutiongenerator.collecting_solutions(self.pheromone_matrix)
