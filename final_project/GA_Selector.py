@@ -17,8 +17,8 @@ class Roulette_Selector:
         parents = []
 
         for _ in range(self.offspring_size):
-            probabilities = [1/indiviual['fitness'] for individual in pop]
-            parent1, parent1 = np.random.choice(pop,size=2,replace=False, p=probabilities)
+            probabilities = [1/individual['fitness'] for individual in pop]
+            parent1, parent2 = np.random.choice(pop,size=2,replace=False, p=probabilities)
             parents.append((parent1,parent2))
 
         return parents
