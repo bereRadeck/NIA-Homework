@@ -61,6 +61,8 @@ class Initializer():
             np.random.shuffle(sort_array)
             population[i]['vehicle_capacities'] = v_c[sort_array]
             population[i]['customer_demands'] = c_d
+            #population[i]['capacities_list'] = self.capacities
+            population[i]['fitness'] = 0
         return population
 
     def initialize_partially_random(self):
@@ -80,7 +82,8 @@ class Initializer():
 
             population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
-            population[i]['capacities_list'] = self.capacities
+            #population[i]['capacities_list'] = self.capacities
+            population[i]['fitness'] = 0
 
         return population
 
