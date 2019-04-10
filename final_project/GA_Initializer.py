@@ -1,11 +1,12 @@
 import numpy as np
+
 class Initializer():
 
     def __init__(self,popsize,demands,capacities):
         self.popsize = popsize
-        self.customers = np.range(1,len(demands))
+        self.customers = np.arange(0,len(demands))
         self.demands = demands
-        self.vehicles = np.range(1,len(capacities))
+        self.vehicles = np.arange(0,len(capacities))
         self.capacities = capacities
         self.total_capacity = sum(capacities)
         self.total_demand = sum(demands)
@@ -24,7 +25,7 @@ class Initializer():
         for i, vehicle in enumerate(vehicles):
             for c in range(capacities[i]):
                 vehicle_capacity.append(vehicle)
-        return vehicle_capacity
+        return np.array(vehicle_capacity)
 
 
     def generate_customer_demand(self, customers, demands):
@@ -39,7 +40,7 @@ class Initializer():
         for i, customer in enumerate(customers):
             for d in range(demands[i]):
                 customer_demand.append(customer)
-        return customer_demand
+        return np.array(customer_demand)
 
 
 
@@ -50,17 +51,17 @@ class Initializer():
         :return: a population of size popsize
         """
         v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
-        c_d = self.generate_customer_demand(self.customer,self.demands)
+        c_d = self.generate_customer_demand(self.customers,self.demands)
 
-        population = [dict() for x in range(popsize)]
-        l = self.total_capacity
+        population = [dict() for x in range(self.popsize)]
+        sort_array = np.arange(0,self.total_capacity)
 
-        for i in range(self.popzize):
-            # mixing up the vehicle_capacity
-            sort_array = np.random.rand(low=0, high=l, size=l)
+
+        for i in range(self.popsize):
+            np.random.shuffle(sort_array)
             population[i]['vehicle_capacities'] = v_c[sort_array]
             population[i]['customer_demands'] = c_d
-            #population[i]['capacities_list']= self.capacities
+        return population
 
     def initialize_partially_random(self):
         """
@@ -69,17 +70,19 @@ class Initializer():
         :return: a population of size popsize
         """
 
-        population = [dict() for x in range(popsize)]
+        population = [dict() for x in range(self.popsize)]
         for i in range(self.popsize):
-            #randomly change order of vehicles
-            sort_array_v = np.random.rand(low=0,high=self.vehicles,size=self.vehicles)
-            sort_array_c = np.random.rand(low=0, high=self.customers, size=self.customers)
 
-            mixed_up_vehicles = self.vehicles[sort_array_v]
-            mixed_up_customers = self.customers[sort_array_c]
+            mixed_up_vehicles = np.copy(self.vehicles)
+            np.random.shuffle(mixed_up_vehicles)
+            mixed_up_customers = np.copy(self.customers)
+            np.random.shuffle(mixed_up_customers)
+
             population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
             population[i]['capacities_list'] = self.capacities
+
+        return population
 
 
     def calc_fitness(self,individual):
