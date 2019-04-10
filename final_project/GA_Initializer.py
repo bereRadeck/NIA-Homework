@@ -1,6 +1,8 @@
 import numpy as np
+from abc import ABC, abstractmethod
 
-class Initializer():
+
+class Initializer(ABC):
 
     def __init__(self,popsize,demands,capacities):
         self.popsize = popsize
@@ -43,8 +45,9 @@ class Initializer():
         return np.array(customer_demand)
 
 
+class RandomInitializer(Initializer):
 
-    def initialize_totally_random(self):
+    def initialize(self):
         """
         initializes totally randomly sorted vehicle_capacity arrays
         where car apperances could be apart [car3,car2,car2,car1,car2,car3]
@@ -65,7 +68,9 @@ class Initializer():
             population[i]['fitness'] = 0
         return population
 
-    def initialize_partially_random(self):
+class PartiallyRandomInitializer(Initializer):
+
+    def initialize(self):
         """
         initializes randomly sorted vehicle_capacity arrays where
         each car-apperance stays together [car3,car3,car1,car2,car2,car2]
@@ -88,6 +93,4 @@ class Initializer():
         return population
 
 
-    def calc_fitness(self,individual):
-        pass
 

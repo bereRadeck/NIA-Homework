@@ -4,7 +4,7 @@ import numpy as np
 popsize = 10
 demands = [10,20,10,14,30,20,10]
 capacities = [50,100,100,200]
-initializer = Initializer(popsize,demands,capacities)
+initializer = RandomInitializer(popsize,demands,capacities)
 assert initializer.popsize == popsize
 assert initializer.capacities == capacities
 assert initializer.demands == demands
@@ -14,7 +14,7 @@ assert initializer.total_capacity == 450
 assert initializer.total_demand == 114
 
 
-pop = initializer.initialize_totally_random()
+pop = initializer.initialize()
 assert len(pop) == popsize
 assert len(pop[0]['vehicle_capacities']) == 450
 assert len(pop[0]['customer_demands']) == 114
@@ -24,7 +24,8 @@ assert len(np.unique(pop[0]['customer_demands'])) == len(demands)
 assert not np.allclose(pop[0]['vehicle_capacities'], pop[1]['vehicle_capacities'])
 assert np.allclose(pop[0]['customer_demands'], pop[1]['customer_demands'])
 
-pop = initializer.initialize_partially_random()
+initializer = PartiallyRandomInitializer(popsize,demands,capacities)
+pop = initializer.initialize()
 assert len(pop) == popsize
 assert len(pop) == popsize
 assert len(pop[0]['vehicle_capacities']) == 450
