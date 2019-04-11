@@ -11,7 +11,7 @@ class Simple_Recombiner:
         pass
 
     def recombine(self, parents):
-        
+        offspring=[]
         for p in parents:
 
             
@@ -32,8 +32,9 @@ class Simple_Recombiner:
                 del capacities1[capacities1.index(s)]
             for s in slice1:
                 capacities1.insert(cr_point1, s)
+            offspring.append(new1)
 
-            return new1
+        return offspring
 
 
 class Ordered_Recombiner:
