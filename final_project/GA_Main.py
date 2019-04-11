@@ -24,7 +24,7 @@ class GA:
 
     def run(self):
 
-        pop = self.initializer.initialize_partially_random()
+        pop = self.initializer.initialize()
 
         while not self.terminator.terminates():
 

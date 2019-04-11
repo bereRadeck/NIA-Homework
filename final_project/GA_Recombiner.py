@@ -38,7 +38,7 @@ class Simple_Recombiner:
 
 
 class Ordered_Recombiner:
-    def __init__(self, select_as_swap_start_prob=0.3, select_as_swap_end_prob=0.5,capacities_list):
+    def __init__(self,capacities_list, select_as_swap_start_prob=0.3, select_as_swap_end_prob=0.5):
 
         self.select_as_swap_start_prob = select_as_swap_start_prob
         self.select_as_swap_end_prob = select_as_swap_end_prob

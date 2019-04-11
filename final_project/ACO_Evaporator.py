@@ -3,7 +3,7 @@
 
 class Evaporator:
 
-    def __init__(self,rho):
+    def __init__(self,rho=0.5):
         self.rho = rho
 
     def evaporate(self,pheromone_matrix):

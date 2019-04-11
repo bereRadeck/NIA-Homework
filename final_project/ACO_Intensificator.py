@@ -1,7 +1,7 @@
 
 class Intensificator:
 
-    def __init__(self,delta):
+    def __init__(self,delta=1):
         self.delta = delta
 
     def intensify(self,pheromone_matrix,solutions):

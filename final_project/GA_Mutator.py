@@ -26,7 +26,7 @@ class Simple_Mutator:
 """
 class Mutator:
     
-    def __init__(self,mutate_probability=0.1,capacities_list):
+    def __init__(self,capacities_list, mutate_probability=0.1):
         self.mutate_probability = mutate_probability
         self.capacities_list = capacities_list
     

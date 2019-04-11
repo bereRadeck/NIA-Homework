@@ -24,11 +24,15 @@ intensificator = Intensificator()
 popsize = 10
 demands = [10,20,10,14,30,20,10]
 capacities = [50,100,100,200]
-dist_matrix =
+dist_matrix = np.ones((8,8))
+trans_cost = np.ones((8,8))
+aco_iterations = 5
+mutate_probability = 0.1
 
-initializer = PartiallyRandomInitializer()
-aco = ACO()
-evaluator = Evaluator(aco)
+
+initializer = PartiallyRandomInitializer(popsize,demands,capacities)
+aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
+evaluator = Evaluator(trans_cost,dist_matrix,aco)
 selector = Tournament_Selector(offspring_size= 10)
 recombiner = Ordered_Recombiner(initializer.capacities)
 mutator = Mutator(initializer.capacities)

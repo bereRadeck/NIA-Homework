@@ -12,7 +12,7 @@ import random
 import numpy as np
 import matplotlib.pyplot as plt
 
-from ACO_Initializer import Initializer
+from ACO_Initializer import ACO_Initializer
 from ACO_SolutionGenerator import SolutionGenerator
 from ACO_Evaporator import Evaporator
 from ACO_Intensificator import Intensificator
@@ -42,8 +42,8 @@ class ACO:
         task_matrix = self.distance_matrix
         for customer in range(len(task_matrix)):
             if not customer in customers_to_visit:
-                task_matrix = numpy.delete(task_matrix, (customer), axis=0)
-                task_matrix = numpy.delete(task_matrix, (customer), axis=1)
+                task_matrix = np.delete(task_matrix, (customer), axis=0)
+                task_matrix = np.delete(task_matrix, (customer), axis=1)
         return task_matrix
 
     def run(self,customers_to_visit):
@@ -70,25 +70,7 @@ class ACO:
         return np.array(self.best_solutions_scores), np.array(self.solutions_generations), \
                np.array(self.evaluations_generations)
 
-#Instanciates ACO object and runs it with default parameters
-def run_default(distance_matrix, customers_to_visit):
-    initializer = Initializer()
-    solutiongenerator = SolutionGenerator(alpha=1, beta=1, num_of_ants=20)
-    evaporator = Evaporator(rho=0.1)
-    intensificator = Intensificator(delta=0.5)
 
-    antco = ACO(distance_matrix, initializer, solutiongenerator, evaporator, intensificator, 30, printing=False)
 
-    best_solutions_scores, best_solutions, all_scores = antco.run(customers_to_visit)
-    """
-    plt.plot(best_solutions)
-    plt.ylabel('')
-    plt.xlabel('Iteration')
-    plt.show()
-    """
 
-    best_score = max(best_solutions_scores)
-    best_solutions_scores = list(best_solutions_scores)
 
-    best_solution = best_solutions[best_solutions_scores.index(best_score)]
-    return best_score, best_solution

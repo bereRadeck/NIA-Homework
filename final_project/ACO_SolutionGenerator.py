@@ -4,7 +4,7 @@ import numpy as np
 
 class SolutionGenerator():
 
-    def __init__(self, alpha, beta, num_of_ants):
+    def __init__(self, alpha=1, beta=5, num_of_ants=20):
         self.num_of_ants = num_of_ants
         self.alpha = alpha
         self.beta = beta
