@@ -9,13 +9,13 @@ class SolutionGenerator():
         self.alpha = alpha
         self.beta = beta
 
-    #Note that distance_matrix holds only customers that the current car has to visit
-    def set_distance_matrix(self, distance_matrix):
-        self.distance_matrix = distance_matrix
+    #Note that task_matrix holds only customers that the current car has to visit
+    def set_task_matrix(self, task_matrix):
+        self.task_matrix = task_matrix
 
 
     def generate_solution(self, pheromone_matrix):
-        num_citys = len(self.distance_matrix)
+        num_citys = len(self.task_matrix)
         cities = np.arange(0,num_citys,1)
 
         #creating eta matrix
@@ -25,7 +25,7 @@ class SolutionGenerator():
                 if i == j:
                     eta_matrix[i][j] = 0
                 else:
-                    eta_matrix[i][j] = 1/self.distance_matrix[i][j]
+                    eta_matrix[i][j] = 1/self.task_matrix[i][j]
 
 
 
@@ -108,6 +108,6 @@ class SolutionGenerator():
         distance_sum = 0
         for i in solution[0:-1]:
             for j in solution[1:]:
-                distance_sum += self.distance_matrix[i][j]
+                distance_sum += self.task_matrix[i][j]
 
         return distance_sum

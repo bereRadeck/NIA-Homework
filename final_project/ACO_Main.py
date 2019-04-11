@@ -33,9 +33,6 @@ class ACO:
         self.evaluations_generations = list()
         self.best_solutions_scores = list()
 
-        #todo: consitently same name
-        self.solutiongenerator.set_distance_matrix(distance_matrix)
-
     #cuts the rows and columns from the distance matrix that belong to customers which numbers aren't in customers_to_visit
     #do customers start with 0 or 1 ??
     def _cut_matrix(self, customers_to_visit):
@@ -51,6 +48,8 @@ class ACO:
     def run(self,customers_to_visit):
         self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
         self.task_matrix = self._cut_matrix(customers_to_visit)
+        #todo: consitently same name
+        self.solutiongenerator.set_task_matrix(self.task_matrix)
 
         iteration_best = list()
 
