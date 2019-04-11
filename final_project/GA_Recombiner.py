@@ -44,7 +44,7 @@ class Ordered_Recombiner:
         self.select_as_swap_end_prob = select_as_swap_end_prob
         self.capacities_list = capacities_list
 
-    def recombine(parents):
+    def recombine(self,parents):
 
         offspring = []
         

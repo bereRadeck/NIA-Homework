@@ -8,7 +8,7 @@ class Initializer(ABC):
         self.popsize = popsize
         self.customers = np.arange(1,len(demands)+1)
         self.demands = demands
-        self.vehicles = np.arange(1,len(capacities)+1)
+        self.vehicles = np.arange(0,len(capacities))
         self.capacities = capacities
         self.total_capacity = sum(capacities)
         self.total_demand = sum(demands)

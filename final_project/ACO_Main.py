@@ -68,8 +68,9 @@ class ACO:
             self.pheromone_matrix = self.evaporator.evaporate(self.pheromone_matrix)
             self.pheromone_matrix = self.intensificator.intensify(self.pheromone_matrix,solutions)
 
-        return np.array(self.best_solutions_scores), np.array(self.solutions_generations), \
-               np.array(self.evaluations_generations)
+        #return np.array(self.best_solutions_scores), np.array(self.solutions_generations), \
+               #np.array(self.evaluations_generations)
+        return self.best_solutions_scores[-1]
 
 
 

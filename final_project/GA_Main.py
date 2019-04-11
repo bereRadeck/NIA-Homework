@@ -31,9 +31,10 @@ class GA:
             # calculate the fitnesses of the individuals
             pop = self.evaluator.evaluate(pop)
             # select parents based on their fitness
-            parents = self.selector.select(mutated_offspring)
+            parents = self.selector.select(pop)
             # recombine the  parents  to create offspring
             new_offspring = self.recombiner.recombine(parents)
+            #new_offspring = np.random.choice(pop,3)
             # mutate the offspring
             mutated_offspring = self.mutator.mutate(new_offspring)
             # recalculate the fitness of the offspring

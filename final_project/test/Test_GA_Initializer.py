@@ -8,7 +8,7 @@ initializer = RandomInitializer(popsize,demands,capacities)
 assert initializer.popsize == popsize
 assert initializer.capacities == capacities
 assert initializer.demands == demands
-assert np.allclose(initializer.vehicles, np.array([1,2,3,4]))
+assert np.allclose(initializer.vehicles, np.array([0,1,2,3]))
 assert np.allclose(initializer.customers, np.array([1,2,3,4,5,6,7]))
 assert initializer.total_capacity == 450
 assert initializer.total_demand == 114
@@ -20,6 +20,7 @@ assert len(pop[0]['vehicle_capacities']) == 450
 assert len(pop[0]['customer_demands']) == 114
 assert len(np.unique(pop[0]['vehicle_capacities'])) == len(capacities)
 assert len(np.unique(pop[0]['customer_demands'])) == len(demands)
+assert pop[0]['fitness'] == 0
 
 assert not np.allclose(pop[0]['vehicle_capacities'], pop[1]['vehicle_capacities'])
 assert np.allclose(pop[0]['customer_demands'], pop[1]['customer_demands'])

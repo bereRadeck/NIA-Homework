@@ -43,11 +43,7 @@ class SolutionGenerator():
         for c in range(num_citys-1):
 
             #berechne die Wahrscheinlichkeiten von city zu allen möglichen city_next zu gelangen
-            print(pheromone_matrix)
-            print()
-            print(eta_matrix)
-            print()
-            print()
+
             n = np.power(pheromone_matrix[city, cities], self.alpha)*np.power(eta_matrix[city,cities],self.beta)
 
             d = np.sum(np.power(pheromone_matrix[city, cities], self.alpha)*np.power(eta_matrix[city,cities],self.beta))

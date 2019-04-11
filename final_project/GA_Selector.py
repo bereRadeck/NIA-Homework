@@ -33,12 +33,17 @@ class Tournament_Selector:
 
     def select(self,pop):
         parents = []
+        pop = np.array(pop)
         for _ in range(self.offspring_size):
 
-            opponents1 =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            opponents1_index =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            opponents1 = pop[opponents1_index]
+
             parent1 = min(opponents1, key= lambda x: x['fitness'])
 
-            opponents2 =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            opponents2_index =  np.random.choice(a=range(len(pop)),size=self.opponent_number,replace=False)
+            opponents2 = pop[opponents2_index]
+
             parent2 = min(opponents2, key= lambda x: x['fitness'])
 
             parents.append((parent1,parent2))
