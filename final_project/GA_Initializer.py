@@ -56,6 +56,9 @@ class RandomInitializer(Initializer):
         v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
         c_d = self.generate_customer_demand(self.customers,self.demands)
 
+        while len(c_d) < len(v_c):
+            c_d.append(0)
+        
         population = [dict() for x in range(self.popsize)]
         sort_array = np.arange(0,self.total_capacity)
 

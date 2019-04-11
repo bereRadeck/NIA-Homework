@@ -92,8 +92,8 @@ class Ordered_Recombiner:
 
                             if not vehicle_capacities_a[i] == vehicle_capacities_a[i+1]: #copy each individual car inside the swapping-part of car_a into the swap array
                                 vehicle_capacities_a_swap.append(vehicle_capacities_a[i])
-                                if np.random.uniform() < self.select_as_swap_end_prob: #if end-probability is hit and the car in car_b ends within a reasonable
-                                    if not vehicle_capacities_b[i] == vehicle_capacities_b[i+1]:      #range of car a`s end (in this case 3 units) we stop swapping                                                                #if b is longer then a we might need to correct for that by adding zeros
+                                if np.random.uniform() < self.select_as_swap_end_prob: #if end-probability is hit and car_a and car_b both end
+                                    if not vehicle_capacities_b[i] == vehicle_capacities_b[i+1]:     
                                         #print("end swapping at ",i)
                                         broke = 1
                                         swap_end = i
