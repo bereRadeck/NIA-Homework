@@ -5,21 +5,22 @@ from copy import deepcopy
 
 class Simple_Mutator:
     
-    def __init__(self,mutation_probability=0.1):
-        self.chance = chance
+    def __init__(self,mutate_probability=0.1):
+        self.mutate_probability = mutate_probability
         
-    def mutate(self,pool):
+    def mutate(self,offspring):
         
-        for p in pool:
-            capacities= p['vehicle_capacities']
+        for o in offspring:
+            capacities= o['vehicle_capacities']
             
-            if rnd.uniform() < self.chance:
+            if rnd.uniform(0,1) < self.mutate_probability:
                 
                 cr_point1=rnd.choice(range(len(capacities)-1))
                 cr_point2=rnd.choice(range(len(capacities)-cr_point1-1))+cr_point1+1
                 temp=capacities[cr_point1]
                 capacities[cr_point1]=capacities[cr_point2]
                 capacities[cr_point2]=temp
+        return offspring
 
 class Mutator:
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
