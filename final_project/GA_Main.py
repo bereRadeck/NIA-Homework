@@ -26,12 +26,13 @@ class GA:
 
         pop = self.initializer.initialize_partially_random()
 
-        while not terminator.terminates():
+        while not self.terminator.terminates():
             pop = self.evaluator.evaluate(pop)
 
-            pop = self.selector.select(mutated_offspring)
-            new_offspring = self.recombiner.recombine(pop)
+            parents = self.selector.select(mutated_offspring)
+            new_offspring = self.recombiner.recombine(parents)
             mutated_offspring = self.mutator.mutate(new_offspring)
+            mutated_offspring = self.evaluator.evaluate(mutated_offspring)
             pop = self.replacer.replace(pop, mutated_offspring)
 
 def __main__():
