@@ -19,7 +19,7 @@ from ACO_Intensificator import Intensificator
 
 
 class ACO:
-    def __init__(self, distance_matrix, customers_to_visit, initializer, solutiongenerator, evaporator, intensificator, iterations, printing=True):
+    def __init__(self, distance_matrix, initializer, solutiongenerator, evaporator, intensificator, iterations, printing=True):
 
         self.initializer = initializer
         self.solutiongenerator = solutiongenerator
@@ -27,23 +27,24 @@ class ACO:
         self.intensificator = intensificator
         self.printing = printing
         self.iterations = iterations
-
+        self.distance_matrix = distance_matrix
 
         self.solutions_generations = list()
         self.evaluations_generations = list()
         self.best_solutions_scores = list()
 
         #todo: consitently same name
-        self.solutiongenerator.set_distance_matrix(self.task_matrix)
+        self.solutiongenerator.set_distance_matrix(distance_matrix)
 
     #cuts the rows and columns from the distance matrix that belong to customers which numbers aren't in customers_to_visit
     #do customers start with 0 or 1 ??
     def _cut_matrix(self, customers_to_visit):
-        for customer in range(len(distance_matrix)):
+        task_matrix = self.distance_matrix
+        for customer in range(len(task_matrix)):
             if not customer in customers_to_visit:
-                distance_matrix = numpy.delete(self.distance_matrix, (customer), axis=0)
-                distance_matrix = numpy.delete(self.distance_matrix, (customer), axis=1)
-        return distance_matrix
+                task_matrix = numpy.delete(task_matrix, (customer), axis=0)
+                task_matrix = numpy.delete(task_matrix, (customer), axis=1)
+        return task_matrix
 
     def run(self,customers_to_visit):
         self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
@@ -76,9 +77,9 @@ def run_default(distance_matrix, customers_to_visit):
     evaporator = Evaporator(rho=0.1)
     intensificator = Intensificator(delta=0.5)
 
-    antco = ACO(distance_matrix, customers_to_visit, initializer, solutiongenerator, evaporator, intensificator, 30, printing=False)
+    antco = ACO(distance_matrix, initializer, solutiongenerator, evaporator, intensificator, 30, printing=False)
 
-    best_solutions_scores, best_solutions, all_scores = antco.run()
+    best_solutions_scores, best_solutions, all_scores = antco.run(customers_to_visit)
     """
     plt.plot(best_solutions)
     plt.ylabel('')
@@ -91,4 +92,3 @@ def run_default(distance_matrix, customers_to_visit):
 
     best_solution = best_solutions[best_solutions_scores.index(best_score)]
     return best_score, best_solution
-

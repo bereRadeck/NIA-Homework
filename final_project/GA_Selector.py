@@ -65,7 +65,7 @@ class Selector_Tournament():
         opponent_amount=2 #more than two "opponents" for the tournament possible
 
         fitnesses=calc_fitnesses(population) #not ideal, because maybe not every fitness is interesting, but probably better than calcuting one fitness multiple times
-        
+
         winners=list() #new population
         winners.append(list()) #car_slots
         winners.append(list()) #demand_slots
@@ -74,13 +74,13 @@ class Selector_Tournament():
         for tournament in range(self.pool_size):
             opponents=list()
             opponent_fitnesses=list()
-            
+
             #Select opponents for tournament randomly
             for opponent_number in range(opponent_amount):
 
                 #where did the do while loop go...
                 rnd=random.randint(0,len(population)-1)
-                while (rnd in opponents): #in: probably poor performance 
+                while (rnd in opponents): #in: probably poor performance
                     rnd=random.randint(0,len(population)-1)
 
                 opponents.append(rnd)
@@ -91,7 +91,7 @@ class Selector_Tournament():
         return winners
 
 # todo: maybe make following functions as part of class
-# todo :this was meant to enable solutions with even and uneven numbers of 0, but we initialize even and uneven arrays anyway so i think we can skip this part completly ~Till 
+# todo :this was meant to enable solutions with even and uneven numbers of 0, but we initialize even and uneven arrays anyway so i think we can skip this part completly ~Till
 # todo: add or take 0's from demandarray, we should maybe move it to mutator module, since it's a mutation
 def mutate(population, add_probability=0.1,take_probability=0.1):
     #chromosome index
@@ -116,8 +116,8 @@ def mutate(population, add_probability=0.1,take_probability=0.1):
                     population[chromosomeindex]['customer_demands'].insert(slotindex,0)
                     slotindex=slotindex+1
             slotindex=slotindex+1
-                   
-    return population 
+
+    return population
 
 
 #takes one chromosome
@@ -127,7 +127,7 @@ def mutate(population, add_probability=0.1,take_probability=0.1):
     #otherwise, this method won't work, but has more performance this way
 
 def summarize(chromosome, car_amount):
-   
+
     assignments=[ [] for i in range(car_amount)] #one entry for each car that has to drive
 
     #<> sorry, just need these because of my keyboard
@@ -140,7 +140,7 @@ def summarize(chromosome, car_amount):
             assignments[chromosome['vehicle_capacities'][index]].append(chromosome['customer_demands'][index])
 
     return assignments
-                    
+
 #calculates fitnesses for whole population
 #fitness values come from ACO
 def calc_fitnesses(population):
@@ -165,11 +165,9 @@ def calc_fitnesses(population):
 #print(mutate([[[1,1,1,5,5,3,3,3,3,3,2]],[[2,0,0,3,3,3,1,1]]],1,1))
 #dic = {"vehicle_capacities": [1,1,1,5,5,3,3,3,3,3,2], 'customer_demands': [2,0,0,3,3,3,1,1] }
 #print(summarize(dic,6))
-
+"""
 dis_mat=[[0,3,4,7],[3,0,1,4],[4,1,0,2],[7,4,2,0]]
 
-print("Testing ACO, wtf are customers visited multiple times?")
-score, solution = self.ACO.run_default(dis_mat, [0,1,2,3])
-print(score, solution)"""
-
-
+print("Testing AC")
+score, solution = aco.run_default(dis_mat, [0,1,2,3])
+print(score, solution)
