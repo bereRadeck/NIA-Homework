@@ -3,33 +3,43 @@ import numpy as np
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
+"""
 class Simple_Mutator:
     
-    def __init__(self,mutation_probability=0.1):
-        self.chance = chance
+    def __init__(self,mutate_probability=0.1):
+        self.mutate_probability = mutate_probability
         
-    def mutate(self,pool):
+    def mutate(self,offspring):
         
-        for p in pool:
-            capacities= p['vehicle_capacities']
+        for o in offspring:
+            capacities= o['vehicle_capacities']
             
-            if rnd.uniform() < self.chance:
+            if rnd.uniform(0,1) < self.mutate_probability:
                 
-                cr_point1=rnd.choice(range(len(capacities)-1))
-                cr_point2=rnd.choice(range(len(capacities)-cr_point1-1))+cr_point1+1
+                cr_point1 = rnd.choice(range(len(capacities)-1))
+                cr_point2 = rnd.choice(range(len(capacities)-cr_point1-1))+cr_point1+1
                 temp=capacities[cr_point1]
                 capacities[cr_point1]=capacities[cr_point2]
                 capacities[cr_point2]=temp
+        return offspring
 
+"""
 class Mutator:
+    
+    def __init__(self,mutate_probability=0.1,capacities_list):
+        self.mutate_probability = mutate_probability
+        self.capacities_list = capacities_list
+    
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
-    def do(population,mutation_probability=0.1):
+    def mutate(self,offspring):
         
-        for i in population:
+        mutate_probability = self.mutate_probability
+        
+        for individual in offspring:
             
-            vehicle_capacities = i['vehicle_capacities']
-            customer_demands = i['customer_demands']
-            capacities_list = i['capacities_list']
+            vehicle_capacities = individual['vehicle_capacities']
+            customer_demands = individual['customer_demands']
+            capacities_list = self.capacities_list
         
         
             big_small = np.zeros((len(capacities_list)), dtype=int)   #safes information if a car was the small or big member of a swap
@@ -44,7 +54,7 @@ class Mutator:
                     vehicle_capacities_unique_cars_pointer += 1
 
             for first_car_pointer in range(len(vehicle_capacities_unique_cars)): #swaps every car with a mutation probability with another car in the vehicle_capacities_unique_cars array and keeps important information
-                    if np.random.uniform() < mutation_probability:
+                    if np.random.uniform() < mutate_probability:
                         zeros_counter = 0
                         first_car = deepcopy(vehicle_capacities_unique_cars[first_car_pointer])
                         second_car_pointer = random.randint(0,len(vehicle_capacities_unique_cars)-1)  #randomly selects a car to swap the current car with
@@ -119,6 +129,7 @@ class Mutator:
             for j in range(delta_customer_demands):
                 customer_demands_new.append(0)        
 
-            i['vehicle_capacities'] = vehicle_capacities_new
-            i['customer_demands'] = customer_demands_new
-    return population
+            individual['vehicle_capacities'] = vehicle_capacities_new
+            individual['customer_demands'] = customer_demands_new
+
+        return offspring

@@ -26,8 +26,9 @@ class Simple_Mutator:
 """
 class Mutator:
     
-    def __init__(self,mutate_probability=0.1):
+    def __init__(self,mutate_probability=0.1,capacities_list):
         self.mutate_probability = mutate_probability
+        self.capacities_list = capacities_list
     
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
     def mutate(self,offspring):
@@ -38,7 +39,7 @@ class Mutator:
             
             vehicle_capacities = individual['vehicle_capacities']
             customer_demands = individual['customer_demands']
-            capacities_list = individual['capacities_list']
+            capacities_list = self.capacities_list
         
         
             big_small = np.zeros((len(capacities_list)), dtype=int)   #safes information if a car was the small or big member of a swap

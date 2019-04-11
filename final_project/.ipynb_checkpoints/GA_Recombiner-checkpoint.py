@@ -38,10 +38,11 @@ class Simple_Recombiner:
 
 
 class Ordered_Recombiner:
-    def __init__(self, select_as_swap_start_prob=0.3, select_as_swap_end_prob=0.5):
+    def __init__(self, select_as_swap_start_prob=0.3, select_as_swap_end_prob=0.5,capacities_list):
 
         self.select_as_swap_start_prob = select_as_swap_start_prob
         self.select_as_swap_end_prob = select_as_swap_end_prob
+        self.capacities_list = capacities_list
 
     def recombine(parents):
 
@@ -62,7 +63,7 @@ class Ordered_Recombiner:
                 vehicle_capacities_a = parent_a['vehicle_capacities']
                 vehicle_capacities_b = parent_b['vehicle_capacities']
                 customer_demands_a = parent_a['customer_demands']
-                vehicle_capacities_b_amount = parent_b['capacities_list']                
+                capacities_list = self.capacities_list        
                 vehicle_capacities_a_swap = [] #array that keeps the cars of array car_a which are possible members of a swap
                 vehicle_capacities_b_swap = []
                 swapping = 0 #used to tell the array loop it should start shifting cars into the swap arrays until stop is hit
@@ -124,9 +125,7 @@ class Ordered_Recombiner:
                     vehicle_capacities_a_sub_b_swap = []
                     for car in vehicle_capacities_b_swap: #unfold flat swap array before adding it to vehicle_capacities_a
 
-                        #################### self.vehicle_capacities_amount
-
-                        for c in range(vehicle_capacities_b_amount[car]):
+                        for c in range(capacities_list[car]):
                             vehicle_capacities_b_swap_multi.append(car)              
 
                     for i, car in  enumerate(vehicle_capacities_b_swap_multi):
@@ -143,9 +142,7 @@ class Ordered_Recombiner:
                     vehicle_capacities_a_swap_multi = []
                     for car in vehicle_capacities_a_sub_b_swap: #unfold them
 
-                        #################### self.vehicle_capacities_amount
-
-                        for c in range(vehicle_capacities_b_amount[car]): 
+                        for c in range(capacities_list[car]): 
                             vehicle_capacities_a_swap_multi.append(car)
 
                     vehicle_capacities_a_list = list(vehicle_capacities_a)
