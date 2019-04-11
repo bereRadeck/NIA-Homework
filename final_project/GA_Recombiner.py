@@ -6,6 +6,7 @@ class Simple_Recombiner:
 
     def __init__(self):
        # self.combine_probability = combine_probability
+        pass
 
     def recombine(self, parents):
 
