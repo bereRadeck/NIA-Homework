@@ -34,7 +34,7 @@ class GA_Mutator:
     def __init__(self, mutate_probability=0.5):
         self.mutate_probability = mutate_probability
 
-    def mutate(off_spring):
+    def mutate(offspring):
         """
 
         :return:
