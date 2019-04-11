@@ -2,11 +2,10 @@ import numpy as np
 import random as rnd
 import copy
 
-
 class Simple_Recombiner:
 
-    def __init__(self, combine_probability=0.1):
-        self.combine_probability = combine_probability
+    def __init__(self):
+       # self.combine_probability = combine_probability
 
     def recombine(self, parents):
 
