@@ -1,6 +1,6 @@
 import numpy as np
 
-class Initializer():
+class ACO_Initializer():
 
     def initialize(self, customers_to_visit):
         size = len(customers_to_visit)
