@@ -6,9 +6,9 @@ class Initializer(ABC):
 
     def __init__(self,popsize,demands,capacities):
         self.popsize = popsize
-        self.customers = np.arange(0,len(demands))
+        self.customers = np.arange(1,len(demands)+1)
         self.demands = demands
-        self.vehicles = np.arange(0,len(capacities))
+        self.vehicles = np.arange(1,len(capacities)+1)
         self.capacities = capacities
         self.total_capacity = sum(capacities)
         self.total_demand = sum(demands)

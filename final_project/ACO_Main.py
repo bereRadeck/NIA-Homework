@@ -40,10 +40,12 @@ class ACO:
     #do customers start with 0 or 1 ??
     def _cut_matrix(self, customers_to_visit):
         task_matrix = self.distance_matrix
-        for customer in range(len(task_matrix)):
-            if not customer in customers_to_visit:
-                task_matrix = np.delete(task_matrix, (customer), axis=0)
-                task_matrix = np.delete(task_matrix, (customer), axis=1)
+        customers = np.arange(task_matrix.shape[0])
+        customers_not_needed = [c for c in customers if c not in customers_to_visit]
+        #for customer in range(len(task_matrix)):
+            #if not customer in customers_to_visit:
+        task_matrix = np.delete(task_matrix, customers_not_needed, axis=0)
+        task_matrix = np.delete(task_matrix, customers_not_needed, axis=1)
         return task_matrix
 
     def run(self,customers_to_visit):

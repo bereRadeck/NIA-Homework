@@ -8,8 +8,8 @@ initializer = RandomInitializer(popsize,demands,capacities)
 assert initializer.popsize == popsize
 assert initializer.capacities == capacities
 assert initializer.demands == demands
-assert np.allclose(initializer.vehicles, np.array([0,1,2,3]))
-assert np.allclose(initializer.customers, np.array([0,1,2,3,4,5,6]))
+assert np.allclose(initializer.vehicles, np.array([1,2,3,4]))
+assert np.allclose(initializer.customers, np.array([1,2,3,4,5,6,7]))
 assert initializer.total_capacity == 450
 assert initializer.total_demand == 114
 

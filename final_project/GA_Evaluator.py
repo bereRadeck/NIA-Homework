@@ -29,6 +29,9 @@ class Evaluator:
             for vehicle in np.unique(v_c):
 
                 customers_to_visit = np.unique(c_d[v_c[v_c==vehicle]])
+                print('Evaluator')
+                print('customers_to_visit',customers_to_visit)
+                print()
                 route_costs = self.aco.run(customers_to_visit) * self.trans_cost[vehicle]
                 costs.append(route_costs)
 

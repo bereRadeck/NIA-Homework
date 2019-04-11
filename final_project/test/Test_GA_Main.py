@@ -25,7 +25,7 @@ popsize = 10
 demands = [10,20,10,14,30,20,10]
 capacities = [50,100,100,200]
 dist_matrix = np.ones((8,8))
-trans_cost = np.ones((8,8))
+trans_cost = [2,3,4,5]
 aco_iterations = 5
 mutate_probability = 0.1
 
