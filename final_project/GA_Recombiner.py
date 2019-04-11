@@ -3,13 +3,15 @@ import random as rnd
 import copy
 
 class Simple_Recombiner:
-
+    '''
+    a recombiner that implements a simple order 1 crossover  
+    '''
     def __init__(self):
        # self.combine_probability = combine_probability
         pass
 
     def recombine(self, parents):
-
+        
         for p in parents:
 
             
@@ -22,9 +24,9 @@ class Simple_Recombiner:
             
             cr_point1 = rnd.choice(range(len(capacities1) - 1))
             cr_point2 = rnd.choice(range(len(capacities1) - cr_point1)) + cr_point1 + 1
-            print(cr_point1,cr_point2)
+           # print(cr_point1,cr_point2)
             slice1 = capacities2[cr_point1:cr_point2]
-            print(len(slice1))    
+            #print(len(slice1))    
             for s in slice1:
                     
                 del capacities1[capacities1.index(s)]
