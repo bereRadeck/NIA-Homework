@@ -6,10 +6,10 @@ from copy import deepcopy
 
 class Evaluator:
 
-    def __init__(self, trans_cost, dist_matrix, pool_size, ACO):
+    def __init__(self, trans_cost, dist_matrix, aco):
         self.trans_cost = trans_cost
         self.dist_matrix = dist_matrix
-        self.pool_size = pool_size
+        self.aco = aco
 
 
     def evaluate(self,pop):
@@ -29,7 +29,7 @@ class Evaluator:
             for vehicle in np.unique(v_c):
 
                 customers_to_visit = np.unique(c_d[v_c[v_c==vehicle]])
-                route_costs = ACO.run(customers_to_visit)
+                route_costs = self.aco.run(customers_to_visit) * self.trans_cost[vehicle]
                 costs.append(route_costs)
 
             individual['fitness'] = np.sum(costs)

@@ -1,12 +1,17 @@
-import GA_Initializer
-import GA_Mutator
-import GA_Recombiner
-import GA_Selector
-import GA_Replacer
+
+from GA_Initializer import *
+from GA_Evaluator import *
+from GA_Selector import *
+from GA_Recombiner import *
+from GA_Mutator import *
+from GA_Replacer import *
+from GA_Terminator import *
+from ACO_Main import ACO as aco
+
 
 class GA:
 
-    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator):
+    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco):
         self.initializer = initializer
         self.evaluator = evaluator
         self.selector = selector
@@ -14,6 +19,7 @@ class GA:
         self.mutator = mutator
         self.replacer = replacer
         self.terminator = terminator
+        self.aco = aco
         #self.pop = self.initializer.initialize()
 
     def run(self):
@@ -28,4 +34,18 @@ class GA:
             mutated_offspring = self.mutator.mutate(new_offspring)
             pop = self.replacer.replace(pop, mutated_offspring)
 
+def __main__():
+
+    aco = aco()
+    initializer = PartiallyRandomInitializer()
+    evaluator = Evaluator(aco)
+    selector = Tournament_Selector()
+    recombiner = Ordered_Recombiner()
+    mutator = Mutator()
+    replacer = Replacer_All()
+    terminator = Terminator()
+
+    ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco))
+    ga.run()
+  
 
