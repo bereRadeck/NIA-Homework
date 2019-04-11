@@ -24,14 +24,20 @@ class Simple_Mutator:
 
     
 class Mutator:
+    
+    def __init__(self,mutate_probability=0.1):
+        self.mutate_probability = mutate_probability
+    
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
-    def do(population,mutation_probability=0.1):
+    def mutate(self,offspring):
         
-        for i in population:
+        mutate_probability = self.mutate_probability
+        
+        for individual in offspring:
             
-            vehicle_capacities = i['vehicle_capacities']
-            customer_demands = i['customer_demands']
-            capacities_list = i['capacities_list']
+            vehicle_capacities = individual['vehicle_capacities']
+            customer_demands = individual['customer_demands']
+            capacities_list = individual['capacities_list']
         
         
             big_small = np.zeros((len(capacities_list)), dtype=int)   #safes information if a car was the small or big member of a swap
@@ -46,7 +52,7 @@ class Mutator:
                     vehicle_capacities_unique_cars_pointer += 1
 
             for first_car_pointer in range(len(vehicle_capacities_unique_cars)): #swaps every car with a mutation probability with another car in the vehicle_capacities_unique_cars array and keeps important information
-                    if np.random.uniform() < mutation_probability:
+                    if np.random.uniform() < mutate_probability:
                         zeros_counter = 0
                         first_car = deepcopy(vehicle_capacities_unique_cars[first_car_pointer])
                         second_car_pointer = random.randint(0,len(vehicle_capacities_unique_cars)-1)  #randomly selects a car to swap the current car with
@@ -121,6 +127,6 @@ class Mutator:
             for j in range(delta_customer_demands):
                 customer_demands_new.append(0)        
 
-            i['vehicle_capacities'] = vehicle_capacities_new
-            i['customer_demands'] = customer_demands_new
+            individual['vehicle_capacities'] = vehicle_capacities_new
+            individual['customer_demands'] = customer_demands_new
     return population
