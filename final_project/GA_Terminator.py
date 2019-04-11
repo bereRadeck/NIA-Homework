@@ -6,9 +6,9 @@ class Terminator:
     def terminate(self):
         self.count += 1
         if self.count > self.limit:
-            return true
+            return True
         else:
-            return false
+            return False
         
   
         
