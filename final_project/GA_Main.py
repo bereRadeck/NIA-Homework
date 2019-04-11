@@ -6,7 +6,7 @@ from GA_Recombiner import *
 from GA_Mutator import *
 from GA_Replacer import *
 from GA_Terminator import *
-from ACO_Main import ACO as aco
+from ACO_Main import ACO
 
 
 class GA:
@@ -26,26 +26,33 @@ class GA:
 
         pop = self.initializer.initialize_partially_random()
 
-        while not terminator.terminates():
-            pop = self.evaluator.evaluate(pop)
+        while not self.terminator.terminates():
 
-            pop = self.selector.select(mutated_offspring)
-            new_offspring = self.recombiner.recombine(pop)
+            # calculate the fitnesses of the individuals
+            pop = self.evaluator.evaluate(pop)
+            # select parents based on their fitness
+            parents = self.selector.select(mutated_offspring)
+            # recombine the  parents  to create offspring
+            new_offspring = self.recombiner.recombine(parents)
+            # mutate the offspring
             mutated_offspring = self.mutator.mutate(new_offspring)
+            # recalculate the fitness of the offspring
+            mutated_offspring = self.evaluator.evaluate(mutated_offspring)
+            # replace the weak individuals with the offspring
             pop = self.replacer.replace(pop, mutated_offspring)
 
 def __main__():
 
-    aco = aco()
+    aco = ACO()
     initializer = PartiallyRandomInitializer()
     evaluator = Evaluator(aco)
     selector = Tournament_Selector(offspring_size= 10)
     recombiner = Ordered_Recombiner(initializer.capacities)
     mutator = Mutator(initializer.capacities)
     replacer = Replacer_All()
-    terminator = Terminator(limit = 500)
+    terminator = Terminator(limit = 10)
 
-    ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco))
+    ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco)
     ga.run()
   
 
