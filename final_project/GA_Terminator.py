@@ -1,13 +1,14 @@
 class Terminator:
-    def __init__(limit=500):
+    def __init__(self,limit=500):
         self.limit = limit
         self.count = 0
       
-    def terminate():
+    def terminate(self):
+        self.count += 1
         if self.count > self.limit:
             return true
         else:
             return false
         
-    def call():
-        self.count += 1
+  
+        
