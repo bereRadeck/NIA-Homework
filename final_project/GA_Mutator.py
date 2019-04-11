@@ -22,6 +22,7 @@ class Simple_Mutator:
                 capacities[cr_point2]=temp
         return offspring
 
+    
 class Mutator:
     #im not sure if i can explain the generell idea well enough in comments. It might be the most informative thing if i make a handwritten / drawen explanation (Mutator/Recombiner Rules Nr2 in clean)
     def do(population,mutation_probability=0.1):
