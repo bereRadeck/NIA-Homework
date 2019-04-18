@@ -88,8 +88,16 @@ class PartiallyRandomInitializer(Initializer):
             mixed_up_customers = np.copy(self.customers)
             np.random.shuffle(mixed_up_customers)
 
-            population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
-            population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
+            #population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
+
+            while len(c_d) < len(v_c):
+                c_d = np.append(c_d, 0)
+
+            #population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
+            population[i]['vehicle_capacities'] = v_c
+            population[i]['customer_demands'] = c_d
             #population[i]['capacities_list'] = self.capacities
             population[i]['fitness'] = 0
 

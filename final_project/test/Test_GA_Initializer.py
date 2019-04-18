@@ -35,11 +35,14 @@ pop = initializer.initialize()
 assert len(pop) == popsize
 assert len(pop) == popsize
 assert len(pop[0]['vehicle_capacities']) == 450
-assert len(pop[0]['customer_demands']) == 114
+#assert len(pop[0]['customer_demands']) == 114 #nullen werden appended
+assert len(pop[0]['customer_demands']) == 450
+
 #print(pop[0])
 #print(np.unique(pop[0]['vehicle_capacities']))
 assert len(np.unique(pop[0]['vehicle_capacities'])) == len(capacities)
-assert len(np.unique(pop[0]['customer_demands'])) == len(demands)
+#assert len(np.unique(pop[0]['customer_demands'])) == len(demands) #nullen werden appended
+assert len(np.unique(pop[0]['customer_demands'])) == len(demands) +1
 
 assert not np.allclose(pop[0]['vehicle_capacities'], pop[1]['vehicle_capacities'])
 assert not np.allclose(pop[0]['customer_demands'], pop[1]['customer_demands'])
