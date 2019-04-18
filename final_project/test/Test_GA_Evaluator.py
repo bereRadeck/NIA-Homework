@@ -13,7 +13,7 @@ import numpy as np
 popsize = 10
 demands = [10,20,10,14,30,20,10]
 capacities = [50,100,100,200]
-initializer = RandomInitializer(popsize,demands,capacities)
+initializer = PartiallyRandomInitializer(popsize,demands,capacities)
 pop = initializer.initialize()
 dist_matrix = np.ones((8,8))
 trans_cost = [2,3,4,5]

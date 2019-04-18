@@ -23,8 +23,9 @@ class GA:
         #self.pop = self.initializer.initialize()
 
     def run(self):
-
+        print('initializing population')
         pop = self.initializer.initialize()
+        print('...done')
 
         while not self.terminator.terminates():
 
@@ -34,9 +35,10 @@ class GA:
             parents = self.selector.select(pop)
             # recombine the  parents  to create offspring
             new_offspring = self.recombiner.recombine(parents)
-            #new_offspring = np.random.choice(pop,3)
+
             # mutate the offspring
             mutated_offspring = self.mutator.mutate(new_offspring)
+
             # recalculate the fitness of the offspring
             mutated_offspring = self.evaluator.evaluate(mutated_offspring)
             # replace the weak individuals with the offspring

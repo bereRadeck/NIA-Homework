@@ -36,6 +36,7 @@ class ACO:
     #cuts the rows and columns from the distance matrix that belong to customers which numbers aren't in customers_to_visit
     #do customers start with 0 or 1 ??
     def _cut_matrix(self, customers_to_visit):
+
         task_matrix = self.distance_matrix
         customers = np.arange(task_matrix.shape[0])
         customers_not_needed = [c for c in customers if c not in customers_to_visit]
@@ -46,6 +47,7 @@ class ACO:
         return task_matrix
 
     def run(self,customers_to_visit):
+
         self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
         self.task_matrix = self._cut_matrix(customers_to_visit)
         #todo: consitently same name
@@ -55,6 +57,7 @@ class ACO:
 
         for iteration in range(self.iterations):
             solutions, evaluations = self.solutiongenerator.collecting_solutions(self.pheromone_matrix)
+
 
             self.solutions_generations.append(solutions[0])
             self.evaluations_generations.append(evaluations)

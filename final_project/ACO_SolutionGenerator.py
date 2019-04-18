@@ -43,7 +43,6 @@ class SolutionGenerator():
         for c in range(num_citys-1):
 
             #berechne die Wahrscheinlichkeiten von city zu allen möglichen city_next zu gelangen
-
             n = np.power(pheromone_matrix[city, cities], self.alpha)*np.power(eta_matrix[city,cities],self.beta)
 
             d = np.sum(np.power(pheromone_matrix[city, cities], self.alpha)*np.power(eta_matrix[city,cities],self.beta))
@@ -100,10 +99,15 @@ class SolutionGenerator():
         return solutions, evaluations
 
     def solution_evaluation(self, solution):
-
         distance_sum = 0
-        for i in solution[0:-1]:
-            for j in solution[1:]:
-                distance_sum += self.task_matrix[i][j]
+        #for i in solution[0:-1]:
+         #   for j in solution[1:]:
+          #      distance_sum += self.task_matrix[i][j]
+        for index,value in enumerate(solution[:-1]):
+            distance = self.task_matrix[value,solution[index+1]]
+            assert distance > 0
+            distance_sum += distance
 
+        #add the why back to the depot
+        distance_sum += self.task_matrix[0,solution[-1]]
         return distance_sum

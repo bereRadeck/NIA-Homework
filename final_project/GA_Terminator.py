@@ -4,6 +4,7 @@ class Terminator:
         self.count = 0
       
     def terminates(self):
+        print('Iteration: ',self.count)
         self.count += 1
         if self.count > self.limit:
             return True

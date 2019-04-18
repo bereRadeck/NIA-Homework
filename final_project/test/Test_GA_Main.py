@@ -22,9 +22,9 @@ intensificator = Intensificator()
 
 
 popsize = 10
-demands = [10,20,10,14,30,20,10]
-capacities = [50,100,100,200]
-dist_matrix = np.ones((8,8))
+demands = [10,20,10,14,30,20,10,30,30,30,20,20,20]
+capacities = [50,50,100,100]
+dist_matrix = np.ones((14,14))
 trans_cost = [2,3,4,5]
 aco_iterations = 5
 mutate_probability = 0.1
