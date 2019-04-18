@@ -57,7 +57,7 @@ class RandomInitializer(Initializer):
         c_d = self.generate_customer_demand(self.customers,self.demands)
 
         while len(c_d) < len(v_c):
-            c_d.append(0)
+            c_d = np.append(c_d,0)
         
         population = [dict() for x in range(self.popsize)]
         sort_array = np.arange(0,self.total_capacity)
