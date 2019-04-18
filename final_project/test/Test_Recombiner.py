@@ -13,6 +13,10 @@ offspringsize = 5
 selector = Roulette_Selector(offspringsize)
 initializer = PartiallyRandomInitializer(popsize,demands,capacities)
 pop = initializer.initialize()
+
+for individual in pop:
+    individual['fitness'] = np.random.randint(1,10)
+
 parents = selector.select(pop)
 
 recombiner = Ordered_Recombiner(initializer.capacities)
