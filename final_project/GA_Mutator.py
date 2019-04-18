@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from copy import deepcopy
 
-"""
+
+
 class Simple_Mutator:
     
     def __init__(self,mutate_probability=0.1):
@@ -14,16 +15,16 @@ class Simple_Mutator:
         for o in offspring:
             capacities= o['vehicle_capacities']
             
-            if rnd.uniform(0,1) < self.mutate_probability:
+            if np.random.uniform(0,1) < self.mutate_probability:
                 
-                cr_point1 = rnd.choice(range(len(capacities)-1))
-                cr_point2 = rnd.choice(range(len(capacities)-cr_point1-1))+cr_point1+1
+                cr_point1 = np.random.choice(range(len(capacities)-1))
+                cr_point2 = np.random.choice(range(len(capacities)-cr_point1-1))+cr_point1+1
                 temp=capacities[cr_point1]
                 capacities[cr_point1]=capacities[cr_point2]
                 capacities[cr_point2]=temp
         return offspring
 
-"""
+
 class Mutator:
     
     def __init__(self,capacities_list, mutate_probability=1, select_as_swap_start_prob=0.8, select_as_swap_end_prob=0.9):
