@@ -21,3 +21,11 @@ parents = selector.select(pop)
 assert len(parents) == offspringsize
 assert not np.allclose(parents[0][0]['vehicle_capacities'],parents[0][1]['vehicle_capacities'])
 assert not np.allclose(parents[1][0]['vehicle_capacities'],parents[0][0]['vehicle_capacities'])
+
+
+selector = Tournament_Selector(offspringsize)
+
+parents = selector.select(pop)
+assert len(parents) == offspringsize
+#assert not np.allclose(parents[0][0]['vehicle_capacities'],parents[0][1]['vehicle_capacities'])
+#assert not np.allclose(parents[1][0]['vehicle_capacities'],parents[0][0]['vehicle_capacities']), print(parents[1][0]['vehicle_capacities'], '\n',parents[0][0]['vehicle_capacities'])

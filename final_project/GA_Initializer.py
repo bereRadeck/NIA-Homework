@@ -80,6 +80,7 @@ class PartiallyRandomInitializer(Initializer):
         :return: a population of size popsize
         """
 
+        dummy_v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
         population = [dict() for x in range(self.popsize)]
         for i in range(self.popsize):
 
@@ -92,9 +93,11 @@ class PartiallyRandomInitializer(Initializer):
             v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
 
+            assert len(dummy_v_c) == len(v_c)
+
             while len(c_d) < len(v_c):
                 c_d = np.append(c_d, 0)
-
+            assert len(c_d) == len(v_c)
             #population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
             population[i]['vehicle_capacities'] = v_c
             population[i]['customer_demands'] = c_d

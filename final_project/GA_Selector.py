@@ -22,6 +22,7 @@ class Roulette_Selector:
             probabilities = [((x/ fitnesses.sum())) for x in fitnesses]
             parent1, parent2 = np.random.choice(pop,size=2,replace=False, p=probabilities)
             parents.append((parent1,parent2))
+            assert len(parent1['vehicle_capacities']) == len(parent2['vehicle_capacities'])
 
         return parents
 
