@@ -62,10 +62,18 @@ class Ordered_Recombiner:
             
                 vehicle_capacities_a = parent_a['vehicle_capacities']
                 vehicle_capacities_b = parent_b['vehicle_capacities']
-
+                
+                v_c_single = []
+                for i in range(len(vehicle_capacities_a)-2):
+                    if not vehicle_capacities_a[i]==vehicle_capacities_a[i+1]:
+                        v_c_single.append(vehicle_capacities_a[i])
+                    if i == len(vehicle_capacities_a)-4:
+                        v_c_single.append(vehicle_capacities_a[i])                
+                
                 assert len(vehicle_capacities_a) == len(vehicle_capacities_b), 'ungleiche länge von v_c bei parents'
                 customer_demands_a = parent_a['customer_demands']
-                capacities_list = self.capacities_list        
+                capacities_list = self.capacities_list   
+                print("cap_list: ", self.capacities_list)
                 vehicle_capacities_a_swap = [] #array that keeps the cars of array car_a which are possible members of a swap
                 vehicle_capacities_b_swap = []
                 swapping = 0 #used to tell the array loop it should start shifting cars into the swap arrays until stop is hit
@@ -80,7 +88,6 @@ class Ordered_Recombiner:
                                 if np.random.uniform() < self.select_as_swap_start_prob: #and if set probability is hit => start swapping mode
                                     swapping = 1
                                     i += 1
-                                    #print("start swapping at ", i)
                                     swap_start = i
 
                     #if swapping mode is enabled =>
@@ -93,31 +100,37 @@ class Ordered_Recombiner:
                                 vehicle_capacities_b_swap.append(vehicle_capacities_b[i])
 
                             if not vehicle_capacities_a[i] == vehicle_capacities_a[i+1]: #copy each individual car inside the swapping-part of car_a into the swap array
+                                if customer_demands_a[i+1] == 0:
+                                    print("end swapping at ",i+1)
+                                    broke = 1
+                                    swap_end = i+1
+                                    break
                                 vehicle_capacities_a_swap.append(vehicle_capacities_a[i])
                                 if np.random.uniform() < self.select_as_swap_end_prob: #if end-probability is hit and car_a and car_b both end
                                     if not vehicle_capacities_b[i] == vehicle_capacities_b[i+1]:     
-                                        #print("end swapping at ",i)
+                                        print("end swapping at ",i+1)
                                         broke = 1
-                                        swap_end = i
+                                        swap_end = i+1
                                         break
 
                 if broke == 1: #if we did end the swapping-part before the end of the array => add cars from garage to car_a_swap array
-                    #print("vehicle_capacities_a: ",vehicle_capacities_a)
                     for j in range(len(vehicle_capacities_a)): #start at the end of the vehicle_capacities_a array
                         if not customer_demands_a[len(vehicle_capacities_a)-1-j] == 0: #if our demand is not 0 => end of garage => stop copying cars to vehicle_capacities_a_swap
                             break                    
                         elif not vehicle_capacities_a[len(vehicle_capacities_a)-1-j] == vehicle_capacities_a[len(vehicle_capacities_a)-1-(j+1)]: #copy each individual car from garage to the vehicle_capacities_a_swap array
                             vehicle_capacities_a_swap.append(vehicle_capacities_a[len(vehicle_capacities_a)-1-j])
 
-                #print("vehicle_capacities_a_swap: ", vehicle_capacities_a_swap)
-                #print("vehicle_capacities_b_swap: ", vehicle_capacities_b_swap)
-
                 #remove every car that is in vehicle_capacities_a_swap from vehicle_capacities_a
                 for car in vehicle_capacities_a_swap:
                     vehicle_capacities_a = [x for x in vehicle_capacities_a if x != car]
 
-                #print("vehicle_capacities_a: ", vehicle_capacities_a)
-
+                v_c_single = []
+                for i in range(len(vehicle_capacities_a)-2):
+                    if not vehicle_capacities_a[i]==vehicle_capacities_a[i+1]:
+                        v_c_single.append(vehicle_capacities_a[i])
+                    if i == len(vehicle_capacities_a)-4:
+                        v_c_single.append(vehicle_capacities_a[i])
+                        
                 vehicle_capacities_a_list = []
                 vehicle_capacities_b_swap_np = np.array(vehicle_capacities_b_swap)
                 vehicle_capacities_a_swap_np = np.array(vehicle_capacities_a_swap)
@@ -133,14 +146,18 @@ class Ordered_Recombiner:
                     for i, car in  enumerate(vehicle_capacities_b_swap_multi):
                         vehicle_capacities_a.insert(swap_start+i,car)
                     #exchange the old part of vehicle_capacities_a with the part from vehicle_capacities_b
-                    #print("vehicle_capacities_a after insert: ", vehicle_capacities_a)
 
+                    v_c_single = []
+                    for i in range(len(vehicle_capacities_a)-2):
+                        if not vehicle_capacities_a[i]==vehicle_capacities_a[i+1]:
+                            v_c_single.append(vehicle_capacities_a[i])
+                        if i == len(vehicle_capacities_a)-4:
+                                v_c_single.append(vehicle_capacities_a[i])
 
                     vehicle_capacities_a_sub_b_swap = []
                     for car in vehicle_capacities_a_swap:
                         if not car in vehicle_capacities_b_swap:
                             vehicle_capacities_a_sub_b_swap.append(car) #create a list which contains all elements that vehicle_capacities_a is still missing to be complete again
-
                     vehicle_capacities_a_swap_multi = []
                     for car in vehicle_capacities_a_sub_b_swap: #unfold them
 
@@ -149,12 +166,13 @@ class Ordered_Recombiner:
 
                     vehicle_capacities_a_list = list(vehicle_capacities_a)
                     for car in vehicle_capacities_a_swap_multi:
-                        vehicle_capacities_a_list.append(car) #add them to vehicle_capacities_a
+                        vehicle_capacities_a_list.append(car) #add them to vehicle_capacities_a                       
 
+                    new_individual = parent_a.copy()
+                    new_individual['vehicle_capacities'] = vehicle_capacities_a_list
+                    
 
-                new_individual = parent_a.copy()
-                new_individual['vehicle_capacities'] = vehicle_capacities_a_list
-                if not len(new_individual['vehicle_capacities']) == 0:
-                    offspring.append(new_individual)
+                    if not len(new_individual['vehicle_capacities']) == 0:
+                        offspring.append(new_individual)
         
         return offspring
