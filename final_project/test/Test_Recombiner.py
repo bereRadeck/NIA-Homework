@@ -14,16 +14,23 @@ selector = Roulette_Selector(offspringsize)
 initializer = PartiallyRandomInitializer(popsize,demands,capacities)
 pop = initializer.initialize()
 
+all_c = np.sum(capacities)
+print(all_c)
+
 for individual in pop:
     individual['fitness'] = np.random.randint(1,10)
 
+for p in pop:
+    assert len(p['vehicle_capacities']) == all_c
+
+
 parents = selector.select(pop)
-
 recombiner = Ordered_Recombiner(initializer.capacities)
-
 offspring = recombiner.recombine(parents)
 
-print(offspring)
+for o in offspring:
+    print(len(o['vehicle_capacities']))
+    assert len(o['vehicle_capacities']) == all_c
 #oder:
 #assert len(offspring) == offspringsize #(je nachdem ob wir zwei oder ein kind pro elternpaar machen)
 
