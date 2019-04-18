@@ -16,7 +16,7 @@ mutator = Mutator(initializer.capacities)
 mutated_offspring = mutator.mutate(offspring)
 
 
-assert mutated_offspring == offspringsize
+assert len(mutated_offspring) == offspringsize
 
 
 #check wether the shapes are the same
