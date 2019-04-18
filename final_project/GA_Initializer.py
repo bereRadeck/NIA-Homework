@@ -1,5 +1,7 @@
 import numpy as np
 from abc import ABC, abstractmethod
+from collections import Counter
+from copy import deepcopy
 
 
 class Initializer(ABC):
@@ -24,10 +26,15 @@ class Initializer(ABC):
         :return: vehicle_capacity array and its length
         """
         vehicle_capacity = []
-        for i, vehicle in enumerate(vehicles):
-            for c in range(capacities[i]):
-                vehicle_capacity.append(vehicle)
+        for i, value in enumerate(capacities):
+            for j in range(value):
+                vehicle_capacity.append(i)
+
+
+        #    for c in range(capacities[i]):
+        #        vehicle_capacity.append(vehicle)
         return np.array(vehicle_capacity)
+
 
 
     def generate_customer_demand(self, customers, demands):
@@ -81,18 +88,38 @@ class PartiallyRandomInitializer(Initializer):
         """
 
         dummy_v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
+        counter_0 = Counter(dummy_v_c)
+
         assert len(dummy_v_c) != 0
         population = [dict() for x in range(self.popsize)]
         for i in range(self.popsize):
 
-            mixed_up_vehicles = np.copy(self.vehicles)
+            mixed_up_vehicles = deepcopy(self.capacities)
             np.random.shuffle(mixed_up_vehicles)
-            mixed_up_customers = np.copy(self.customers)
+            mixed_up_customers = deepcopy(self.customers)
             np.random.shuffle(mixed_up_customers)
+
+            print(mixed_up_vehicles)
+            print(self.capacities)
+
+            assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
+            assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.capacities))
+
+            #assert not np.allclose(mixed_up_customers,self.customers)
+            #assert not np.allclose(mixed_up_vehicles, self.capacities)
+
+            assert len(mixed_up_customers) ==  len(self.customers)
+            assert len(mixed_up_vehicles) ==len(self.vehicles)
+
 
             #population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
+            print()
+
+            counter_1 = Counter(v_c)
+            for value in np.unique(self.vehicles):
+                assert counter_0[value] == counter_1[value]
 
             assert len(dummy_v_c) == len(v_c)
 

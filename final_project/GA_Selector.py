@@ -11,7 +11,6 @@ class Roulette_Selector:
 
     def __init__(self,offspring_size):
         self.offspring_size = offspring_size
-        print('I am the Roulette_Selector')
 
     def select(self,pop):
 
@@ -34,7 +33,6 @@ class Tournament_Selector:
     def __init__(self,offspring_size,opponent_number=2):
         self.offspring_size = offspring_size
         self.opponent_number = opponent_number
-        print('I am the Tournament_Selector')
 
     def select(self,pop):
         parents = []

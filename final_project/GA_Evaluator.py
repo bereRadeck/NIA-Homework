@@ -25,7 +25,6 @@ class Evaluator:
             c_d =  np.array(individual['customer_demands'])
             assert len(dummy_individual['vehicle_capacities']) == len(v_c)
             assert len(v_c) >= 1
-            print('v_c: {}c_d: {}'.format(len(v_c),len(c_d)))
             assert len(v_c) == len(c_d), 'v_c: {}c_d: {}'.format(len(v_c),len(c_d))
 
             costs =  []

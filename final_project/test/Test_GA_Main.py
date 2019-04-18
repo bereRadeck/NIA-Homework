@@ -31,6 +31,7 @@ mutate_probability = 0.1
 
 
 initializer = PartiallyRandomInitializer(popsize,demands,capacities)
+print('initializer.capacities',initializer.capacities)
 aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
 evaluator = Evaluator(trans_cost,dist_matrix,aco)
 selector = Roulette_Selector(offspring_size= 10)
