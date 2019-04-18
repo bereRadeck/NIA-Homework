@@ -33,7 +33,7 @@ mutate_probability = 0.1
 initializer = PartiallyRandomInitializer(popsize,demands,capacities)
 aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
 evaluator = Evaluator(trans_cost,dist_matrix,aco)
-selector = Tournament_Selector(offspring_size= 10)
+selector = Roulette_Selector(offspring_size= 10)
 recombiner = Ordered_Recombiner(initializer.capacities)
 mutator = Mutator(initializer.capacities)
 replacer = Replacer_All()

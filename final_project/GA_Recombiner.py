@@ -62,6 +62,8 @@ class Ordered_Recombiner:
             
                 vehicle_capacities_a = parent_a['vehicle_capacities']
                 vehicle_capacities_b = parent_b['vehicle_capacities']
+
+                assert len(vehicle_capacities_a) == len(vehicle_capacities_b), 'ungleiche länge von v_c bei parents'
                 customer_demands_a = parent_a['customer_demands']
                 capacities_list = self.capacities_list        
                 vehicle_capacities_a_swap = [] #array that keeps the cars of array car_a which are possible members of a swap

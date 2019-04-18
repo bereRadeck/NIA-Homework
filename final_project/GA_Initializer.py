@@ -81,6 +81,7 @@ class PartiallyRandomInitializer(Initializer):
         """
 
         dummy_v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
+        assert len(dummy_v_c) != 0
         population = [dict() for x in range(self.popsize)]
         for i in range(self.popsize):
 

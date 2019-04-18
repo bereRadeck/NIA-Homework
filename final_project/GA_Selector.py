@@ -11,14 +11,17 @@ class Roulette_Selector:
 
     def __init__(self,offspring_size):
         self.offspring_size = offspring_size
+        print('I am the Roulette_Selector')
 
     def select(self,pop):
 
         parents = []
 
-        for _ in range(self.offspring_size):
+        for i in range(self.offspring_size):
             fitnesses = np.array([individual['fitness'] for individual in pop])
-
+            for x in fitnesses:
+                if x == 0:
+                    print('!!!! Zero fitness in individual ',i)
             probabilities = [((x/ fitnesses.sum())) for x in fitnesses]
             parent1, parent2 = np.random.choice(pop,size=2,replace=False, p=probabilities)
             parents.append((parent1,parent2))
@@ -31,6 +34,7 @@ class Tournament_Selector:
     def __init__(self,offspring_size,opponent_number=2):
         self.offspring_size = offspring_size
         self.opponent_number = opponent_number
+        print('I am the Tournament_Selector')
 
     def select(self,pop):
         parents = []
