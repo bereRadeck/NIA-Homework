@@ -12,14 +12,15 @@ class Evaluator:
         self.aco = aco
 
 
-    def evaluate(self,pop):
+    def evaluate(self,pop,verbose=False):
         """
         evaluates each individual of a population, by finding the bests routes for the car-customer assignments with ACO and summing up the route-costs
         :param pop: the population
         :return: population with updated fitness values
         """
         dummy_individual = pop[0]
-
+        best_score = np.inf
+        all_scores = []
         for individual in pop:
             v_c =  np.array(individual['vehicle_capacities'])
             c_d =  np.array(individual['customer_demands'])
@@ -46,11 +47,19 @@ class Evaluator:
 
                 costs.append(route_costs)
 
-            assert np.sum(costs) != 0
-            individual['fitness'] = np.sum(costs)
+            fitness = np.sum(costs)
+            assert fitness != 0
+            individual['fitness'] = fitness
+            if fitness < best_score:
+                best_score = fitness
+            all_scores.append(fitness)
+            if verbose:
+                print('Evaluator: ')
+
+                print('     fitness: {}',format(fitness))
 
 
 
-        return pop
+        return pop, best_score, np.mean(all_scores)
 
 

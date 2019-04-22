@@ -30,7 +30,7 @@ class GA:
         while not self.terminator.terminates():
 
             # calculate the fitnesses of the individuals
-            pop = self.evaluator.evaluate(pop)
+            pop, best_score, mean_score = self.evaluator.evaluate(pop)
             # select parents based on their fitness
             parents = self.selector.select(pop)
             # recombine the  parents  to create offspring
@@ -40,9 +40,11 @@ class GA:
             mutated_offspring = self.mutator.mutate(new_offspring)
 
             # recalculate the fitness of the offspring
-            mutated_offspring = self.evaluator.evaluate(mutated_offspring)
+            mutated_offspring, best_score, mean_score = self.evaluator.evaluate(mutated_offspring)
             # replace the weak individuals with the offspring
             pop = self.replacer.replace(pop, mutated_offspring)
+            print('   -mean score: {}'.format(np.round(mean_score,2)))
+            print('   -best score: {}'.format(best_score))
 
 def __main__():
 

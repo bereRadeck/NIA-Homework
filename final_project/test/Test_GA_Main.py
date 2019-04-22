@@ -21,8 +21,8 @@ intensificator = Intensificator()
 
 
 
-popsize = 10
-demands = [10,20,10,14,30,20,10,30,30,30,20,20,20]
+popsize = 50
+demands = [10,10,20,10,14,30,20,10,30,30,30,20,20,20]
 capacities = [50,50,100,100]
 dist_matrix = np.ones((14,14))
 trans_cost = [2,3,4,5]
@@ -31,13 +31,12 @@ mutate_probability = 0.1
 
 
 initializer = PartiallyRandomInitializer(popsize,demands,capacities)
-print('initializer.capacities',initializer.capacities)
 aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
 evaluator = Evaluator(trans_cost,dist_matrix,aco)
-selector = Roulette_Selector(offspring_size= 10)
+selector = Roulette_Selector(offspring_size= 20)
 recombiner = Ordered_Recombiner(initializer.capacities)
 mutator = Mutator(initializer.capacities)
-replacer = Replacer_All()
+replacer = Replacer()
 terminator = Terminator(limit = 10)
 
 ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco)

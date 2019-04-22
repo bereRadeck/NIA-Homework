@@ -99,8 +99,6 @@ class PartiallyRandomInitializer(Initializer):
             mixed_up_customers = deepcopy(self.customers)
             np.random.shuffle(mixed_up_customers)
 
-            print(mixed_up_vehicles)
-            print(self.capacities)
 
             assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
             assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.capacities))
@@ -115,7 +113,7 @@ class PartiallyRandomInitializer(Initializer):
             #population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
-            print()
+
 
             counter_1 = Counter(v_c)
             for value in np.unique(self.vehicles):

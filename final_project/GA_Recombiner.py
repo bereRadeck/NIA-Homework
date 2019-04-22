@@ -24,9 +24,7 @@ class Simple_Recombiner:
             
             cr_point1 = rnd.choice(range(len(capacities1) - 1))
             cr_point2 = rnd.choice(range(len(capacities1) - cr_point1)) + cr_point1 + 1
-           # print(cr_point1,cr_point2)
             slice1 = capacities2[cr_point1:cr_point2]
-            #print(len(slice1))    
             for s in slice1:
                     
                 del capacities1[capacities1.index(s)]
@@ -73,7 +71,6 @@ class Ordered_Recombiner:
                 assert len(vehicle_capacities_a) == len(vehicle_capacities_b), 'ungleiche länge von v_c bei parents'
                 customer_demands_a = parent_a['customer_demands']
                 capacities_list = self.capacities_list   
-                print("cap_list: ", self.capacities_list)
                 vehicle_capacities_a_swap = [] #array that keeps the cars of array car_a which are possible members of a swap
                 vehicle_capacities_b_swap = []
                 swapping = 0 #used to tell the array loop it should start shifting cars into the swap arrays until stop is hit
@@ -101,14 +98,12 @@ class Ordered_Recombiner:
 
                             if not vehicle_capacities_a[i] == vehicle_capacities_a[i+1]: #copy each individual car inside the swapping-part of car_a into the swap array
                                 if customer_demands_a[i+1] == 0:
-                                    print("end swapping at ",i+1)
                                     broke = 1
                                     swap_end = i+1
                                     break
                                 vehicle_capacities_a_swap.append(vehicle_capacities_a[i])
                                 if np.random.uniform() < self.select_as_swap_end_prob: #if end-probability is hit and car_a and car_b both end
                                     if not vehicle_capacities_b[i] == vehicle_capacities_b[i+1]:     
-                                        print("end swapping at ",i+1)
                                         broke = 1
                                         swap_end = i+1
                                         break
