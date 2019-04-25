@@ -6,7 +6,7 @@ from copy import deepcopy
 
 class Initializer(ABC):
 
-    def __init__(self,popsize,demands,capacities):
+    def __init__(self,popsize,demands,capacities,aco):
         self.popsize = popsize
         self.customers = np.arange(1,len(demands)+1)
         self.demands = demands
@@ -14,6 +14,7 @@ class Initializer(ABC):
         self.capacities = capacities
         self.total_capacity = sum(capacities)
         self.total_demand = sum(demands)
+        self.aco = aco
 
 
     def generate_vehicle_capacity(self, vehicles, capacities):
@@ -80,7 +81,7 @@ class RandomInitializer(Initializer):
 
 class PartiallyRandomInitializer(Initializer):
 
-    def initialize(self):
+    def initialize(self, heuristic = False):
         """
         initializes randomly sorted vehicle_capacity arrays where
         each car-apperance stays together [car3,car3,car1,car2,car2,car2]
@@ -96,9 +97,16 @@ class PartiallyRandomInitializer(Initializer):
 
             mixed_up_vehicles = deepcopy(self.capacities)
             np.random.shuffle(mixed_up_vehicles)
-            mixed_up_customers = deepcopy(self.customers)
-            np.random.shuffle(mixed_up_customers)
 
+            mixed_up_customers = deepcopy(self.customers)
+
+            if heuristic == False:
+                np.random.shuffle(mixed_up_customers)
+            else:
+                best_solutions_scores, solutions_generations, evaluations_generations = self.aco.run(range(len(self.demands)),True)
+                print("Init:",solutions_generations[-1],evaluations_generations[-1][0],best_solutions_scores[-1])
+                print("",self.customers)
+                mixed_up_customers = solutions_generations[-1][0]
 
             assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
             assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.capacities))

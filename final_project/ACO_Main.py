@@ -46,7 +46,7 @@ class ACO:
         task_matrix = np.delete(task_matrix, customers_not_needed, axis=1)
         return task_matrix
 
-    def run(self,customers_to_visit):
+    def run(self,customers_to_visit,detailed_return = False):
 
         self.pheromone_matrix = self.initializer.initialize(customers_to_visit)
         self.task_matrix = self._cut_matrix(customers_to_visit)
@@ -71,11 +71,8 @@ class ACO:
             self.pheromone_matrix = self.evaporator.evaporate(self.pheromone_matrix)
             self.pheromone_matrix = self.intensificator.intensify(self.pheromone_matrix,solutions)
 
-        #return np.array(self.best_solutions_scores), np.array(self.solutions_generations), \
-               #np.array(self.evaluations_generations)
-        return self.best_solutions_scores[-1]
-
-
-
-
+        if (detailed_return):
+            return np.array(self.best_solutions_scores), np.array(self.solutions_generations), np.array(self.evaluations_generations)
+        else:
+            return self.best_solutions_scores[-1]
 
