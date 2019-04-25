@@ -1,6 +1,7 @@
 import random
 import numpy as np
 from copy import deepcopy
+from datetime import datetime
 
 
 
@@ -30,6 +31,8 @@ class Evaluator:
         dummy_individual = pop[0]
         best_score = np.inf
         all_scores = []
+
+        start = datetime.now()
         for individual in pop:
             if individual['fitness'] != 0:
                 continue
@@ -71,7 +74,8 @@ class Evaluator:
                     print('     fitness: {}',format(fitness))
 
 
-
+        stop = datetime.now()
+        print('\t Evaluating took: {} seconds'.format((stop-start).seconds))
         return pop, best_score, np.mean(all_scores)
 
 

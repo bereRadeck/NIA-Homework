@@ -1,9 +1,10 @@
 import numpy as np
+from os.path import join
 
 class Taskinitializer():
 
-    def initialize_task(self,folder = "VRP1"):
-        task = read_task(folder)
+    def initialize_task(self,PATH = "VRP1"):
+        task = read_task(PATH)
         return task
 
 def parsefile(filename):
@@ -20,11 +21,11 @@ def parsefile(filename):
 
     return file_array
 
-def read_task(folder):
-    distance_matrix = parsefile("Problem/"+ folder + "/distance.txt")
-    capacities = parsefile("Problem/"+ folder + "/capacity.txt")
-    transportation_costs = parsefile("Problem/"+ folder + "/transportation_cost.txt")
-    demands = parsefile("Problem/"+ folder + "/demand.txt")
+def read_task(PATH):
+    capacities = parsefile(join(PATH, "capacity.txt"))
+    distance_matrix = parsefile(join(PATH,"distance.txt"))
+    transportation_costs = parsefile(join(PATH,"transportation_cost.txt"))
+    demands = parsefile(join(PATH,"demand.txt"))
 
     """
     print(len(distance_matrix))

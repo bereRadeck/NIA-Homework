@@ -34,29 +34,37 @@ class GA:
         print('...done')
 
         # calculate the initial fitnesses of the individuals
+        print('calculate initial fitness-scores for each pop-individual with ACO ')
         pop, best_score, mean_score = self.evaluator.re_evaluate(pop)
 
         while not self.terminator.terminates():
 
 
             # select parents based on their fitness
+            print('\tselecting parents')
             parents = self.selector.select(pop)
+
             # recombine the  parents  to create offspring
+            print('\trecombine parents')
             new_offspring = self.recombiner.recombine(parents)
 
             # mutate the offspring
+            print('\tmutate offspring')
             mutated_offspring = self.mutator.mutate(new_offspring)
 
             # recalculate the fitness of the offspring
+            print('\tcalculate fitness of offspring')
             mutated_offspring, _, _ = self.evaluator.re_evaluate(mutated_offspring)
+
             # replace the weak individuals with the offspring
+            print('\treplace weak individuals with offspring')
             pop = self.replacer.replace(pop, mutated_offspring)
 
             best, worst, mean = self.evaluator.evaluate_statistics(pop)
 
-            print('   -mean score: {}'.format(np.round(mean,2)))
-            print('   -best score: {}'.format(best))
-            print('   -worst score: {}'.format(worst))
+            print('\t   -mean score: {}'.format(np.round(mean,2)))
+            print('\t   -best score: {}'.format(best))
+            print('\t   -worst score: {}'.format(worst))
 
 """
 def __main__():

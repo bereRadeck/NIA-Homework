@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="132e7de5-cf44-47d8-be3f-dd6e77e3ff93" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_project/GA_Evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Evaluator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/final_project/GA_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_project/GA_Taskinitializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Taskinitializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_project/test/test_TaskInitializer.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,15 +21,49 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+            <state relative-caret-position="255">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="287">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/final_project/test/test_TaskInitializer.py">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="674">
+              <caret line="125" column="39" lean-forward="true" selection-start-line="123" selection-start-column="12" selection-end-line="125" selection-end-column="39" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -52,10 +90,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+            <state relative-caret-position="675">
+              <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
               <folding>
                 <element signature="e#35#63#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,12 +170,14 @@
         <option value="$PROJECT_DIR$/final_project/GA_Selector.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Initializer.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Recombiner.py" />
-        <option value="$PROJECT_DIR$/final_project/GA_Evaluator.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Replacer.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_Replacer.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Evaluator.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Taskinitializer.py" />
         <option value="$PROJECT_DIR$/final_project/test/test_TaskInitializer.py" />
+        <option value="$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py" />
       </list>
     </option>
   </component>
@@ -167,6 +219,13 @@
               <item name="NIA-Homework" type="b2602c69:ProjectViewProjectNode" />
               <item name="NIA-Homework" type="462c0819:PsiDirectoryNode" />
               <item name="final_project" type="462c0819:PsiDirectoryNode" />
+              <item name="Problem" type="462c0819:PsiDirectoryNode" />
+              <item name="VRP1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NIA-Homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NIA-Homework" type="462c0819:PsiDirectoryNode" />
+              <item name="final_project" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -203,49 +262,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.Test_GA_Main">
-    <configuration name="Test_GA_Evaluator" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="NIA-Homework" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/final_project/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/final_project/test/Test_GA_Evaluator.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Test_GA_Initializer" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="NIA-Homework" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/final_project/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/final_project/test/Test_GA_Initializer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.Test_TaskInitializer">
     <configuration name="Test_GA_Main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="NIA-Homework" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -309,20 +326,56 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="Test_TaskInitializer" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="NIA-Homework" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/final_project/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in Test_TaskInitializer.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="NIA-Homework" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/final_project/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
-      <item itemvalue="Python.Test_GA_Evaluator" />
-      <item itemvalue="Python.Test_GA_Initializer" />
       <item itemvalue="Python.Test_GA_Main" />
       <item itemvalue="Python.Test_Recombiner" />
       <item itemvalue="Python.Test_Replacer" />
+      <item itemvalue="Python tests.pytest in Test_TaskInitializer.py" />
+      <item itemvalue="Python.Test_TaskInitializer" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.Test_TaskInitializer" />
         <item itemvalue="Python.Test_GA_Main" />
+        <item itemvalue="Python tests.pytest in Test_TaskInitializer.py" />
         <item itemvalue="Python.Test_Replacer" />
         <item itemvalue="Python.Test_Recombiner" />
-        <item itemvalue="Python.Test_GA_Evaluator" />
-        <item itemvalue="Python.Test_GA_Initializer" />
       </list>
     </recent_temporary>
   </component>
@@ -339,22 +392,54 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 14m 59s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 25m 19s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 25m 43s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 25m 53s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 26m 25s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 27m 54s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 29m 55s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 30m 11s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 30m 38s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+    <history-entry file="pytest_in_test_TaskInitializer_py - 2019.04.25 at 15h 30m 51s.xml">
+      <configuration name="pytest in test_TaskInitializer.py" configurationId="tests" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18176857" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18176857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36391437" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.36391437" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19186653" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.19164118" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960477" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.30988786" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -362,7 +447,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15720524" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18176857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -372,8 +457,8 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2640163" />
-      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.19164118" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960477" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.30988786" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -497,9 +582,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/final_project/GA_Simple_Mutator.py" />
     <entry file="file://$PROJECT_DIR$/final_project/ACO_Experiments.ipynb">
       <provider selected="true" editor-type-id="text-editor" />
@@ -603,16 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/final_project/ACO_Initializer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -626,16 +698,6 @@
           <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -689,23 +751,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        <state relative-caret-position="675">
+          <caret line="66" column="21" selection-start-line="66" selection-start-column="21" selection-end-line="66" selection-end-column="21" />
           <folding>
             <element signature="e#35#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        <state relative-caret-position="591">
+          <caret line="77" column="74" selection-start-line="77" selection-start-column="74" selection-end-line="77" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/test/test_TaskInitializer.py">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="125" column="39" lean-forward="true" selection-start-line="123" selection-start-column="12" selection-end-line="125" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
