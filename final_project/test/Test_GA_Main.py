@@ -1,5 +1,6 @@
 from GA_Main import *
 
+from GA_Taskinitializer import *
 from GA_Initializer import *
 from GA_Evaluator import *
 from GA_Selector import *
