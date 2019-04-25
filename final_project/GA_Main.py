@@ -30,7 +30,7 @@ class GA:
 
     def run(self):
         print('initializing population')
-        pop = self.initializer.initialize()
+        pop = self.initializer.initialize(True)
         print('...done')
 
         # calculate the initial fitnesses of the individuals
@@ -70,7 +70,10 @@ class GA:
 def __main__():
     print("Main")
 
-    aco_iterations = 1
+    aco_iterations = 10
+    
+    #GA
+    popsize = 12
 
     taskinitializer = Taskinitializer()
     distance_matrix, capacities, transportation_costs, demands = taskinitializer.initialize_task()
@@ -81,13 +84,13 @@ def __main__():
     aco_intensificator = Intensificator()
     aco = ACO(distance_matrix, aco_initializer, aco_solutiongenerator, aco_evaporator, aco_intensificator, aco_iterations, True)
 
-    initializer = PartiallyRandomInitializer(2, demands, capacities)
+    initializer = PartiallyRandomInitializer(popsize, demands, capacities, aco)
     evaluator = Evaluator(transportation_costs, distance_matrix, aco)
-    selector = Tournament_Selector(offspring_size= 2)
+    selector = Tournament_Selector(offspring_size= 6)
     recombiner = Ordered_Recombiner(initializer.capacities) #TODO capacities für verschiedene Dinge benutzt
     mutator = Mutator(initializer.capacities)
     replacer = Replacer_All()
-    terminator = Terminator(limit = 10)
+    terminator = Terminator(limit = 100)
 
     ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco)
     ga.run()
