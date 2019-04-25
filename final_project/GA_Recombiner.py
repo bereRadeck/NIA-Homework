@@ -30,6 +30,8 @@ class Simple_Recombiner:
                 del capacities1[capacities1.index(s)]
             for s in slice1:
                 capacities1.insert(cr_point1, s)
+            new1['fitness'] = 0
+
             offspring.append(new1)
 
         return offspring
@@ -168,6 +170,7 @@ class Ordered_Recombiner:
                     
 
                     if not len(new_individual['vehicle_capacities']) == 0:
+                        new_individual['fitness']=0
                         offspring.append(new_individual)
         
         return offspring
