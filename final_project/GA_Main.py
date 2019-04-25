@@ -1,4 +1,5 @@
 
+from GA_Taskinitializer import *
 from GA_Initializer import *
 from GA_Evaluator import *
 from GA_Selector import *
@@ -6,7 +7,12 @@ from GA_Recombiner import *
 from GA_Mutator import *
 from GA_Replacer import *
 from GA_Terminator import *
+
 from ACO_Main import ACO
+from ACO_Initializer import ACO_Initializer
+from ACO_SolutionGenerator import SolutionGenerator
+from ACO_Evaporator import Evaporator
+from ACO_Intensificator import Intensificator
 
 
 class GA:
@@ -47,17 +53,30 @@ class GA:
             print('   -best score: {}'.format(best_score))
 
 def __main__():
+    print("Main")
 
-    aco = ACO()
-    initializer = PartiallyRandomInitializer()
-    evaluator = Evaluator(aco)
-    selector = Tournament_Selector(offspring_size= 10)
-    recombiner = Ordered_Recombiner(initializer.capacities)
+    aco_iterations = 1
+
+    taskinitializer = Taskinitializer()
+    distance_matrix, capacities, transportation_costs, demands = taskinitializer.initialize_task()
+
+    aco_initializer = ACO_Initializer()
+    aco_solutiongenerator = SolutionGenerator()
+    aco_evaporator = Evaporator()
+    aco_intensificator = Intensificator()
+    aco = ACO(distance_matrix, aco_initializer, aco_solutiongenerator, aco_evaporator, aco_intensificator, aco_iterations, True)
+
+    initializer = PartiallyRandomInitializer(2, demands, capacities)
+    evaluator = Evaluator(transportation_costs, distance_matrix, aco)
+    selector = Tournament_Selector(offspring_size= 2)
+    recombiner = Ordered_Recombiner(initializer.capacities) #TODO capacities für verschiedene Dinge benutzt
     mutator = Mutator(initializer.capacities)
     replacer = Replacer_All()
     terminator = Terminator(limit = 10)
 
     ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco)
     ga.run()
+
+__main__()
   
 
