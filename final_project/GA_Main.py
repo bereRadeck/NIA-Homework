@@ -1,5 +1,5 @@
 
-from GA_Taskinitializer import *
+#from GA_Taskinitializer import *
 from GA_Initializer import *
 from GA_Evaluator import *
 from GA_Selector import *
@@ -33,10 +33,12 @@ class GA:
         pop = self.initializer.initialize(True)
         print('...done')
 
+        # calculate the initial fitnesses of the individuals
+        pop, best_score, mean_score = self.evaluator.re_evaluate(pop)
+
         while not self.terminator.terminates():
 
-            # calculate the fitnesses of the individuals
-            pop, best_score, mean_score = self.evaluator.evaluate(pop)
+
             # select parents based on their fitness
             parents = self.selector.select(pop)
             # recombine the  parents  to create offspring
@@ -46,12 +48,17 @@ class GA:
             mutated_offspring = self.mutator.mutate(new_offspring)
 
             # recalculate the fitness of the offspring
-            mutated_offspring, best_score, mean_score = self.evaluator.evaluate(mutated_offspring)
+            mutated_offspring, _, _ = self.evaluator.re_evaluate(mutated_offspring)
             # replace the weak individuals with the offspring
             pop = self.replacer.replace(pop, mutated_offspring)
-            print('   -mean score: {}'.format(np.round(mean_score,2)))
-            print('   -best score: {}'.format(best_score))
 
+            best, worst, mean = self.evaluator.evaluate_statistics(pop)
+
+            print('   -mean score: {}'.format(np.round(mean,2)))
+            print('   -best score: {}'.format(best))
+            print('   -worst score: {}'.format(worst))
+
+"""
 def __main__():
     print("Main")
 
@@ -80,6 +87,6 @@ def __main__():
     ga = GA(initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco)
     ga.run()
 
-__main__()
+#__main__()"""
   
 

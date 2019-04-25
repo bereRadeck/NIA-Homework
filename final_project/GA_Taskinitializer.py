@@ -36,5 +36,5 @@ def read_task(folder):
     return distance_matrix, capacities, transportation_costs, demands
 
 
-t = Taskinitializer().initialize_task()
+#t = Taskinitializer().initialize_task()
 

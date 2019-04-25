@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="132e7de5-cf44-47d8-be3f-dd6e77e3ff93" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/final_project/test/Test_Replacer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_project/GA_Evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Evaluator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_project/GA_Initializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Initializer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/final_project/GA_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_project/GA_Recombiner.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Recombiner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/final_project/GA_Replacer.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Replacer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,13 +14,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+            <state relative-caret-position="30">
+              <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/final_project/test/test_TaskInitializer.py">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -52,10 +52,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
-              <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-end-line="45" />
+            <state relative-caret-position="15">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
               <folding>
-                <element signature="e#1#29#0" expanded="true" />
+                <element signature="e#35#63#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -121,10 +121,11 @@
         <option value="$PROJECT_DIR$/final_project/GA_Initializer.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Recombiner.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Evaluator.py" />
-        <option value="$PROJECT_DIR$/final_project/GA_Main.py" />
-        <option value="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Replacer.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_Replacer.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/test/test_TaskInitializer.py" />
       </list>
     </option>
   </component>
@@ -309,10 +310,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.Test_GA_Main" />
       <item itemvalue="Python.Test_GA_Evaluator" />
-      <item itemvalue="Python.Test_Recombiner" />
       <item itemvalue="Python.Test_GA_Initializer" />
+      <item itemvalue="Python.Test_GA_Main" />
+      <item itemvalue="Python.Test_Recombiner" />
       <item itemvalue="Python.Test_Replacer" />
     </list>
     <recent_temporary>
@@ -340,18 +341,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-4" width="1857" height="1085" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15720524" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18176857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36391437" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36391437" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959225" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.2640163" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.19186653" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960477" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.30988786" />
@@ -380,7 +382,6 @@
     </layout-to-restore>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ex3/TSPs/Taskinitializer.py" />
     <entry file="file://$PROJECT_DIR$/ex3/Experiments.ipynb" />
     <entry file="file://$PROJECT_DIR$/ex3/aco.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -669,16 +670,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="44" column="36" lean-forward="true" selection-start-line="44" selection-end-line="45" />
-          <folding>
-            <element signature="e#1#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/final_project/test/Test_Replacer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -696,12 +687,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="29" column="24" lean-forward="true" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        <state relative-caret-position="15">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+          <folding>
+            <element signature="e#35#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/test/test_TaskInitializer.py">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
