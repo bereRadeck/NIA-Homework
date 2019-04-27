@@ -20,9 +20,22 @@ class Evaluator:
         worst_score = np.max(fitnesses)
         return best_score,worst_score,mean_score
 
+    def evaluate_simple(self,pop):
+        for individual in pop:
+            v_c = np.array(individual['vehicle_capacities'])
+            c_d = np.array(individual['customer_demands'])
+            costs = 0
+            for vehicle in np.unique(v_c):
+                customers_to_visit = np.unique(c_d[v_c == vehicle])
+                customers_to_visit = np.append(customers_to_visit,0)
+                cost = np.array(self.dist_matrix)[customers_to_visit[:-1],customers_to_visit[1:]].sum()
+                costs += cost
+            individual['fitness'] = costs
+
+        return pop
 
 
-    def re_evaluate(self,pop,verbose=False):
+    def evaluate_with_aco(self,pop,verbose=False):
         """
         evaluates each individual of a population, by finding the bests routes for the car-customer assignments with ACO and summing up the route-costs
         :param pop: the population
