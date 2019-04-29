@@ -93,34 +93,44 @@ class PartiallyRandomInitializer(Initializer):
 
         assert len(dummy_v_c) != 0
         population = [dict() for x in range(self.popsize)]
+
+
+        #only one order of customer demands for all individuals
+        mixed_up_customers = deepcopy(self.customers)
+
+        if heuristic == False:
+            np.random.shuffle(mixed_up_customers)
+        else:
+            best_solutions_scores, solutions_generations, evaluations_generations = self.aco.run(range(1,len(self.demands)+1),True) #TODO start from depot?
+
+            best_solution =  [customer_n+1 for customer_n in solutions_generations[-1]]#TODO Maybe last is not best
+            print("Init:",best_solution,evaluations_generations[-1][0],best_solutions_scores[-1])
+            print("",self.customers)
+            mixed_up_customers = best_solution
+
+        assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
+        assert len(mixed_up_customers) ==  len(self.customers)
+
+        c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
+
+
+
         for i in range(self.popsize):
 
             mixed_up_vehicles = deepcopy(self.capacities)
             np.random.shuffle(mixed_up_vehicles)
 
-            mixed_up_customers = deepcopy(self.customers)
 
-            if heuristic == False:
-                np.random.shuffle(mixed_up_customers)
-            else:
-                best_solutions_scores, solutions_generations, evaluations_generations = self.aco.run(range(len(self.demands)),True)
-                print("Init:",solutions_generations[-1],evaluations_generations[-1][0],best_solutions_scores[-1])
-                print("",self.customers)
-                mixed_up_customers = solutions_generations[-1][0]
-
-            assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
             assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.capacities))
 
             #assert not np.allclose(mixed_up_customers,self.customers)
             #assert not np.allclose(mixed_up_vehicles, self.capacities)
 
-            assert len(mixed_up_customers) ==  len(self.customers)
             assert len(mixed_up_vehicles) ==len(self.vehicles)
 
 
             #population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
             v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
-            c_d = self.generate_customer_demand(mixed_up_customers,self.demands)
 
 
             counter_1 = Counter(v_c)

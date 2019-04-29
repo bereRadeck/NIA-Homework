@@ -35,7 +35,7 @@ class GA:
 
         # calculate the initial fitnesses of the individuals
         print('calculate initial fitness-scores for each pop-individual with ACO ')
-        pop, best_score, mean_score = self.evaluator.evaluate(pop)
+        pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
 
         iter_count = 0
 
@@ -57,7 +57,7 @@ class GA:
 
             # recalculate the fitness of the offspring
             print('\tcalculate fitness of offspring')
-            mutated_offspring, _, _ = self.evaluator.evaluate(mutated_offspring)
+            mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
 
             # replace the weak individuals with the offspring
             print('\treplace weak individuals with offspring')
