@@ -38,7 +38,7 @@ task_initializer = Taskinitializer()
 
 
 
-popsize = 10
+popsize = 200
 #demands = [10,10,20,10,14,30,20,10,30,30,30,20,20,20]
 
 #capacities = [50,50,100,100]
@@ -56,11 +56,11 @@ aco = ACO(dist_matrix,aco_initializer,aco_solutiongenerator,aco_evaporator,aco_i
 
 initializer = PartiallyRandomInitializer(popsize,demands,capacities,aco)
 evaluator = Evaluator(trans_cost,dist_matrix,aco)
-selector = Roulette_Selector(offspring_size= 5)
+selector = Roulette_Selector(offspring_size= 50)
 recombiner = Ordered_Recombiner(initializer.capacities)
 mutator = Mutator(initializer.capacities)
 replacer = Replacer()
-terminator = Terminator(limit = 5)
+terminator = Terminator(limit = 50)
 n = 2
 
 

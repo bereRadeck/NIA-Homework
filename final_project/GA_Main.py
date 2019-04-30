@@ -34,11 +34,20 @@ class GA:
         pop = self.initializer.initialize()#True)
         print('...done')
 
+
         # calculate the initial fitnesses of the individuals
-        print('calculate initial fitness-scores for each pop-individual with ACO ')
-        pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
-        print('\t initial best score: ',best_score)
-        print('\t initial mean score: ', mean_score)
+        #print('calculate initial fitness-scores for each pop-individual with ACO ')
+        #pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
+        #print('\t initial best score: ',best_score)
+        #print('\t initial mean score: ', mean_score)
+        print('calculate initial fitness-scores for each pop-individual with Greedy ')
+        pop = self.evaluator.evaluate_greedy(pop)
+        best, worst, mean = self.evaluator.evaluate_statistics(pop)
+
+        print('\t   -initial mean score: {}'.format(np.round(mean, 2)))
+        print('\t   -initial best score: {}'.format(best))
+        print('\t   -initial worst score: {}'.format(worst))
+
 
         iter_count = 0
 
@@ -81,7 +90,7 @@ class GA:
             print('\treplace weak individuals with offspring')
             pop = self.replacer.replace(pop, mutated_offspring)
             #if iter_count % self.n == 0:
-            pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
+            #pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
             best, worst, mean = self.evaluator.evaluate_statistics(pop)
 
             print('\t   -mean score: {}'.format(np.round(mean, 2)))

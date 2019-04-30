@@ -41,23 +41,31 @@ class Evaluator:
             c_d = np.array(individual['customer_demands'])
             costs = 0
             for vehicle in np.unique(v_c):
-                customers_to_visit = np.unique(c_d[v_c == vehicle])
-                if not 0 in customers_to_visit:
-                    customers_to_visit =  np.append(0,customers_to_visit)
+                customers_to_visit = np.sort(np.unique(c_d[v_c == vehicle]))
 
-                if len(customers_to_visit) >= 2:
-                    route = self.find_route_greedy(customers_to_visit,0,[0])
+                if len(customers_to_visit) == 0:
+                    costs += 0
 
                 else:
-                    route = np.append(customers_to_visit,0)
 
-                assert (customers_to_visit[0] == 0) & (customers_to_visit[-1] == 0)
-                cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
-                costs += cost
+                    if not 0 in customers_to_visit:
+                        customers_to_visit =  np.append(0,customers_to_visit)
+
+                    if len(customers_to_visit) > 2:
+                        route = self.find_route_greedy(customers_to_visit,0,[0])
+
+                    else:
+                        route = np.append(customers_to_visit,0)
+
+                    assert (route[0] == 0) & (route[-1] == 0)
+                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
+                    costs += cost
+            assert costs
             individual['fitness'] = costs
+        return pop
 
 
-    def find_route_greedy(self, customers_to_visit: object, current_stop: object = 0, results: object = []) -> object:
+    def find_route_greedy(self, customers_to_visit: object, current_stop: object = 0, route: object = []) -> object:
 
         dist_matrix = deepcopy(np.array(self.dist_matrix))
 
@@ -67,13 +75,15 @@ class Evaluator:
         choice = dist_matrix[current_stop,np.array(customers_to_visit)]
 
         next_stop = np.where(dist_matrix[current_stop,:] == np.min(choice))[0][0]
-        results.append(next_stop)
+
+        route.append(next_stop)
 
         if len(customers_to_visit) == 1:
-            results.append(0)
-            return results
+            route.append(0)
+            return route
+
         else:
-            return self.find_route_greedy(customers_to_visit,next_stop,results)
+            return self.find_route_greedy(customers_to_visit,next_stop,route)
 
 
 

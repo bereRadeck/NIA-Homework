@@ -15,7 +15,7 @@ class Initializer(ABC):
         self.total_demand = sum(demands)
         self.aco = aco
 
-    def generate_vehicle_capacity(self, vehicles, capacities):
+    def generate_vehicle_capacity(self,vehicles):
         """
         generates a array out of the vehicle- and capacitiy-array
         where each vehicle appears as many times as its capacities big is
@@ -25,12 +25,11 @@ class Initializer(ABC):
         :return: vehicle_capacity array and its length
         """
         vehicle_capacity = []
-        for i, value in enumerate(capacities):
-            for j in range(value):
-                vehicle_capacity.append(i)
 
-        #    for c in range(capacities[i]):
-        #        vehicle_capacity.append(vehicle)
+        for vehicle in vehicles:
+            for j in range(self.capacities[vehicle]):
+                vehicle_capacity.append(vehicle)
+
         return np.array(vehicle_capacity)
 
     def generate_customer_demand(self, customers, demands):
@@ -43,7 +42,7 @@ class Initializer(ABC):
 
         customer_demand = []
         for i, customer in enumerate(customers):
-            for d in range(demands[customer-1]):
+            for d in range(demands[i]):
                 customer_demand.append(customer)
         return np.array(customer_demand)
 
@@ -94,7 +93,7 @@ class PartiallyRandomInitializer(Initializer):
         :return: a population of size popsize
         """
 
-        dummy_v_c = self.generate_vehicle_capacity(self.vehicles, self.capacities)
+        dummy_v_c = self.generate_vehicle_capacity(self.vehicles)
         counter_0 = Counter(dummy_v_c)
 
         assert len(dummy_v_c) != 0
@@ -121,10 +120,10 @@ class PartiallyRandomInitializer(Initializer):
 
         for i in range(self.popsize):
 
-            mixed_up_vehicles = deepcopy(self.capacities)
+            mixed_up_vehicles = deepcopy(self.vehicles)
             np.random.shuffle(mixed_up_vehicles)
 
-            assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.capacities))
+            assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.vehicles))
 
             # assert not np.allclose(mixed_up_customers,self.customers)
             # assert not np.allclose(mixed_up_vehicles, self.capacities)
@@ -132,7 +131,7 @@ class PartiallyRandomInitializer(Initializer):
             assert len(mixed_up_vehicles) == len(self.vehicles)
 
             # population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
-            v_c = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            v_c = self.generate_vehicle_capacity(mixed_up_vehicles)
 
             counter_1 = Counter(v_c)
             for value in np.unique(self.vehicles):
