@@ -183,13 +183,5 @@ class GreedyInitializer(Initializer):
 
         population = [dict() for x in range(self.popsize)]
 
-        sort_array = np.arange(0, self.total_capacity)
-        for i in range(self.popsize):
-            np.random.shuffle(sort_array)
-            population[i]['vehicle_capacities'] = v_c[sort_array]
-            population[i]['customer_demands'] = c_d
-            # population[i]['capacities_list'] = self.capacities
-            population[i]['fitness'] = 0
-
         return population
 
