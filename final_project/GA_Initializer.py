@@ -154,7 +154,7 @@ class PartiallyRandomInitializer(Initializer):
 
 class GreedyInitializer(Initializer):
 
-    def initialize(self):
+    def initialize(self,distance_matrix):
         """
         initializes totally randomly sorted vehicle_capacity arrays
         where car apperances could be apart [car3,car2,car2,car1,car2,car3]
@@ -163,15 +163,15 @@ class GreedyInitializer(Initializer):
 
         customers = []
         pos = 0
-        for x in range(1, len(self.distance_matrix)):
+        for x in range(1, len(distance_matrix)):
             customers.append(pos)
             ind = pos
             # print(pos == ind, ind in customers2, pos in customers2, ind, pos)
-            dm_copy = deepcopy(self.distance_matrix)
+            dm_copy = deepcopy(distance_matrix)
             while pos in customers:
                 pos = np.argmin(dm_copy[ind])
                 dm_copy[ind][pos] = np.amax(dm_copy)
-        for x in range(1, len(self.distance_matrix)):
+        for x in range(1, len(distance_matrix)):
             if x not in customers:
                 customers.append(x)
 
