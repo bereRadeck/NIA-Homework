@@ -50,16 +50,16 @@ mutate_probability = 0.1
 
 
 
-aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
+#aco = ACO(dist_matrix,aco_initializer,solutiongenerator,evaporator,intensificator,aco_iterations,True)
 
-#aco = ACO(dist_matrix,aco_initializer,aco_solutiongenerator,aco_evaporator,aco_intensificator,aco_iterations,True)
+aco = ACO(dist_matrix,aco_initializer,aco_solutiongenerator,aco_evaporator,aco_intensificator,aco_iterations,True)
 
 initializer = PartiallyRandomInitializer(popsize,demands,capacities,aco)
 evaluator = Evaluator(trans_cost,dist_matrix,aco)
 selector = Roulette_Selector(offspring_size= 5)
 recombiner = Ordered_Recombiner(initializer.capacities)
 mutator = Mutator(initializer.capacities)
-replacer = Replacer_All()
+replacer = Replacer()
 terminator = Terminator(limit = 5)
 n = 2
 

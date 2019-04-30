@@ -56,7 +56,7 @@ class GA:
             print('\tmutate offspring')
             mutated_offspring = self.mutator.mutate(new_offspring)
 
-<<<<<<< HEAD
+
             if iter_count % self.n == 0:
 
                 # recalculate the fitness of the offspring
@@ -68,11 +68,11 @@ class GA:
             else:
                 print('\tcalculate fitness of offspring (simple)')
                 mutated_offspring = self.evaluator.evaluate_simple(mutated_offspring)
-=======
+
             # recalculate the fitness of the offspring
-            print('\tcalculate fitness of offspring')
-            mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
->>>>>>> 206a6f7646b0216229f06f5b8fc7aef45da76539
+            #print('\tcalculate fitness of offspring')
+            #mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
+
 
             # replace the weak individuals with the offspring
             print('\treplace weak individuals with offspring')
