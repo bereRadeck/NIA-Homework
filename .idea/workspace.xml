@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="132e7de5-cf44-47d8-be3f-dd6e77e3ff93" name="Default" comment="" />
+    <list default="true" id="132e7de5-cf44-47d8-be3f-dd6e77e3ff93" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/final_project/GA_Evaluator.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Evaluator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_project/GA_Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/final_project/GA_Main.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,10 +13,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1031">
+            <state relative-caret-position="623">
               <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
@@ -25,7 +28,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
+            <state relative-caret-position="504">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -37,8 +40,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="666">
-              <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+            <state relative-caret-position="288">
+              <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
               <folding>
                 <element signature="e#35#63#0" expanded="true" />
               </folding>
@@ -46,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="341">
+              <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -59,10 +62,19 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/final_project/ACO_Initializer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="-1967">
+              <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -73,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Evaluator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
+            <state relative-caret-position="1404">
               <caret line="88" selection-start-line="88" selection-end-line="94" selection-end-column="18" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
@@ -85,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GAEvaluator_Greedy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="682">
-              <caret line="49" column="32" lean-forward="true" selection-start-line="45" selection-end-line="49" selection-end-column="32" />
+            <state relative-caret-position="684">
+              <caret line="49" column="32" selection-start-line="45" selection-end-line="49" selection-end-column="32" />
               <folding>
                 <element signature="e#0#40#0" expanded="true" />
               </folding>
@@ -97,7 +109,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Initializer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="718">
+            <state relative-caret-position="1206">
               <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -162,7 +174,6 @@
         <option value="$PROJECT_DIR$/final_project/test/Test_GA_Initializer.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_Recombiner.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Selector.py" />
-        <option value="$PROJECT_DIR$/final_project/GA_Initializer.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Recombiner.py" />
         <option value="$PROJECT_DIR$/final_project/GA_Replacer.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_Replacer.py" />
@@ -171,17 +182,18 @@
         <option value="$PROJECT_DIR$/final_project/test/Test_TaskInitializer.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_GA_Evaluator.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_GAEvaluator_Greedy.py" />
-        <option value="$PROJECT_DIR$/final_project/GA_Evaluator.py" />
-        <option value="$PROJECT_DIR$/final_project/GA_Main.py" />
         <option value="$PROJECT_DIR$/final_project/test/Test_GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Initializer.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Main.py" />
+        <option value="$PROJECT_DIR$/final_project/GA_Evaluator.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1985" />
-    <option name="y" value="-4" />
-    <option name="width" value="2495" />
-    <option name="height" value="1444" />
+    <option name="x" value="296" />
+    <option name="y" value="156" />
+    <option name="width" value="1393" />
+    <option name="height" value="792" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -362,8 +374,8 @@
       <item itemvalue="Python.Test_GA_Evaluator" />
       <item itemvalue="Python.Test_GA_Main" />
       <item itemvalue="Python.Test_TaskInitializer" />
-      <item itemvalue="Python tests.pytest in Test_TaskInitializer.py" />
       <item itemvalue="Python.Test_GAEvaluator_Greedy" />
+      <item itemvalue="Python tests.pytest in Test_TaskInitializer.py" />
     </list>
     <recent_temporary>
       <list>
@@ -421,47 +433,36 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1985" y="-4" width="2495" height="1444" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.13470873" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13427947" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.36390755" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.398956" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.39041793" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3985729" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.20581655" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.19979613" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960477" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.30947053" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13470873" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36390755" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.398956" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.20581655" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32960477" />
-      <window_info anchor="bottom" id="Python Console" order="10" weight="0.30947053" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-    </layout-to-restore>
   </component>
   <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>len(choice) == 0</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
     <expressions id="evaluateExpression">
       <expression>
         <expression-string>dist_matrix[0,np.array([2,4,5])]</expression-string>
@@ -713,13 +714,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/ACO_Initializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Selector.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -767,39 +761,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Initializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="718">
-          <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Evaluator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
+        <state relative-caret-position="1404">
           <caret line="88" selection-start-line="88" selection-end-line="94" selection-end-column="18" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
@@ -809,40 +773,77 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/final_project/test/Test_GAEvaluator_Greedy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="682">
-          <caret line="49" column="32" lean-forward="true" selection-start-line="45" selection-end-line="49" selection-end-column="32" />
+        <state relative-caret-position="684">
+          <caret line="49" column="32" selection-start-line="45" selection-end-line="49" selection-end-column="32" />
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
+    <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Initializer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="1206">
+          <caret line="69" column="1" selection-start-line="69" selection-start-column="1" selection-end-line="69" selection-end-column="1" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#42#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Initializer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="73" column="13" selection-start-line="73" selection-start-column="13" selection-end-line="73" selection-end-column="13" />
+        <state relative-caret-position="-1967">
+          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
           <folding>
-            <element signature="e#35#63#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/final_project/test/Test_GA_Main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
+        <state relative-caret-position="623">
           <caret line="61" column="19" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/ACO_Initializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Taskinitializer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="40" column="51" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+          <folding>
+            <element signature="e#35#63#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/final_project/GA_Evaluator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="53" column="43" selection-start-line="53" selection-start-column="43" selection-end-line="53" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

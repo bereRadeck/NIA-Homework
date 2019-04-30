@@ -42,16 +42,30 @@ class Evaluator:
             costs = 0
             for vehicle in np.unique(v_c):
                 customers_to_visit = np.unique(c_d[v_c == vehicle])
-                route = self.find_route_greedy(customers_to_visit,0)
+                if not 0 in customers_to_visit:
+                    customers_to_visit =  np.append(0,customers_to_visit)
+
+                if len(customers_to_visit) >= 2:
+                    route = self.find_route_greedy(customers_to_visit,0,[0])
+
+                else:
+                    route = np.append(customers_to_visit,0)
+
+                assert (customers_to_visit[0] == 0) & (customers_to_visit[-1] == 0)
                 cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
                 costs += cost
             individual['fitness'] = costs
 
 
     def find_route_greedy(self, customers_to_visit: object, current_stop: object = 0, results: object = []) -> object:
+
         dist_matrix = deepcopy(np.array(self.dist_matrix))
+
+
         customers_to_visit = customers_to_visit[customers_to_visit != current_stop]
+
         choice = dist_matrix[current_stop,np.array(customers_to_visit)]
+
         next_stop = np.where(dist_matrix[current_stop,:] == np.min(choice))[0][0]
         results.append(next_stop)
 

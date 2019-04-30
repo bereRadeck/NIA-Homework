@@ -37,6 +37,8 @@ class GA:
         # calculate the initial fitnesses of the individuals
         print('calculate initial fitness-scores for each pop-individual with ACO ')
         pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
+        print('\t initial best score: ',best_score)
+        print('\t initial mean score: ', mean_score)
 
         iter_count = 0
 
@@ -57,18 +59,18 @@ class GA:
             mutated_offspring = self.mutator.mutate(new_offspring)
 
 
-            if iter_count % self.n == 0:
+            #if iter_count % self.n == 0:
 
                 # recalculate the fitness of the offspring
-                print('\tcalculate fitness of offspring (with ACO)')
-                mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
+                #print('\tcalculate fitness of offspring (with ACO)')
+                #mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
 
 
 
-            else:
-                print('\tcalculate fitness of offspring (simple)')
-                mutated_offspring = self.evaluator.evaluate_greedy(mutated_offspring)
-                pop = self.evaluator.evaluate_greedy(pop)
+            #else:
+            print('\tcalculate fitness of offspring (greedy)')
+            mutated_offspring = self.evaluator.evaluate_greedy(mutated_offspring)
+            #pop = self.evaluator.evaluate_greedy(pop)
 
             # recalculate the fitness of the offspring
             #print('\tcalculate fitness of offspring')
@@ -78,13 +80,13 @@ class GA:
             # replace the weak individuals with the offspring
             print('\treplace weak individuals with offspring')
             pop = self.replacer.replace(pop, mutated_offspring)
-            if iter_count % self.n == 0:
-                pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
-                best, worst, mean = self.evaluator.evaluate_statistics(pop)
+            #if iter_count % self.n == 0:
+            pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
+            best, worst, mean = self.evaluator.evaluate_statistics(pop)
 
-                print('\t   -mean score: {}'.format(np.round(mean, 2)))
-                print('\t   -best score: {}'.format(best))
-                print('\t   -worst score: {}'.format(worst))
+            print('\t   -mean score: {}'.format(np.round(mean, 2)))
+            print('\t   -best score: {}'.format(best))
+            print('\t   -worst score: {}'.format(worst))
 
             iter_count += 1
 
