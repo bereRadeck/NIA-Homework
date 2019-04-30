@@ -11,6 +11,7 @@ import numpy as np
 from collections import Counter
 
 
+
 dummy_aco = []
 popsize = 10
 demands = [10,20,10,14,30,20,10]
@@ -85,5 +86,13 @@ for p in pop:
         assert counter_0[value] == counter1[value]
 ########################################################################
 
-dist_matrix = np.array([[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]])
-pop = evaluator.evaluate_simple(pop)
+dist_matrix = np.ones((8,8))
+
+for i in range(dist_matrix.shape[0]):
+    for j in range(dist_matrix.shape[1]):
+        dist_matrix[i,j] = i*8+j
+
+print(dist_matrix)
+#pop = evaluator.evaluate_simple(pop)
+
+pop = evaluator.evaluate_greedy(pop)

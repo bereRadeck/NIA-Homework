@@ -34,6 +34,36 @@ class Evaluator:
 
         return pop
 
+    def evaluate_greedy(self,pop):
+        for individual in pop:
+            dist_matrix = np.array(self.dist_matrix)
+            v_c = np.array(individual['vehicle_capacities'])
+            c_d = np.array(individual['customer_demands'])
+            costs = 0
+            for vehicle in np.unique(v_c):
+                customers_to_visit = np.unique(c_d[v_c == vehicle])
+                route = self.find_route_greedy(customers_to_visit,0)
+                cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
+                costs += cost
+            individual['fitness'] = costs
+
+
+    def find_route_greedy(self, customers_to_visit: object, current_stop: object = 0, results: object = []) -> object:
+        dist_matrix = deepcopy(np.array(self.dist_matrix))
+        customers_to_visit = customers_to_visit[customers_to_visit != current_stop]
+        choice = dist_matrix[current_stop,np.array(customers_to_visit)]
+        next_stop = np.where(dist_matrix[current_stop,:] == np.min(choice))[0][0]
+        results.append(next_stop)
+
+        if len(customers_to_visit) == 1:
+            results.append(0)
+            return results
+        else:
+            return self.find_route_greedy(customers_to_visit,next_stop,results)
+
+
+
+
 
     def evaluate_with_aco(self,pop,verbose=False):
         """
@@ -47,44 +77,44 @@ class Evaluator:
 
         start = datetime.now()
         for individual in pop:
-            if individual['fitness'] != 0:
-                continue
-            else:
-                v_c =  np.array(individual['vehicle_capacities'])
-                c_d =  np.array(individual['customer_demands'])
-                assert len(dummy_individual['vehicle_capacities']) == len(v_c)
-                assert len(v_c) >= 1
-                assert len(v_c) == len(c_d), 'v_c: {}c_d: {}'.format(len(v_c),len(c_d))
+            #if individual['fitness'] != 0:
+                #continue
+            #else:
+            v_c =  np.array(individual['vehicle_capacities'])
+            c_d =  np.array(individual['customer_demands'])
+            assert len(dummy_individual['vehicle_capacities']) == len(v_c)
+            assert len(v_c) >= 1
+            assert len(v_c) == len(c_d), 'v_c: {}c_d: {}'.format(len(v_c),len(c_d))
 
-                costs =  []
-                for vehicle in np.unique(v_c):
-                    #print('c_d[v_c==vehicle]',c_d[v_c==vehicle])
-                    customers_to_visit = np.unique(c_d[v_c==vehicle])
-                    # make sure car starts from depot and ands with depot
-                    if not customers_to_visit[0] == 0:
-                        customers_to_visit = np.append(0,customers_to_visit)
+            costs =  []
+            for vehicle in np.unique(v_c):
+                #print('c_d[v_c==vehicle]',c_d[v_c==vehicle])
+                customers_to_visit = np.unique(c_d[v_c==vehicle])
+                # make sure car starts from depot and ands with depot
+                if not customers_to_visit[0] == 0:
+                    customers_to_visit = np.append(0,customers_to_visit)
 
 
-                    assert len(customers_to_visit) >= 1
-                    if len(customers_to_visit) == 1:
-                        route_length = 0
-                    else:
-                        route_length = self.aco.run(customers_to_visit)
+                assert len(customers_to_visit) >= 1
+                if len(customers_to_visit) == 1:
+                    route_length = 0
+                else:
+                    route_length = self.aco.run(customers_to_visit)
 
-                    route_costs = route_length * self.trans_cost[vehicle]
+                route_costs = route_length * self.trans_cost[vehicle]
 
-                    costs.append(route_costs)
+                costs.append(route_costs)
 
-                fitness = np.sum(costs)
-                assert fitness != 0
-                individual['fitness'] = fitness
-                if fitness < best_score:
-                    best_score = fitness
-                all_scores.append(fitness)
-                if verbose:
-                    print('Evaluator: ')
+            fitness = np.sum(costs)
+            assert fitness != 0
+            individual['fitness'] = fitness
+            if fitness < best_score:
+                best_score = fitness
+            all_scores.append(fitness)
+            if verbose:
+                print('Evaluator: ')
 
-                    print('     fitness: {}',format(fitness))
+                print('     fitness: {}',format(fitness))
 
 
         stop = datetime.now()

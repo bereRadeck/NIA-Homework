@@ -17,7 +17,7 @@ from ACO_Intensificator import Intensificator
 
 class GA:
 
-    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco):
+    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco, n):
         self.initializer = initializer
         self.evaluator = evaluator
         self.selector = selector
@@ -26,22 +26,23 @@ class GA:
         self.replacer = replacer
         self.terminator = terminator
         self.aco = aco
+        self.n = n
         #self.pop = self.initializer.initialize()
 
     def run(self):
         print('initializing population')
-        pop = self.initializer.initialize(True)
+        pop = self.initializer.initialize()#True)
         print('...done')
 
         # calculate the initial fitnesses of the individuals
         print('calculate initial fitness-scores for each pop-individual with ACO ')
-        pop, best_score, mean_score = self.evaluator.evaluate(pop)
+        pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
 
         iter_count = 0
 
         while not self.terminator.terminates():
 
-            iter_count += 1
+
 
             # select parents based on their fitness
             print('\tselecting parents')
@@ -55,19 +56,32 @@ class GA:
             print('\tmutate offspring')
             mutated_offspring = self.mutator.mutate(new_offspring)
 
-            # recalculate the fitness of the offspring
-            print('\tcalculate fitness of offspring')
-            mutated_offspring, _, _ = self.evaluator.evaluate(mutated_offspring)
+            if iter_count % self.n == 0:
+
+                # recalculate the fitness of the offspring
+                print('\tcalculate fitness of offspring (with ACO)')
+                mutated_offspring, _, _ = self.evaluator.evaluate_with_aco(mutated_offspring)
+
+
+
+            else:
+                print('\tcalculate fitness of offspring (simple)')
+                mutated_offspring = self.evaluator.evaluate_simple(mutated_offspring)
 
             # replace the weak individuals with the offspring
             print('\treplace weak individuals with offspring')
             pop = self.replacer.replace(pop, mutated_offspring)
+            if iter_count % self.n == 0:
+                pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
+                best, worst, mean = self.evaluator.evaluate_statistics(pop)
 
-            best, worst, mean = self.evaluator.evaluate_statistics(pop)
+                print('\t   -mean score: {}'.format(np.round(mean, 2)))
+                print('\t   -best score: {}'.format(best))
+                print('\t   -worst score: {}'.format(worst))
 
-            print('\t   -mean score: {}'.format(np.round(mean,2)))
-            print('\t   -best score: {}'.format(best))
-            print('\t   -worst score: {}'.format(worst))
+            iter_count += 1
+
+
 
 """
 def __main__():
