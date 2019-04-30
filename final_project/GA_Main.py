@@ -67,7 +67,8 @@ class GA:
 
             else:
                 print('\tcalculate fitness of offspring (simple)')
-                mutated_offspring = self.evaluator.evaluate_simple(mutated_offspring)
+                mutated_offspring = self.evaluator.evaluate_greedy(mutated_offspring)
+                pop = self.evaluator.evaluate_greedy(pop)
 
             # recalculate the fitness of the offspring
             #print('\tcalculate fitness of offspring')

@@ -43,7 +43,7 @@ class Initializer(ABC):
 
         customer_demand = []
         for i, customer in enumerate(customers):
-            for d in range(demands[i]):
+            for d in range(demands[customer-1]):
                 customer_demand.append(customer)
         return np.array(customer_demand)
 
