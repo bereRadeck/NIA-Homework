@@ -27,6 +27,7 @@ class GA:
         self.terminator = terminator
         self.aco = aco
         self.n = n
+        self.record = []
         #self.pop = self.initializer.initialize()
 
     def run(self):
@@ -96,7 +97,7 @@ class GA:
             print('\t   -mean score: {}'.format(np.round(mean, 2)))
             print('\t   -best score: {}'.format(best))
             print('\t   -worst score: {}'.format(worst))
-
+            self.record.append({"mean":mean,"best":best,"worst":worst})
             iter_count += 1
 
 
