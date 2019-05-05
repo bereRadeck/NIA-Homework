@@ -46,16 +46,7 @@ class Initializer(ABC):
                 customer_demand.append(customer)
         return np.array(customer_demand)
 
-    '''
-    wouldn't this make more sense?
-        customer_demand = []
-        for i, customer in enumerate(customers):
 
-            for d in range(demands[customer]):
-                customer_demand.append(customer)
-
-        return np.array(customer_demand)
-    '''
 
 
 class RandomInitializer(Initializer):
@@ -181,6 +172,11 @@ class GreedyInitializer(Initializer):
             c_d = np.append(c_d, 0)
 
         population = [dict() for x in range(self.popsize)]
-
+        for i in range(self.popsize):
+            np.random.shuffle(sort_array)
+            population[i]['vehicle_capacities'] = v_c[sort_array]
+            population[i]['customer_demands'] = c_d
+            # population[i]['capacities_list'] = self.capacities
+            population[i]['fitness'] = 0
         return population
 
