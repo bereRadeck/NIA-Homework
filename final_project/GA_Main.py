@@ -28,7 +28,7 @@ class GA:
         self.aco = aco
         self.n = n
         self.record_best = []
-        self.record_worst =[]
+        self.record_worst = []
         self.record_mean = []
         #self.pop = self.initializer.initialize()
 
