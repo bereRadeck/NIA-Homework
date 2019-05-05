@@ -27,7 +27,9 @@ class GA:
         self.terminator = terminator
         self.aco = aco
         self.n = n
-        self.record = []
+        self.record_best = []
+        self.record_worst =[]
+        self.record_mean = []
         #self.pop = self.initializer.initialize()
 
     def run(self):
@@ -97,7 +99,9 @@ class GA:
             print('\t   -mean score: {}'.format(np.round(mean, 2)))
             print('\t   -best score: {}'.format(best))
             print('\t   -worst score: {}'.format(worst))
-            self.record.append({"mean":mean,"best":best,"worst":worst})
+            self.record_mean.append(mean)
+            self.record_best.append(best)
+            self.record_worst.append(worst)
             iter_count += 1
 
 
