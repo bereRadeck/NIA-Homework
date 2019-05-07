@@ -69,23 +69,25 @@ class Evaluator:
 
         dist_matrix = deepcopy(np.array(self.dist_matrix))
 
+        assert current_stop in customers_to_visit
 
         customers_to_visit = customers_to_visit[customers_to_visit != current_stop]
 
         choice = dist_matrix[current_stop,np.array(customers_to_visit)]
 
-        next_stop = np.where(dist_matrix[current_stop,:] == np.min(choice))[0][0]
+        next_stop_candidates = np.where(dist_matrix[current_stop,:] == np.min(choice))[0]
+        for next_stop in next_stop_candidates:
+            if next_stop in customers_to_visit:
+                break
 
         route.append(next_stop)
 
-        if len(customers_to_visit) == 1:
+        if len(customers_to_visit) <= 1:
             route.append(0)
             return route
 
         else:
             return self.find_route_greedy(customers_to_visit,next_stop,route)
-
-
 
 
 
@@ -144,5 +146,3 @@ class Evaluator:
         stop = datetime.now()
         print('\t Evaluating took: {} seconds'.format((stop-start).seconds))
         return pop, best_score, np.mean(all_scores)
-
-
