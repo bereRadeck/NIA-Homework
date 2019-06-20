@@ -58,7 +58,7 @@ class Evaluator:
                         route = np.append(customers_to_visit,0)
 
                     assert (route[0] == 0) & (route[-1] == 0)
-                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
+                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum() * self.trans_cost[vehicle]
                     costs += cost
             assert costs
             individual['fitness'] = costs
