@@ -21,7 +21,9 @@ class Roulette_Selector:
             for x in fitnesses:
                 if x == 0:
                     print('!!!! Zero fitness in individual ',i)
-            probabilities = [((x/ fitnesses.sum())) for x in fitnesses]
+            fitnesses = 1/fitnesses
+            probabilities = [((x/fitnesses.sum())) for x in fitnesses]
+
             parent1, parent2 = np.random.choice(pop,size=2,replace=False, p=probabilities)
             parents.append((parent1,parent2))
             assert len(parent1['vehicle_capacities']) == len(parent2['vehicle_capacities'])

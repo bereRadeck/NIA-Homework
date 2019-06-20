@@ -77,6 +77,65 @@ class RandomInitializer(Initializer):
 
 class PartiallyRandomInitializer(Initializer):
 
+    def initialize(self):
+        """
+        initializes randomly sorted vehicle_capacity arrays where
+        each car-apperance stays together [car3,car3,car1,car2,car2,car2]
+        :return: a population of size popsize
+        """
+
+        dummy_v_c = self.generate_vehicle_capacity(self.vehicles)
+        counter_0 = Counter(dummy_v_c)
+
+        assert len(dummy_v_c) != 0
+        population = [dict() for x in range(self.popsize)]
+
+        # only one order of customer demands for all individuals
+        mixed_up_customers = deepcopy(self.customers)
+
+        np.random.shuffle(mixed_up_customers)
+
+
+        assert np.allclose(np.unique(mixed_up_customers), np.unique(self.customers))
+        assert len(mixed_up_customers) == len(self.customers)
+
+        c_d = self.generate_customer_demand(mixed_up_customers, self.demands)
+
+        for i in range(self.popsize):
+
+            mixed_up_vehicles = deepcopy(self.vehicles)
+            np.random.shuffle(mixed_up_vehicles)
+
+            assert np.allclose(np.unique(mixed_up_vehicles), np.unique(self.vehicles))
+
+            # assert not np.allclose(mixed_up_customers,self.customers)
+            # assert not np.allclose(mixed_up_vehicles, self.capacities)
+
+            assert len(mixed_up_vehicles) == len(self.vehicles)
+
+            # population[i]['vehicle_capacities'] = self.generate_vehicle_capacity(mixed_up_vehicles, self.capacities)
+            v_c = self.generate_vehicle_capacity(mixed_up_vehicles)
+
+            counter_1 = Counter(v_c)
+            for value in np.unique(self.vehicles):
+                assert counter_0[value] == counter_1[value]
+
+            assert len(dummy_v_c) == len(v_c)
+
+            while len(c_d) < len(v_c):
+                c_d = np.append(c_d, 0)
+            assert len(c_d) == len(v_c)
+            # population[i]['customer_demands'] = self.generate_customer_demand(mixed_up_customers,self.demands)
+            population[i]['vehicle_capacities'] = v_c
+            population[i]['customer_demands'] = c_d
+            # population[i]['capacities_list'] = self.capacities
+            population[i]['fitness'] = 0
+
+        return population
+
+
+class Initializer_with_ACO(Initializer):
+
     def initialize(self, heuristic=False):
         """
         initializes randomly sorted vehicle_capacity arrays where
@@ -141,7 +200,6 @@ class PartiallyRandomInitializer(Initializer):
 
         return population
 
-
 class GreedyInitializer(Initializer):
 
     def initialize(self,distance_matrix):
@@ -179,4 +237,3 @@ class GreedyInitializer(Initializer):
             # population[i]['capacities_list'] = self.capacities
             population[i]['fitness'] = 0
         return population
-
