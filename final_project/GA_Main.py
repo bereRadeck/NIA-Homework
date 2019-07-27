@@ -30,6 +30,7 @@ class GA:
         self.record_best = []
         self.record_worst = []
         self.record_mean = []
+        self.record_fitnesses = []
         #self.pop = self.initializer.initialize()
 
     def run(self):
@@ -45,12 +46,15 @@ class GA:
         #print('\t initial mean score: ', mean_score)
         print('calculate initial fitness-scores for each pop-individual with Greedy ')
         pop = self.evaluator.evaluate_greedy(pop)
-        best, worst, mean = self.evaluator.evaluate_statistics(pop)
+        best, worst, mean,fitnesses = self.evaluator.evaluate_statistics(pop)
 
         print('\t   -initial mean score: {}'.format(np.round(mean, 2)))
         print('\t   -initial best score: {}'.format(best))
         print('\t   -initial worst score: {}'.format(worst))
-
+        self.record_mean.append(mean)
+        self.record_best.append(best)
+        self.record_worst.append(worst)
+        self.record_fitnesses.append(fitnesses)
 
         iter_count = 0
 
@@ -94,7 +98,7 @@ class GA:
             pop = self.replacer.replace(pop, mutated_offspring)
             #if iter_count % self.n == 0:
             #pop, best_score, mean_score = self.evaluator.evaluate_with_aco(pop)
-            best, worst, mean = self.evaluator.evaluate_statistics(pop)
+            best, worst, mean, fitnesses = self.evaluator.evaluate_statistics(pop)
 
             print('\t   -mean score: {}'.format(np.round(mean, 2)))
             print('\t   -best score: {}'.format(best))
@@ -102,6 +106,7 @@ class GA:
             self.record_mean.append(mean)
             self.record_best.append(best)
             self.record_worst.append(worst)
+            self.record_fitnesses.append(fitnesses)
             iter_count += 1
 
 

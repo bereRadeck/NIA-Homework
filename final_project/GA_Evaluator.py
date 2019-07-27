@@ -11,6 +11,8 @@ class Evaluator:
         self.trans_cost = trans_cost
         self.dist_matrix = dist_matrix
         self.aco = aco
+        
+        self.fitnesses=None
 
 
     def evaluate_statistics(self,pop):
@@ -18,7 +20,8 @@ class Evaluator:
         best_score = np.min(fitnesses)
         mean_score = np.mean(fitnesses)
         worst_score = np.max(fitnesses)
-        return best_score,worst_score,mean_score
+        self.fitnesses = fitnesses
+        return best_score, worst_score, mean_score, fitnesses
 
     def evaluate_simple(self,pop):
         for individual in pop:
@@ -41,6 +44,7 @@ class Evaluator:
             c_d = np.array(individual['customer_demands'])
             costs = 0
             for vehicle in np.unique(v_c):
+              #  print(len(c_d),len(v_c))
                 customers_to_visit = np.sort(np.unique(c_d[v_c == vehicle]))
 
                 if len(customers_to_visit) == 0:
@@ -58,7 +62,7 @@ class Evaluator:
                         route = np.append(customers_to_visit,0)
 
                     assert (route[0] == 0) & (route[-1] == 0)
-                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum() * self.trans_cost[vehicle]
+                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
                     costs += cost
             assert costs
             individual['fitness'] = costs
@@ -146,3 +150,4 @@ class Evaluator:
         stop = datetime.now()
         print('\t Evaluating took: {} seconds'.format((stop-start).seconds))
         return pop, best_score, np.mean(all_scores)
+
