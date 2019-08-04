@@ -11,7 +11,7 @@ class Evaluator:
         self.trans_cost = trans_cost
         self.dist_matrix = dist_matrix
         self.aco = aco
-        
+
         self.fitnesses=None
 
 
@@ -62,7 +62,7 @@ class Evaluator:
                         route = np.append(customers_to_visit,0)
 
                     assert (route[0] == 0) & (route[-1] == 0)
-                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum()
+                    cost = np.array(dist_matrix)[route[:-1], route[1:]].sum() * self.trans_cost[vehicle]
                     costs += cost
             assert costs
             individual['fitness'] = costs
@@ -150,4 +150,3 @@ class Evaluator:
         stop = datetime.now()
         print('\t Evaluating took: {} seconds'.format((stop-start).seconds))
         return pop, best_score, np.mean(all_scores)
-
