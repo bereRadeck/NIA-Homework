@@ -17,7 +17,7 @@ from ACO_Intensificator import Intensificator
 
 class GA:
 
-    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco, n):
+    def __init__(self, initializer, evaluator, selector, recombiner, mutator, replacer, terminator, aco, evaluate='greedy', n):
         self.initializer = initializer
         self.evaluator = evaluator
         self.selector = selector
@@ -85,7 +85,12 @@ class GA:
 
             #else:
             print('\tcalculate fitness of offspring (greedy)')
-            mutated_offspring = self.evaluator.evaluate_greedy(mutated_offspring)
+            if evaluate == 'greedy':
+                mutated_offspring = self.evaluator.evaluate_greedy(mutated_offspring)
+            if evaluate == 'aco':
+                mutated_offspring = self.evaluator.evaluate_with_aco(mutated_offspring)
+            else:
+                mutated_offspring = self.evaluator.evaluate_simple(mutated_offspring)
             #pop = self.evaluator.evaluate_greedy(pop)
 
             # recalculate the fitness of the offspring
