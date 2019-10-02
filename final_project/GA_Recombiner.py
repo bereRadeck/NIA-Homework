@@ -18,8 +18,8 @@ class Simple_Recombiner:
             new1 = copy.deepcopy(p[0])
             new2 = copy.deepcopy(p[1])
             
-            capacities1 = new1['vehicle_capacities']
-            capacities2 = new2['vehicle_capacities']
+            capacities1 = list(new1['vehicle_capacities'])
+            capacities2 = list(new2['vehicle_capacities'])
 
             
             cr_point1 = rnd.choice(range(len(capacities1) - 1))
@@ -30,6 +30,7 @@ class Simple_Recombiner:
                 del capacities1[capacities1.index(s)]
             for s in slice1:
                 capacities1.insert(cr_point1, s)
+            new1['vehicle_capacities']=np.array(capacities1)
             new1['fitness'] = 0
 
             offspring.append(new1)
